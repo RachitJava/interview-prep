@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Solutions 7: AI/ML & LLM — Rachit Bishnoi</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 10mm; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 8.5pt; line-height: 1.4; color: #1a1a1a; background: #fff;
+    max-width: 210mm; padding: 10mm 15mm;
+  }
+  h1 { font-size: 16pt; color: #111; text-align: center; margin-bottom: 5px; border-bottom: 2px solid #6366f1; padding-bottom: 10px; }
+  h2 { font-size: 11pt; font-weight: 700; color: #fff; background: #6366f1; padding: 6px 12px; margin: 15px 0 10px 0; border-radius: 4px; }
+  .solution { margin-bottom: 10px; border-bottom: 1px solid #f3f4f6; padding-bottom: 6px; }
+  .q-title { font-weight: 700; color: #111827; margin-bottom: 2px; }
+  .ans { color: #374151; font-size: 8.5pt; }
+  .ans b { color: #4f46e5; }
+  .tag { font-size: 7pt; font-weight: 600; padding: 1px 4px; border-radius: 2px; margin-left: 3px; background: #ede9fe; color: #5b21b6; }
+</style>
+</head>
+<body>
+
+ <div style="text-align:center; margin-bottom:10px;"><a href="master_answer_compendium.html" style="font-size:8pt; color:#6b7280; text-decoration:none;">← Back to Master Compendium</a></div><h1>🤖 Solutions 7: AI/ML & LLM (30 Topics)</h1>
+
+<div class="solution">
+  <div class="q-title">1. What is a Transformer? Attention mechanism? <span class="tag">🔥Top</span></div>
+  <div class="ans"><b>Transformer</b> is an architecture that replaced RNNs by using <b>Self-Attention</b>. It processes entire sequences at once (parallel) and calculates a score for how much every word should "pay attention" to every other word to understand context.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">2. How does GPT work? Decoder-only? <span class="tag">🔥Top</span></div>
+  <div class="ans"><b>GPT</b> (Generative Pre-trained Transformer) is a **Decoder-only** model. It predicts the "next token" in a sequence based on all previous tokens. It is "unidirectional"—it only looks at tokens to its left.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">3. What is tokenization? BPE vs WordPiece</div>
+  <div class="ans">Converting text into numeric IDs. <b>BPE</b> (Byte Pair Encoding) merges frequent character pairs. <b>WordPiece</b> (used by BERT) merges based on likelihood of training data. Both handle sub-words to solve the "out-of-vocabulary" problem.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">4. Explain RAG pipeline <span class="tag">🔥Top</span></div>
+  <div class="ans"><b>Retrieval-Augmented Generation</b>. 1. Convert docs to embeddings. 2. Store in Vector DB. 3. At query time, find top-K most relevant docs. 4. Feed these docs + user query to LLM. Result: Fact-based generation without hallucinations.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">5. What is LoRA? Reducing training cost <span class="tag">🔥Top</span></div>
+  <div class="ans"><b>Low-Rank Adaptation</b>. Instead of fine-tuning all 7B parameters, it adds small, low-rank matrices to the model layers. We update ONLY these small matrices. Reduces VRAM/Memory requirements by 10x-100x.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">6. Knowledge Distillation <span class="tag">🔥Top</span></div>
+  <div class="ans">Training a small **Student** model (e.g. Llama 8B) to mimic the output probability distribution of a large **Teacher** model (e.g. GPT-4). Result: Small model with large model's logic.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">7. What are embeddings? Vector DBs <span class="tag">🔥Top</span></div>
+  <div class="ans"><b>Embeddings</b> are high-dimensional vectors (arrays of numbers) reflecting "meaning". Vector DBs (Pinecone/Chroma) use algorithms like **HNSW** or **IVF** to perform extremely fast similarity searches on these vectors.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">8. Prompt Engineering — chain-of-thought</div>
+  <div class="ans"><b>Zero-shot</b>: No examples. <b>Few-shot</b>: Give 3-5 examples. <b>Chain-of-thought</b>: Telling the AI "Let's think step by step" to improve reasoning and math accuracy.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">9. Hallucination in LLMs <span class="tag">🔥Top</span></div>
+  <div class="ans">Generating plausibly sounding but false info. <b>Reducers</b>: RAG, lower Temperature, Citations/Sources, and Multi-turn verification.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">10. LangChain — agents & tools</div>
+  <div class="ans">A framework to link LLMs with external data/tools. **Agents** can decide which tool to use (e.g. Google Search or Calculator) to finish a user's task autonomously.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">11. Temperature vs Top_p</div>
+  <div class="ans"><b>Temperature</b> scales probabilities (0 is direct, 1 is random). <b>Top_p</b> (Nucleus sampling) selects the smallest set of tokens whose cumulative probability exceeds P.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">12. Context window limits</div>
+  <div class="ans">Total tokens (Input + Output) a model can handle. For long docs, use **Chunking** or **Sliding Window** to feed only relevant parts to the model.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">13. Fine-tuning vs RAG <span class="tag">🔥Top</span></div>
+  <div class="ans"><b>Fine-tuning</b>: Updates model weights for style/tone/specific tasks. <b>RAG</b>: Feeds fresh data to a frozen model. Use RAG for knowledge, fine-tuning for specialized behavior/formatting.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">14. What is RLHF?</div>
+  <div class="ans"><b>Reinforcement Learning from Human Feedback</b>. Used to "align" models to be helpful/safe. Humans rank model outputs, and a Reward Model is trained to guide the LLM toward better answers.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">15. Bias-variance tradeoff</div>
+  <div class="ans"><b>Bias</b>: Underfitting (model too simple). <b>Variance</b>: Overfitting (model too complex). Goal: Minimize both to generalize well to unseen data.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">16. Precision vs Recall vs F1 <span class="tag">🔥Top</span></div>
+  <div class="ans"><b>Precision</b>: How many predicted positives were correct? <b>Recall</b>: How many actual positives did you find? <b>F1</b>: Harmonic mean of both. In medical AI (SmartCPR), Recall is vital.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">17. Overfitting — prevention</div>
+  <div class="ans">Happens when model learns noise. <b>Prevention</b>: Dropout, L1/L2 Regularization, Early Stopping, and adding more training data.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">18. What is transfer learning?</div>
+  <div class="ans">Taking a pre-trained model (trained on huge data) and fine-tuning it for your specific, smaller dataset. Saves time and Millions in compute costs.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">19. Supervised vs Reinforcement Learning</div>
+  <div class="ans"><b>Supervised</b>: Learns from (Input, Label) pairs. <b>Reinforcement</b>: Learns through trial and error, maximize a "Reward" signal in an environment.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">20. Gradient Descent — Adam optimizer</div>
+  <div class="ans">Algorithm to minimize loss. **Adam** (Adaptive Moment Estimation) adjusts the learning rate for each parameter, making training faster and more stable.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">21. CNN vs RNN vs Transformer</div>
+  <div class="ans"><b>CNN</b> (Images - spatial features), <b>RNN</b> (Text/Audio - sequential), <b>Transformer</b> (Text/Everything - parallelized context).</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">22. Confusion Matrix</div>
+  <div class="ans">A table visualizing model performance: True Positives (TP), True Negatives (TN), False Positives (FP/Type I error), and False Negatives (FN/Type II error).</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">23. Feature engineering</div>
+  <div class="ans">The process of creating better Input data (features) using domain knowledge. "Better data beats better models." (e.g. Heart Rate Variance instead of raw Pulse).</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">24. Model drift</div>
+  <div class="ans">Performance decay over time because real-world data changed (e.g. a fraud model failing because hackers changed tactics). Requires retraining.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">25. Cross-validation (k-fold)</div>
+  <div class="ans">Splitting data into K parts. Training K times, each time using a different part as the test set. Ensures model quality isn't just "luck" based on a single split.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">26. Batch normalization</div>
+  <div class="ans">Standardizing inputs to a layer for each mini-batch. Accelerates training by allowing higher learning rates and reducing dependency on initial weights.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">27. Deploying an ML model <span class="tag">🔥Top</span></div>
+  <div class="ans">1. <b>Serialize</b> (Pickle/ONNX). 2. <b>API</b> (Flask/FastAPI). 3. <b>Container</b> (Docker). 4. <b>Orchestrate</b> (SageMaker/K8s). Use Batch production or Real-time inference.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">28. A/B testing for ML</div>
+  <div class="ans">Directly comparing Model A vs Model B on real traffic. Measuring business metrics (e.g. Click-through rate) instead of just technical metrics (Accuracy).</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">29. FOLD-RM (SmartCPR logic) <span class="tag">🔥Top</span></div>
+  <div class="ans">An <b>Explainable AI</b> method. It creates **Human-readable Rules** from data. Unlike a "Black Box" Neural Network, FOLD-RM can explain *why* it decided a patient is in cardiac arrest.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">30. AI Code Gen Pipeline (FBPM) <span class="tag">🔥Top</span></div>
+  <div class="ans">Step 1: Extract business rules. Step 2: Use GPT-4 to generate samples. Step 3: Distill to Llama using LoRA fine-tuning. Step 4: Verify generated code against rule engine.</div>
+</div>
+
+</body>
+</html>

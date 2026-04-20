@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Solutions 6: Spring Boot — Rachit Bishnoi</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 10mm; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 8.5pt; line-height: 1.4; color: #1a1a1a; background: #fff;
+    max-width: 210mm; padding: 10mm 15mm;
+  }
+  h1 { font-size: 16pt; color: #111; text-align: center; margin-bottom: 5px; border-bottom: 2px solid #10b981; padding-bottom: 10px; }
+  h2 { font-size: 11pt; font-weight: 700; color: #fff; background: #10b981; padding: 6px 12px; margin: 15px 0 10px 0; border-radius: 4px; }
+  .solution { margin-bottom: 10px; border-bottom: 1px solid #f3f4f6; padding-bottom: 6px; }
+  .q-title { font-weight: 700; color: #111827; margin-bottom: 2px; }
+  .ans { color: #374151; font-size: 8.5pt; }
+  .ans b { color: #059669; }
+  .tag { font-size: 7pt; font-weight: 600; padding: 1px 4px; border-radius: 2px; margin-left: 3px; background: #ede9fe; color: #5b21b6; }
+</style>
+</head>
+<body>
+
+ <div style="text-align:center; margin-bottom:10px;"><a href="master_answer_compendium.html" style="font-size:8pt; color:#6b7280; text-decoration:none;">← Back to Master Compendium</a></div><h1>🍃 Solutions 6: Spring Boot (30 Topics)</h1>
+
+<div class="solution">
+  <div class="q-title">1. What is Spring IoC container? Bean lifecycle? <span class="tag">🔥Top</span></div>
+  <div class="ans"><b>IoC Container</b> handles object creation, wiring, and lifecycle. <b>Lifecycle</b>: 1. Instantiate 2. Populate Props 3. `BeanNameAware` 4. `BeanFactoryAware` 5. Pre-Initialization (PostProcessor) 6. `InitializingBean.afterPropertiesSet` 7. Custom Init 8. Post-Initialization.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">2. @Autowired — types of DI <span class="tag">🔥Top</span></div>
+  <div class="ans"><b>Constructor</b> (Recommended: best for testability and immutable fields), <b>Setter</b> (for optional deps), <b>Field</b> (uses reflection, discouraged).</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">3. @Component vs @Service vs @Repository vs @Controller <span class="tag">🔥Top</span></div>
+  <div class="ans"><b>@Component</b>: General purpose bean. <b>@Service</b>: Business logic. <b>@Repository</b>: Persistence (auto-catches DB exceptions). <b>@Controller</b>: Web MVC. All are `@Component` specializations.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">4. Bean scopes — singleton to session</div>
+  <div class="ans"><b>Singleton</b> (One per container - default), <b>Prototype</b> (One per request to getBean), <b>Request</b> (One per HTTP request), <b>Session</b> (One per HTTP session).</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">5. What is @Transactional? Implementation details <span class="tag">🔥Top</span></div>
+  <div class="ans">Uses <b>Spring AOP Proxy</b> to wrap methods. If method completes, commit; if exception (Runtime), rollback. Propagation types: `REQUIRED` (Join current), `REQUIRES_NEW` (Suspend current, start new).</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">6. Spring Boot auto-configuration — how does it work?</div>
+  <div class="ans">Scans `META-INF/spring.factories` or `org.springframework.boot.autoconfigure.AutoConfiguration.imports`. It uses `@ConditionalOnClass` or `@ConditionalOnMissingBean` to decide what to enable.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">7. @RestController vs @Controller</div>
+  <div class="ans"><b>@RestController</b> = `@Controller` + `@ResponseBody`. Automatically converts returned objects to JSON/XML instead of looking for an HTML template.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">8. Exception handling — @ControllerAdvice <span class="tag">🔥Top</span></div>
+  <div class="ans">A global interceptor for exceptions. Allows you to define `@ExceptionHandler` in one place rather than in every controller, returning clean, consistent error JSONs.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">9. Spring Security — JWT authentication flow <span class="tag">🔥Top</span></div>
+  <div class="ans">1. Client sends login. 2. Filter authenticates and returns **JWT**. 3. Client sends JWT in `Authorization` header for next calls. 4. Filter validates token signature without hitting DB.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">10. Spring Data JPA — Specifications</div>
+  <div class="ans">Allows creating reusable, dynamic 'Where' clauses for queries using the Criteria API. Great for multi-filter search screens.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">11. What is Spring AOP? Use cases</div>
+  <div class="ans"><b>Aspect-Oriented Programming</b>. Separates cross-cutting concerns from business logic. Uses: <b>Logging, Security, Transaction Management</b>.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">12. Profiles — application-dev.yml</div>
+  <div class="ans">Groups configuration settings for different environments. Activate using `-Dspring.profiles.active=prod` to switch DB URLs or API keys easily.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">13. Spring Boot Actuator</div>
+  <div class="ans">Provides production-ready features: `/health`, `/info`, `/metrics`, `/prometheus`. Essential for monitoring with Grafana.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">14. @Async — implementation</div>
+  <div class="ans">Executes a method in a separate thread. Requires `@EnableAsync` and returns a `Future` or `CompletableFuture`. Ensure calling from a different bean for Proxy to work.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">15. Spring WebFlux vs MVC</div>
+  <div class="ans"><b>MVC</b>: Servlet-based, blocking (Thread-per-request). <b>WebFlux</b>: Reactive, non-blocking (Event-loop, Netty). Use WebFlux for high-concurrency streaming apps.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">16. How to handle N+1 query problem? <span class="tag">🔥Top</span></div>
+  <div class="ans">Use <b>Join Fetch</b> in JPQL queries, `@EntityGraph`, or configuring Batch Fetching in properties to load associations in one go.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">17. @Cacheable — Redis</div>
+  <div class="ans">Stores the result of a method in a cache. If method called with same params, returns cached value. Use `@CacheEvict` to clear cache when data updates.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">18. Circuit breaker — Resilience4j</div>
+  <div class="ans">Limits impact of downstream service failure. Stages: **Closed** (allowing calls), **Open** (blocking calls, fail-fast), **Half-Open** (testing if service is back).</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">19. Spring Cloud — Service Discovery</div>
+  <div class="ans"><b>Eureka</b> allows microservices to find each other by name (e.g. `inventory-service`) instead of IP:Port, which can change in K8s.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">20. Deploying Spring Boot in K8s</div>
+  <div class="ans">Package as **Docker image**, define Deployment with Liveness/Readiness probes, and use a Service (ClusterIP/LoadBalancer) for traffic.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">21. @Scheduled — cron jobs</div>
+  <div class="ans">Runs tasks at fixed intervals. Supports `fixedDelay`, `fixedRate`, and `cron` expressions (e.g. every midnight).</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">22. Filter vs Interceptor vs AOP</div>
+  <div class="ans"><b>Filter</b>: Low level (Servlet container). <b>Interceptor</b>: Spring level (Handler mapping). <b>AOP</b>: Method level (Business logic).</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">23. Spring Batch — large data</div>
+  <div class="ans">Framework for high-volume batch processing. Follows **ItemReader → ItemProcessor → ItemWriter** pattern with automatic restart/skip features.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">24. Testing in Spring Boot <span class="tag">🔥Top</span></div>
+  <div class="ans"><b>@SpringBootTest</b>: Full context. <b>@DataJpaTest</b>: Slice for DB testing. <b>@MockBean</b>: Mocking dependent services. <b>@WebMvcTest</b>: Slice for Controller testing.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">25. OpenAPI/Swagger</div>
+  <div class="ans">Auto-generates interactive API documentation. Viewable at `/swagger-ui/index.html`. Essential for frontend developers to test headers.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">26. Connecting to Kafka</div>
+  <div class="ans">Use `spring-kafka`. Inject `KafkaTemplate` to send messages and use `@KafkaListener` to consume them with automatic JSON deserialization.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">27. Connection pooling — HikariCP</div>
+  <div class="ans">Default pool in SB. Highly tuned for performance. Important settings: `maximum-pool-size`, `connection-timeout`, `idle-timeout`.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">28. REST vs gRPC vs Messaging</div>
+  <div class="ans"><b>REST</b> (HTTP/1, JSON): Standard, good for public APIs. <b>gRPC</b> (HTTP/2, Protobuf): Very fast, good for internal. <b>Messaging</b> (Kafka): Asynchronous, eventual consistency.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">29. Spring Boot 3 & Jakarta EE <span class="tag">🔥Top</span></div>
+  <div class="ans">SB 3 requires Java 17+. Package names moved from `javax.*` to `jakarta.*`. Adds native image support via GraalVM for ultra-fast startup.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">30. Distributed transactions — Saga Pattern</div>
+  <div class="ans">Microservices shouldn't share transactions. Use **Saga** (series of local TX) or **Transactional Outbox** pattern to ensure consistency across separate databases.</div>
+</div>
+
+</body>
+</html>

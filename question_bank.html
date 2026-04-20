@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Interview Question Bank — Rachit Bishnoi</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 10mm 12mm; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 8pt; line-height: 1.35; color: #1a1a1a; background: #fff;
+    max-width: 210mm; padding: 8mm 14mm;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  h1 { font-size: 16pt; color: #111; text-align: center; margin-bottom: 2px; }
+  .subtitle { font-size: 8.5pt; color: #6b7280; text-align: center; margin-bottom: 10px; }
+  h2 {
+    font-size: 10pt; font-weight: 700; color: #fff; background: #1a56db;
+    padding: 4px 10px; margin: 12px 0 6px 0; letter-spacing: 0.5px; border-radius: 3px;
+    page-break-after: avoid;
+  }
+  h3 {
+    font-size: 8.5pt; font-weight: 700; color: #1a56db; margin: 6px 0 3px 0;
+    border-bottom: 1px solid #e5e7eb; padding-bottom: 2px;
+    page-break-after: avoid;
+  }
+  ol { padding-left: 18px; margin-bottom: 4px; }
+  li { font-size: 8pt; color: #374151; margin-bottom: 2px; line-height: 1.35; }
+  li strong { color: #111; }
+  .tag { font-size: 6.5pt; font-weight: 600; padding: 1px 4px; border-radius: 2px; margin-left: 3px; }
+  .easy { background: #dcfce7; color: #166534; }
+  .med { background: #fef3c7; color: #92400e; }
+  .hard { background: #fecaca; color: #991b1b; }
+  .hot { background: #ede9fe; color: #5b21b6; }
+  .cols { column-count: 2; column-gap: 14px; }
+  @media print { body { padding: 0; } h2 { page-break-inside: avoid; } }
+</style>
+</head>
+<body>
+
+<h1>🎯 Top Interview Questions — Complete Question Bank</h1>
+<div class="subtitle">Rachit Bishnoi | 350+ Most Asked Questions Across All Skills | 2026 Trends</div>
+
+<!-- ══════════════ NAVIGATION ══════════════ -->
+<div style="text-align:center; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;">
+  <a href="solutions_1_dsa.html" style="background:#1a56db; color:#fff; padding:4px 10px; border-radius:4px; text-decoration:none; font-size:7.5pt;">🌳 DSA Solutions</a>
+  <a href="solutions_2_system_design.html" style="background:#16a34a; color:#fff; padding:4px 10px; border-radius:4px; text-decoration:none; font-size:7.5pt;">🏗️ System Design</a>
+  <a href="solutions_3_java.html" style="background:#ef4444; color:#fff; padding:4px 10px; border-radius:4px; text-decoration:none; font-size:7.5pt;">☕ Java</a>
+  <a href="solutions_4_python.html" style="background:#3776ab; color:#fff; padding:4px 10px; border-radius:4px; text-decoration:none; font-size:7.5pt;">🐍 Python</a>
+  <a href="solutions_5_sql_db.html" style="background:#336791; color:#fff; padding:4px 10px; border-radius:4px; text-decoration:none; font-size:7.5pt;">🗄️ SQL/DB</a>
+  <a href="solutions_6_spring_boot.html" style="background:#6db33f; color:#fff; padding:4px 10px; border-radius:4px; text-decoration:none; font-size:7.5pt;">🍃 Spring</a>
+  <a href="solutions_7_ai_ml_llm.html" style="background:#a855f7; color:#fff; padding:4px 10px; border-radius:4px; text-decoration:none; font-size:7.5pt;">🤖 AI/ML</a>
+  <a href="solutions_8_cloud_devops.html" style="background:#6b7280; color:#fff; padding:4px 10px; border-radius:4px; text-decoration:none; font-size:7.5pt;">☁️ Cloud</a>
+  <a href="master_answer_compendium.html" style="background:#111827; color:#fff; padding:4px 10px; border-radius:4px; text-decoration:none; font-size:7.5pt; border:1px solid #fff;">🎯 Master Compendium</a>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<h2>🌳 1. DSA — Top 50 Coding Problems (LeetCode Pattern)</h2>
+<!-- ══════════════════════════════════════════════════════ -->
+
+<h3>Arrays & Hashing</h3>
+<div class="cols">
+<ol>
+<li><strong>Two Sum</strong> — Find two numbers that add to target <span class="tag easy">Easy</span><span class="tag hot">🔥Top</span> <a href="https://leetcode.com/problems/two-sum/solutions/?q=java&orderBy=most_votes" style="color:#1a56db;font-size:7pt;text-decoration:none;">[Java Sol]</a></li>
+<li><strong>Best Time to Buy & Sell Stock</strong> <span class="tag easy">Easy</span> <a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock/solutions/?q=java&orderBy=most_votes" style="color:#1a56db;font-size:7pt;text-decoration:none;">[Java Sol]</a></li>
+<li><strong>Contains Duplicate</strong> <span class="tag easy">Easy</span> <a href="https://leetcode.com/problems/contains-duplicate/solutions/?q=java&orderBy=most_votes" style="color:#1a56db;font-size:7pt;text-decoration:none;">[Java Sol]</a></li>
+<li><strong>Product of Array Except Self</strong> <span class="tag med">Med</span><span class="tag hot">🔥Top</span> <a href="https://leetcode.com/problems/product-of-array-except-self/solutions/?q=java&orderBy=most_votes" style="color:#1a56db;font-size:7pt;text-decoration:none;">[Java Sol]</a></li>
+<li><strong>Maximum Subarray (Kadane's)</strong> <span class="tag med">Med</span><span class="tag hot">🔥Top</span> <a href="https://leetcode.com/problems/maximum-subarray/solutions/?q=java&orderBy=most_votes" style="color:#1a56db;font-size:7pt;text-decoration:none;">[Java Sol]</a></li>
+<li><strong>Group Anagrams</strong> <span class="tag med">Med</span> <a href="https://leetcode.com/problems/group-anagrams/solutions/?q=java&orderBy=most_votes" style="color:#1a56db;font-size:7pt;text-decoration:none;">[Java Sol]</a></li>
+<li><strong>Top K Frequent Elements</strong> <span class="tag med">Med</span> <a href="https://leetcode.com/problems/top-k-frequent-elements/solutions/?q=java&orderBy=most_votes" style="color:#1a56db;font-size:7pt;text-decoration:none;">[Java Sol]</a></li>
+<li><strong>Encode and Decode Strings</strong> <span class="tag med">Med</span> <a href="https://leetcode.com/problems/encode-and-decode-strings/solutions/?q=java&orderBy=most_votes" style="color:#1a56db;font-size:7pt;text-decoration:none;">[Java Sol]</a></li>
+</ol>
+</div>
+
+<h3>Sliding Window</h3>
+<div class="cols">
+<ol start="9">
+<li><strong>Longest Substring Without Repeating</strong> — Variable window <span class="tag med">Med</span><span class="tag hot">🔥Top</span></li>
+<li><strong>Minimum Window Substring</strong> — Smallest window containing all chars <span class="tag hard">Hard</span></li>
+<li><strong>Sliding Window Maximum</strong> — Max in each window of size k <span class="tag hard">Hard</span></li>
+<li><strong>Longest Repeating Character Replacement</strong> <span class="tag med">Med</span></li>
+</ol>
+</div>
+
+<h3>Two Pointers & Binary Search</h3>
+<div class="cols">
+<ol start="13">
+<li><strong>3Sum</strong> — Find triplets that sum to zero <span class="tag med">Med</span><span class="tag hot">🔥Top</span></li>
+<li><strong>Container With Most Water</strong> — Max area between lines <span class="tag med">Med</span></li>
+<li><strong>Trapping Rain Water</strong> — Water trapped between bars <span class="tag hard">Hard</span><span class="tag hot">🔥Top</span></li>
+<li><strong>Search in Rotated Sorted Array</strong> — Modified binary search <span class="tag med">Med</span><span class="tag hot">🔥Top</span></li>
+<li><strong>Find Minimum in Rotated Array</strong> <span class="tag med">Med</span></li>
+<li><strong>Median of Two Sorted Arrays</strong> — O(log(m+n)) <span class="tag hard">Hard</span></li>
+</ol>
+</div>
+
+<h3>Linked List</h3>
+<div class="cols">
+<ol start="19">
+<li><strong>Reverse Linked List</strong> — Iterative & recursive <span class="tag easy">Easy</span><span class="tag hot">🔥Top</span> <a href="https://leetcode.com/problems/reverse-linked-list/solutions/?q=java&orderBy=most_votes" style="color:#1a56db;font-size:7pt;text-decoration:none;">[Java Sol]</a></li>
+<li><strong>Merge Two Sorted Lists</strong> <span class="tag easy">Easy</span> <a href="https://leetcode.com/problems/merge-two-sorted-lists/solutions/?q=java&orderBy=most_votes" style="color:#1a56db;font-size:7pt;text-decoration:none;">[Java Sol]</a></li>
+<li><strong>Detect Cycle in Linked List</strong> <span class="tag easy">Easy</span><span class="tag hot">🔥Top</span> <a href="https://leetcode.com/problems/linked-list-cycle/solutions/?q=java&orderBy=most_votes" style="color:#1a56db;font-size:7pt;text-decoration:none;">[Java Sol]</a></li>
+<li><strong>LRU Cache</strong> — HashMap + Doubly LL <span class="tag med">Med</span><span class="tag hot">🔥Top</span> <a href="https://leetcode.com/problems/lru-cache/solutions/?q=java&orderBy=most_votes" style="color:#1a56db;font-size:7pt;text-decoration:none;">[Java Sol]</a></li>
+<li><strong>Merge K Sorted Lists</strong> <span class="tag hard">Hard</span> <a href="https://leetcode.com/problems/merge-k-sorted-lists/solutions/?q=java&orderBy=most_votes" style="color:#1a56db;font-size:7pt;text-decoration:none;">[Java Sol]</a></li>
+</ol>
+</div>
+
+<h3>Trees & Graphs</h3>
+<div class="cols">
+<ol start="24">
+<li><strong>Invert Binary Tree</strong> <span class="tag easy">Easy</span></li>
+<li><strong>Max Depth of Binary Tree</strong> <span class="tag easy">Easy</span></li>
+<li><strong>Validate BST</strong> — Check if tree is valid BST <span class="tag med">Med</span><span class="tag hot">🔥Top</span></li>
+<li><strong>Level Order Traversal (BFS)</strong> <span class="tag med">Med</span></li>
+<li><strong>Lowest Common Ancestor</strong> — LCA in BST/BT <span class="tag med">Med</span><span class="tag hot">🔥Top</span></li>
+<li><strong>Serialize/Deserialize Binary Tree</strong> <span class="tag hard">Hard</span></li>
+<li><strong>Number of Islands</strong> — Grid BFS/DFS <span class="tag med">Med</span><span class="tag hot">🔥Top</span></li>
+<li><strong>Clone Graph</strong> — Deep copy graph <span class="tag med">Med</span></li>
+<li><strong>Course Schedule</strong> — Topological sort <span class="tag med">Med</span><span class="tag hot">🔥Top</span></li>
+<li><strong>Word Ladder</strong> — BFS shortest transformation <span class="tag hard">Hard</span></li>
+</ol>
+</div>
+
+<h3>Dynamic Programming</h3>
+<div class="cols">
+<ol start="34">
+<li><strong>Climbing Stairs</strong> — Fibonacci variant <span class="tag easy">Easy</span></li>
+<li><strong>Coin Change</strong> — Min coins to make amount <span class="tag med">Med</span><span class="tag hot">🔥Top</span></li>
+<li><strong>Longest Increasing Subsequence</strong> <span class="tag med">Med</span><span class="tag hot">🔥Top</span></li>
+<li><strong>House Robber</strong> — Max money, can't rob adjacent <span class="tag med">Med</span></li>
+<li><strong>Word Break</strong> — Can string be segmented <span class="tag med">Med</span></li>
+<li><strong>Longest Common Subsequence</strong> <span class="tag med">Med</span></li>
+<li><strong>0/1 Knapsack</strong> — Classic DP <span class="tag med">Med</span><span class="tag hot">🔥Top</span></li>
+<li><strong>Edit Distance</strong> — Min operations to convert strings <span class="tag hard">Hard</span></li>
+</ol>
+</div>
+
+<h3>Heap, Stack & Trie</h3>
+<div class="cols">
+<ol start="42">
+<li><strong>Valid Parentheses</strong> — Stack-based <span class="tag easy">Easy</span></li>
+<li><strong>Min Stack</strong> — getMin() in O(1) <span class="tag med">Med</span></li>
+<li><strong>Kth Largest Element</strong> — QuickSelect / Heap <span class="tag med">Med</span><span class="tag hot">🔥Top</span></li>
+<li><strong>Find Median from Data Stream</strong> — Two heaps <span class="tag hard">Hard</span></li>
+<li><strong>Implement Trie</strong> — insert, search, startsWith <span class="tag med">Med</span><span class="tag hot">🔥Top</span></li>
+<li><strong>Word Search II</strong> — Trie + backtracking on grid <span class="tag hard">Hard</span></li>
+</ol>
+</div>
+
+<h3>Backtracking & Intervals</h3>
+<div class="cols">
+<ol start="48">
+<li><strong>Combination Sum</strong> — Find combos that sum to target <span class="tag med">Med</span></li>
+<li><strong>Merge Intervals</strong> — Overlapping intervals <span class="tag med">Med</span><span class="tag hot">🔥Top</span></li>
+<li><strong>N-Queens</strong> — Place N queens on board <span class="tag hard">Hard</span></li>
+</ol>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<h2>🏗️ 2. System Design — Top 50 Questions</h2>
+<!-- ══════════════════════════════════════════════════════ -->
+
+<h3>Classic System Design (Must-Know)</h3>
+<div class="cols">
+<ol>
+<li><strong>Design a URL Shortener</strong> (TinyURL) <span class="tag hot">🔥Top</span> <a href="https://www.geeksforgeeks.org/system-design/system-design-url-shortening-service/" style="color:#16a34a;font-size:7pt;text-decoration:none;">[Arch Details]</a></li>
+<li><strong>Design Twitter/X</strong> <span class="tag hot">🔥Top</span> <a href="https://www.geeksforgeeks.org/system-design/twitter-system-design-a-complete-case-study/" style="color:#16a34a;font-size:7pt;text-decoration:none;">[Arch Details]</a></li>
+<li><strong>Design WhatsApp/Chat System</strong> <span class="tag hot">🔥Top</span> <a href="https://www.geeksforgeeks.org/system-design/design-whatsapp-messenger/" style="color:#16a34a;font-size:7pt;text-decoration:none;">[Arch Details]</a></li>
+<li><strong>Design YouTube</strong> <a href="https://www.geeksforgeeks.org/system-design/youtube-system-design-a-complete-case-study/" style="color:#16a34a;font-size:7pt;text-decoration:none;">[Arch Details]</a></li>
+<li><strong>Design Uber/Ola</strong> <span class="tag hot">🔥Top</span> <a href="https://www.geeksforgeeks.org/system-design/system-design-of-uber-app-uber-system-architecture/" style="color:#16a34a;font-size:7pt;text-decoration:none;">[Arch Details]</a></li>
+<li><strong>Design Netflix</strong> — Content delivery, CDN, recommendations <span class="tag hot">🔥Top</span></li>
+<li><strong>Design Uber/Ola</strong> — Ride matching, real-time location <span class="tag hot">🔥Top</span></li>
+<li><strong>Design Amazon/E-Commerce</strong> — Cart, orders, payments</li>
+<li><strong>Design Google Search</strong> — Web crawling, indexing, ranking</li>
+<li><strong>Design Google Maps</strong> — Navigation, ETA, traffic</li>
+<li><strong>Design Dropbox/Google Drive</strong> — File sync, versioning <span class="tag hot">🔥Top</span></li>
+<li><strong>Design Rate Limiter</strong> — Token bucket, sliding window <span class="tag hot">🔥Top</span></li>
+<li><strong>Design Notification System</strong> — Push, SMS, email</li>
+<li><strong>Design Pastebin</strong> — Text sharing service</li>
+<li><strong>Design Zoom/Video Conferencing</strong> — WebRTC, SFU</li>
+</ol>
+</div>
+
+<h3>Data-Intensive Systems</h3>
+<div class="cols">
+<ol start="16">
+<li><strong>Design a Cache (Redis)</strong> — LRU, TTL, eviction <span class="tag hot">🔥Top</span></li>
+<li><strong>Design a Message Queue</strong> (Kafka) — Pub/sub, ordering <span class="tag hot">🔥Top</span></li>
+<li><strong>Design a Key-Value Store</strong> — Consistent hashing, replication</li>
+<li><strong>Design a Search Engine</strong> — Inverted index, ranking</li>
+<li><strong>Design a Web Crawler</strong> — BFS, politeness, dedup</li>
+<li><strong>Design a Logging System</strong> — ELK stack, aggregation</li>
+<li><strong>Design a Metrics/Monitoring System</strong> — Time-series DB</li>
+<li><strong>Design Typeahead/Autocomplete</strong> — Trie + ranking <span class="tag hot">🔥Top</span></li>
+<li><strong>Design a Recommendation System</strong> — Collaborative filtering</li>
+<li><strong>Design a CDN</strong> — Content Delivery Network</li>
+</ol>
+</div>
+
+<h3>Architecture Concepts (Theory Questions)</h3>
+<div class="cols">
+<ol start="26">
+<li><strong>Monolith vs Microservices</strong> — Tradeoffs <span class="tag hot">🔥Top</span></li>
+<li><strong>SQL vs NoSQL</strong> — When to use which <span class="tag hot">🔥Top</span></li>
+<li><strong>CAP Theorem</strong> — CP vs AP, examples</li>
+<li><strong>Consistent Hashing</strong> — How it works, virtual nodes</li>
+<li><strong>Database Sharding</strong> — Horizontal vs vertical <span class="tag hot">🔥Top</span></li>
+<li><strong>Database Replication</strong> — Master-slave, master-master</li>
+<li><strong>Load Balancing</strong> — Round robin, least connections, L4 vs L7</li>
+<li><strong>API Gateway Pattern</strong> — Routing, auth, rate limiting</li>
+<li><strong>Circuit Breaker Pattern</strong> — Failover, Hystrix</li>
+<li><strong>CQRS</strong> — Command Query Responsibility Segregation</li>
+<li><strong>Event Sourcing</strong> — Store events, rebuild state</li>
+<li><strong>Saga Pattern</strong> — Distributed transactions <span class="tag hot">🔥Top</span></li>
+<li><strong>Idempotency</strong> — Safe retries in APIs</li>
+<li><strong>Long Polling vs WebSocket vs SSE</strong></li>
+<li><strong>OAuth 2.0 / JWT</strong> — Authentication flow <span class="tag hot">🔥Top</span></li>
+</ol>
+</div>
+
+<h3>AI/ML System Design (2026 Trending)</h3>
+<div class="cols">
+<ol start="41">
+<li><strong>Design an LLM-Powered Chatbot</strong> <span class="tag hot">🔥Top</span></li>
+<li><strong>Design a RAG Pipeline</strong> — Retrieval + Generation <span class="tag hot">🔥Top</span></li>
+<li><strong>Design a Model Training Pipeline</strong> — MLOps</li>
+<li><strong>Design a Fraud Detection System</strong> — Real-time ML</li>
+<li><strong>Design a Recommendation Engine at Scale</strong></li>
+<li><strong>Design a Real-Time Analytics Dashboard</strong></li>
+<li><strong>Design an A/B Testing Platform</strong></li>
+<li><strong>Design a Feature Store</strong> — Online + offline features</li>
+<li><strong>Design a Content Moderation System</strong> — AI + humans</li>
+<li><strong>Design an AI Code Generation Platform</strong> (your FBPM!) <span class="tag hot">🔥Top</span></li>
+</ol>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<h2>☕ 3. Java — Top 50 Questions</h2>
+<!-- ══════════════════════════════════════════════════════ -->
+
+<h3>Core Java & OOP</h3>
+<div class="cols">
+<ol>
+<li>What are the 4 OOP pillars? Give real examples <span class="tag hot">🔥Top</span></li>
+<li>Abstract class vs Interface — when to use which? <span class="tag hot">🔥Top</span></li>
+<li>What is method overloading vs overriding?</li>
+<li>What is polymorphism? Compile-time vs runtime?</li>
+<li>Explain SOLID principles with examples <span class="tag hot">🔥Top</span></li>
+<li>What is the diamond problem? How does Java solve it?</li>
+<li>What are access modifiers? Default vs protected?</li>
+<li>Explain static keyword — variable, method, block, class</li>
+<li>What is the difference between == and .equals()?</li>
+<li>What is immutability? Why is String immutable? <span class="tag hot">🔥Top</span></li>
+</ol>
+</div>
+
+<h3>Collections Framework</h3>
+<div class="cols">
+<ol start="11">
+<li>ArrayList vs LinkedList — when to use? <span class="tag hot">🔥Top</span></li>
+<li>HashMap internal working — hashing, buckets, collisions <span class="tag hot">🔥Top</span></li>
+<li>HashMap vs ConcurrentHashMap <span class="tag hot">🔥Top</span></li>
+<li>HashSet vs TreeSet vs LinkedHashSet</li>
+<li>How does HashMap handle collisions? (Java 8 treeification)</li>
+<li>What is the contract between hashCode() and equals()?</li>
+<li>Comparable vs Comparator</li>
+<li>Fail-fast vs fail-safe iterators</li>
+</ol>
+</div>
+
+<h3>Multithreading & Concurrency</h3>
+<div class="cols">
+<ol start="19">
+<li>Thread vs Runnable vs Callable <span class="tag hot">🔥Top</span></li>
+<li>synchronized keyword — method vs block level</li>
+<li>What is a deadlock? How to prevent it? <span class="tag hot">🔥Top</span></li>
+<li>volatile keyword — what does it guarantee?</li>
+<li>Executor framework — ThreadPool, FixedThreadPool</li>
+<li>CompletableFuture — async programming in Java</li>
+<li>What is the happens-before relationship?</li>
+<li>ReentrantLock vs synchronized</li>
+<li>Producer-Consumer problem — BlockingQueue solution</li>
+</ol>
+</div>
+
+<h3>Java 8+ Features</h3>
+<div class="cols">
+<ol start="28">
+<li>Lambda expressions — syntax and use cases <span class="tag hot">🔥Top</span></li>
+<li>Stream API — filter, map, reduce, collect <span class="tag hot">🔥Top</span></li>
+<li>Optional — how to avoid NullPointerException <span class="tag hot">🔥Top</span></li>
+<li>Functional interfaces — Predicate, Function, Consumer, Supplier</li>
+<li>Method references — ::operator</li>
+<li>Default methods in interfaces</li>
+<li>Stream parallel() — when to use, pitfalls</li>
+</ol>
+</div>
+
+<h3>JVM & Memory</h3>
+<div class="cols">
+<ol start="35">
+<li>JVM architecture — ClassLoader, JIT, GC <span class="tag hot">🔥Top</span></li>
+<li>Heap vs Stack memory</li>
+<li>Garbage Collection — types (G1, ZGC, Serial)</li>
+<li>What is memory leak in Java? How to detect?</li>
+<li>String pool — how does it work?</li>
+<li>ClassNotFoundException vs NoClassDefFoundError</li>
+</ol>
+</div>
+
+<h3>Design Patterns & Best Practices</h3>
+<div class="cols">
+<ol start="41">
+<li>Singleton pattern — thread-safe implementations <span class="tag hot">🔥Top</span></li>
+<li>Factory vs Abstract Factory pattern</li>
+<li>Builder pattern — when and why?</li>
+<li>Observer pattern — real-world example</li>
+<li>Strategy pattern — payment processing example</li>
+<li>Decorator pattern — Java I/O streams example</li>
+<li>Exception handling best practices — checked vs unchecked <span class="tag hot">🔥Top</span></li>
+<li>What is try-with-resources?</li>
+<li>Serialization — Serializable, transient, serialVersionUID</li>
+<li>What's new in Java 17? Records, sealed classes, pattern matching <span class="tag hot">🔥Top</span></li>
+</ol>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<h2>🐍 4. Python — Top 50 Questions</h2>
+<!-- ══════════════════════════════════════════════════════ -->
+
+<h3>Core Python</h3>
+<div class="cols">
+<ol>
+<li>List vs Tuple vs Set vs Dictionary — when to use? <span class="tag hot">🔥Top</span></li>
+<li>What are *args and **kwargs? <span class="tag hot">🔥Top</span></li>
+<li>What is GIL (Global Interpreter Lock)? <span class="tag hot">🔥Top</span></li>
+<li>Mutable vs Immutable objects in Python</li>
+<li>List comprehension vs generator expression</li>
+<li>Deep copy vs shallow copy <span class="tag hot">🔥Top</span></li>
+<li>What are decorators? Write a custom decorator <span class="tag hot">🔥Top</span></li>
+<li>What is a closure in Python?</li>
+<li>Lambda functions — when to use?</li>
+<li>What does "if __name__ == '__main__'" do?</li>
+</ol>
+</div>
+
+<h3>OOP in Python</h3>
+<div class="cols">
+<ol start="11">
+<li>@staticmethod vs @classmethod vs instance method <span class="tag hot">🔥Top</span></li>
+<li>What is __init__ vs __new__?</li>
+<li>What is MRO (Method Resolution Order)?</li>
+<li>Multiple inheritance in Python — diamond problem?</li>
+<li>What are dunder/magic methods? (__str__, __repr__, __eq__)</li>
+<li>Abstract base classes (ABC) in Python</li>
+<li>Property decorator — getter/setter in Python</li>
+<li>What is monkey patching?</li>
+</ol>
+</div>
+
+<h3>Advanced Python</h3>
+<div class="cols">
+<ol start="19">
+<li>What are generators? yield vs return <span class="tag hot">🔥Top</span></li>
+<li>What are context managers? (with statement) <span class="tag hot">🔥Top</span></li>
+<li>asyncio — async/await for concurrent programming <span class="tag hot">🔥Top</span></li>
+<li>Multithreading vs Multiprocessing in Python</li>
+<li>What is a metaclass?</li>
+<li>Explain Python memory management — reference counting</li>
+<li>What are slots in Python?</li>
+<li>Type hints — why and how to use them</li>
+<li>Dataclasses — @dataclass decorator</li>
+<li>What is pip vs conda vs poetry?</li>
+</ol>
+</div>
+
+<h3>Python for Data/AI</h3>
+<div class="cols">
+<ol start="29">
+<li>NumPy — arrays, broadcasting, vectorization <span class="tag hot">🔥Top</span></li>
+<li>Pandas — DataFrame operations, groupby, merge</li>
+<li>How to read a 10GB CSV file in Python?</li>
+<li>What is pickle? Security concerns?</li>
+<li>Virtual environments — venv, conda, pipenv</li>
+<li>Explain Python's import system — __init__.py</li>
+</ol>
+</div>
+
+<h3>Flask/FastAPI Questions</h3>
+<div class="cols">
+<ol start="35">
+<li>Flask vs FastAPI — when to use which? <span class="tag hot">🔥Top</span></li>
+<li>How does Flask routing work? @app.route()</li>
+<li>What is WSGI vs ASGI? <span class="tag hot">🔥Top</span></li>
+<li>How to handle authentication in Flask?</li>
+<li>Blueprint in Flask — modular applications</li>
+<li>FastAPI — Pydantic models, dependency injection</li>
+</ol>
+</div>
+
+<h3>Python Coding Problems</h3>
+<div class="cols">
+<ol start="41">
+<li>Reverse a string without slicing</li>
+<li>Find duplicates in a list — O(n) solution</li>
+<li>Flatten a nested list</li>
+<li>Implement a LRU cache using OrderedDict</li>
+<li>Merge two sorted lists</li>
+<li>Check if string is palindrome</li>
+<li>Find the most frequent element</li>
+<li>Implement binary search</li>
+<li>Write a thread-safe singleton in Python</li>
+<li>Implement rate limiter using decorator <span class="tag hot">🔥Top</span></li>
+</ol>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<h2>🗄️ 5. SQL & Database — Top 50 Questions</h2>
+<!-- ══════════════════════════════════════════════════════ -->
+
+<h3>SQL Queries</h3>
+<div class="cols">
+<ol>
+<li>Difference between WHERE and HAVING <span class="tag hot">🔥Top</span></li>
+<li>INNER JOIN vs LEFT JOIN vs FULL OUTER JOIN <span class="tag hot">🔥Top</span></li>
+<li>What is a subquery vs CTE (WITH clause)? <span class="tag hot">🔥Top</span></li>
+<li>Window functions — ROW_NUMBER, RANK, DENSE_RANK <span class="tag hot">🔥Top</span></li>
+<li>Find the 2nd highest salary — multiple approaches</li>
+<li>Find duplicate rows in a table</li>
+<li>UNION vs UNION ALL</li>
+<li>GROUP BY — find department-wise count, avg, max</li>
+<li>Self-join — find employees and their managers</li>
+<li>COALESCE vs NULLIF vs IFNULL</li>
+</ol>
+</div>
+
+<h3>Indexing & Performance</h3>
+<div class="cols">
+<ol start="11">
+<li>What is an index? B-Tree vs Hash index <span class="tag hot">🔥Top</span></li>
+<li>Clustered vs Non-Clustered index <span class="tag hot">🔥Top</span></li>
+<li>When does index hurt performance?</li>
+<li>What is a covering index?</li>
+<li>EXPLAIN/ANALYZE — how to read query plans <span class="tag hot">🔥Top</span></li>
+<li>What causes a full table scan?</li>
+<li>How to optimize a slow query? <span class="tag hot">🔥Top</span></li>
+<li>What is query caching?</li>
+</ol>
+</div>
+
+<h3>Database Design & Normalization</h3>
+<div class="cols">
+<ol start="19">
+<li>1NF, 2NF, 3NF, BCNF — explain with examples <span class="tag hot">🔥Top</span></li>
+<li>When to denormalize? Tradeoffs <span class="tag hot">🔥Top</span></li>
+<li>Primary key vs Unique key vs Foreign key</li>
+<li>What are constraints? CHECK, NOT NULL, DEFAULT</li>
+<li>One-to-One, One-to-Many, Many-to-Many relationships</li>
+<li>How to design a schema for e-commerce? (Orders, Products, Users)</li>
+<li>What is an ER diagram?</li>
+</ol>
+</div>
+
+<h3>Transactions & ACID</h3>
+<div class="cols">
+<ol start="26">
+<li>What is ACID? Explain each property <span class="tag hot">🔥Top</span></li>
+<li>Transaction isolation levels — Read Uncommitted to Serializable <span class="tag hot">🔥Top</span></li>
+<li>What is a dirty read, phantom read, non-repeatable read?</li>
+<li>Optimistic vs Pessimistic locking</li>
+<li>What is a deadlock in DB? How to resolve?</li>
+<li>What are savepoints?</li>
+</ol>
+</div>
+
+<h3>NoSQL & Advanced</h3>
+<div class="cols">
+<ol start="32">
+<li>SQL vs NoSQL — when to use which? <span class="tag hot">🔥Top</span></li>
+<li>MongoDB — document model, collections, aggregation</li>
+<li>Redis — data types, TTL, pub/sub, use cases <span class="tag hot">🔥Top</span></li>
+<li>What is eventual consistency?</li>
+<li>PostgreSQL vs MySQL — key differences</li>
+<li>What is a materialized view?</li>
+<li>Stored procedures vs functions</li>
+<li>Triggers — when and why to use?</li>
+<li>Database migration strategies — zero downtime</li>
+</ol>
+</div>
+
+<h3>Practical SQL Problems</h3>
+<div class="cols">
+<ol start="41">
+<li>Find employees earning more than their manager</li>
+<li>Running total / cumulative sum using window functions</li>
+<li>Find consecutive login days for each user</li>
+<li>Pivot table — rows to columns</li>
+<li>Delete duplicate rows keeping one</li>
+<li>Find the Nth highest salary (generic solution)</li>
+<li>Find customers who bought all products</li>
+<li>Moving average over last 7 days</li>
+<li>Recursive CTE — organizational hierarchy</li>
+<li>Design a schema for a social media platform <span class="tag hot">🔥Top</span></li>
+</ol>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<h2>🍃 6. Spring Boot — Top 30 Questions</h2>
+<!-- ══════════════════════════════════════════════════════ -->
+<div class="cols">
+<ol>
+<li>What is Spring IoC container? Bean lifecycle? <span class="tag hot">🔥Top</span></li>
+<li>@Autowired — types of DI (constructor, setter, field) <span class="tag hot">🔥Top</span></li>
+<li>@Component vs @Service vs @Repository vs @Controller <span class="tag hot">🔥Top</span></li>
+<li>Bean scopes — singleton, prototype, request, session</li>
+<li>What is @Transactional? Propagation levels? <span class="tag hot">🔥Top</span></li>
+<li>Spring Boot auto-configuration — how does it work?</li>
+<li>@RestController vs @Controller</li>
+<li>Exception handling — @ControllerAdvice, @ExceptionHandler <span class="tag hot">🔥Top</span></li>
+<li>Spring Security — JWT authentication flow <span class="tag hot">🔥Top</span></li>
+<li>Spring Data JPA — @Query, Specifications, Pagination</li>
+<li>What is Spring AOP? Use cases (logging, transactions)</li>
+<li>Profiles — @Profile, application-dev.yml vs application-prod.yml</li>
+<li>Spring Boot Actuator — health checks, metrics</li>
+<li>@Async — asynchronous method execution</li>
+<li>Spring WebFlux — reactive programming vs MVC</li>
+<li>How to handle N+1 query problem in JPA? <span class="tag hot">🔥Top</span></li>
+<li>@Cacheable — Spring caching with Redis</li>
+<li>Circuit breaker — Resilience4j integration</li>
+<li>Spring Cloud — service discovery (Eureka), config server</li>
+<li>How do you deploy Spring Boot in Docker + K8s?</li>
+<li>@Scheduled — cron jobs in Spring Boot</li>
+<li>Filter vs Interceptor vs AOP</li>
+<li>Spring Batch — large data processing</li>
+<li>Testing — @SpringBootTest, @MockBean, @WebMvcTest <span class="tag hot">🔥Top</span></li>
+<li>OpenAPI/Swagger documentation</li>
+<li>How to connect to Kafka from Spring Boot?</li>
+<li>Connection pooling — HikariCP configuration</li>
+<li>Microservice communication — REST vs gRPC vs messaging</li>
+<li>Spring Boot 3 — what's new? Jakarta EE migration <span class="tag hot">🔥Top</span></li>
+<li>How to handle distributed transactions across microservices?</li>
+</ol>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<h2>🤖 7. AI/ML & LLM — Top 30 Questions (2026 Trending)</h2>
+<!-- ══════════════════════════════════════════════════════ -->
+<div class="cols">
+<ol>
+<li>What is a Transformer? Explain attention mechanism <span class="tag hot">🔥Top</span></li>
+<li>How does GPT work? Decoder-only architecture <span class="tag hot">🔥Top</span></li>
+<li>What is tokenization? BPE vs WordPiece</li>
+<li>Explain RAG — why is it better than fine-tuning for some use cases? <span class="tag hot">🔥Top</span></li>
+<li>What is LoRA? How does it reduce training cost? <span class="tag hot">🔥Top</span></li>
+<li>Knowledge Distillation — teacher-student paradigm <span class="tag hot">🔥Top</span></li>
+<li>What are embeddings? How do vector DBs use them? <span class="tag hot">🔥Top</span></li>
+<li>Prompt Engineering — zero-shot, few-shot, chain-of-thought</li>
+<li>What is hallucination in LLMs? How to reduce it? <span class="tag hot">🔥Top</span></li>
+<li>LangChain — chains, agents, memory, tools</li>
+<li>Temperature and top_p — what do they control?</li>
+<li>What is context window? How to handle long documents?</li>
+<li>Fine-tuning vs RAG — when to use which? <span class="tag hot">🔥Top</span></li>
+<li>What is RLHF (Reinforcement Learning from Human Feedback)?</li>
+<li>Explain the bias-variance tradeoff</li>
+<li>Precision vs Recall vs F1 Score <span class="tag hot">🔥Top</span></li>
+<li>Overfitting — how to prevent? (Dropout, regularization)</li>
+<li>What is transfer learning?</li>
+<li>Supervised vs Unsupervised vs Reinforcement Learning</li>
+<li>What is gradient descent? SGD vs Adam optimizer</li>
+<li>CNN vs RNN vs Transformer — when to use?</li>
+<li>What is a confusion matrix?</li>
+<li>Feature engineering — why is it important?</li>
+<li>What is model drift? How to monitor in production?</li>
+<li>Explain cross-validation (k-fold)</li>
+<li>What is batch normalization?</li>
+<li>How to deploy an ML model in production? <span class="tag hot">🔥Top</span></li>
+<li>What is A/B testing for ML models?</li>
+<li>Explain FOLD-RM — explainable AI with rules (your SmartCPR) <span class="tag hot">🔥Top</span></li>
+<li>How would you build an AI code generation pipeline? (your FBPM) <span class="tag hot">🔥Top</span></li>
+</ol>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<h2>☁️ 8. Cloud, DevOps & Kafka — Top 30 Questions</h2>
+<!-- ══════════════════════════════════════════════════════ -->
+<div class="cols">
+<ol>
+<li>Docker — images vs containers, Dockerfile basics <span class="tag hot">🔥Top</span></li>
+<li>Docker Compose — multi-container orchestration</li>
+<li>Kubernetes — pods, services, deployments, namespaces <span class="tag hot">🔥Top</span></li>
+<li>K8s — how does auto-scaling work? HPA</li>
+<li>K8s — rolling update vs blue-green vs canary deployment</li>
+<li>CI/CD pipeline — design a pipeline for microservices <span class="tag hot">🔥Top</span></li>
+<li>Jenkins — pipeline-as-code, Jenkinsfile</li>
+<li>Terraform — state management, modules, plan vs apply</li>
+<li>AWS EC2 — instance types, auto-scaling groups</li>
+<li>AWS S3 — storage classes, lifecycle policies</li>
+<li>AWS Lambda — cold start, triggers, limits <span class="tag hot">🔥Top</span></li>
+<li>AWS RDS — Multi-AZ, read replicas</li>
+<li>AWS SageMaker — training jobs, endpoints</li>
+<li>VPC, Subnets, Security Groups — networking basics</li>
+<li>IAM — roles, policies, least privilege principle</li>
+<li>Kafka — topics, partitions, consumer groups <span class="tag hot">🔥Top</span></li>
+<li>Kafka — how to ensure message ordering?</li>
+<li>Kafka vs RabbitMQ — when to use which? <span class="tag hot">🔥Top</span></li>
+<li>Kafka — exactly-once semantics, idempotent producer</li>
+<li>What is service mesh? Istio basics</li>
+<li>12-Factor App — principles for cloud-native apps <span class="tag hot">🔥Top</span></li>
+<li>Observability — logs, metrics, traces (OpenTelemetry)</li>
+<li>What is Infrastructure as Code (IaC)? Benefits?</li>
+<li>How to handle secrets? (Vault, AWS Secrets Manager)</li>
+<li>GitOps — ArgoCD, FluxCD</li>
+<li>Microservice communication — sync vs async</li>
+<li>API versioning strategies</li>
+<li>Health checks — liveness vs readiness probes (K8s)</li>
+<li>How to debug a production issue? Your approach? <span class="tag hot">🔥Top</span></li>
+<li>Design a CI/CD pipeline for your FBPM project <span class="tag hot">🔥Top</span></li>
+</ol>
+</div>
+
+<div style="text-align:center; margin-top:12px; font-size:8pt; color:#6b7280; border-top:1px solid #e5e7eb; padding-top:6px;">
+  <strong>350+ Questions</strong> | DSA (50) + System Design (50) + Java (50) + Python (50) + SQL (50) + Spring Boot (30) + AI/ML (30) + Cloud/DevOps (30)<br>
+  🔥 = Most frequently asked in 2026 interviews | Solve these and you're job-ready!
+</div>
+
+</body>
+</html>

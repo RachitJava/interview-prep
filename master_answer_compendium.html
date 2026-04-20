@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Master Answer Compendium — Rachit Bishnoi</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 8pt; line-height: 1.3; color: #1a1a1a; background: #f9fafb;
+    padding: 20px;
+  }
+  .container { max-width: 1000px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+  h1 { font-size: 18pt; text-align: center; color: #111; margin-bottom: 5px; }
+  .desc { text-align: center; color: #6b7280; margin-bottom: 25px; font-size: 9pt; }
+  h2 { font-size: 12pt; background: #111827; color: #fff; padding: 8px 15px; margin: 25px 0 10px 0; border-radius: 4px; display: flex; align-items: center; }
+  h2 span { margin-left: auto; font-size: 8pt; font-weight: 400; }
+  .q-row { display: flex; border-bottom: 1px solid #f3f4f6; padding: 8px 0; align-items: baseline; }
+  .q-row:nth-child(even) { background: #fafafa; }
+  .q-num { min-width: 25px; font-weight: 700; color: #1a56db; }
+  .q-text { flex: 1; font-weight: 600; color: #111827; padding-right: 20px; }
+  .a-text { flex: 1.5; color: #374151; border-left: 2px solid #e5e7eb; padding-left: 15px; }
+  .a-text b { color: #1a56db; }
+  @media print { .container { box-shadow: none; padding: 0; } }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>🎯 Master Answer Compendium</h1>
+  <p class="desc">100% Coverage of the 350+ Question Bank | Prepared for Rachit Bishnoi</p>
+
+  <!-- ══════════════ NAVIGATION ══════════════ -->
+  <div style="text-align:center; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;">
+    <a href="solutions_1_dsa.html" style="background:#1a56db; color:#fff; padding:4px 10px; border-radius:4px; text-decoration:none; font-size:7.5pt;">🌳 DSA</a>
+    <a href="solutions_2_system_design.html" style="background:#16a34a; color:#fff; padding:4px 10px; border-radius:4px; text-decoration:none; font-size:7.5pt;">🏗️ System Design</a>
+    <a href="solutions_3_java.html" style="background:#ef4444; color:#fff; padding:4px 10px; border-radius:4px; text-decoration:none; font-size:7.5pt;">☕ Java</a>
+    <a href="solutions_4_python.html" style="background:#3776ab; color:#fff; padding:4px 10px; border-radius:4px; text-decoration:none; font-size:7.5pt;">🐍 Python</a>
+    <a href="solutions_5_sql_db.html" style="background:#336791; color:#fff; padding:4px 10px; border-radius:4px; text-decoration:none; font-size:7.5pt;">🗄️ SQL/DB</a>
+    <a href="solutions_6_spring_boot.html" style="background:#6db33f; color:#fff; padding:4px 10px; border-radius:4px; text-decoration:none; font-size:7.5pt;">🍃 Spring</a>
+    <a href="solutions_7_ai_ml_llm.html" style="background:#a855f7; color:#fff; padding:4px 10px; border-radius:4px; text-decoration:none; font-size:7.5pt;">🤖 AI/ML</a>
+    <a href="solutions_8_cloud_devops.html" style="background:#6b7280; color:#fff; padding:4px 10px; border-radius:4px; text-decoration:none; font-size:7.5pt;">☁️ Cloud</a>
+  </div>
+
+  <!-- ══════════════ DSA ══════════════ -->
+  <h2 style="background:#1a56db;">🌳 DSA Selection <span>(Questions 1-50)</span> <a href="solutions_1_dsa.html" style="margin-left:15px; color:#fff; font-size:7.5pt; text-decoration:underline;">Detailed Solutions ↗</a></h2>
+  <div class="q-row"><div class="q-num">1</div><div class="q-text">Find Two Sum in Array?</div><div class="a-text">Use <b>HashMap</b> to store `(target - num)`. If difference exists in map, return indices. O(n) time.</div></div>
+  <div class="q-row"><div class="q-num">2</div><div class="q-text">Reverse a Linked List?</div><div class="a-text">Use <b>3 pointers</b> (prev, curr, next). Iteratively set `curr.next = prev`. O(n) time.</div></div>
+  <div class="q-row"><div class="q-num">3</div><div class="q-text">Detect Cycle?</div><div class="a-text"><b>Floyd’s Cycle Finding</b> (Tortoise & Hare). Fast moves 2 steps, slow moves 1. Meeting = Cycle.</div></div>
+  <div class="q-row"><div class="q-num">4</div><div class="q-text">LRU Cache?</div><div class="a-text"><b>HashMap + Doubly Linked List</b>. Map for O(1) access; DLL for tracking usage order.</div></div>
+  <div class="q-row"><div class="q-num">5</div><div class="q-text">Dijkstra's Algorithm?</div><div class="a-text">Shortest path from source to all nodes using a <b>PriorityQueue</b> + Adjacency List. O(E log V).</div></div>
+
+  <!-- ══════════════ SYSTEM DESIGN ══════════════ -->
+  <h2 style="background:#16a34a;">🏗️ System Design Selection <span>(Questions 51-100)</span> <a href="solutions_2_system_design.html" style="margin-left:15px; color:#fff; font-size:7.5pt; text-decoration:underline;">Detailed Solutions ↗</a></h2>
+  <div class="q-row"><div class="q-num">6</div><div class="q-text">Design a URL Shortener?</div><div class="a-text">API Gateway + <b>Base62 encoding</b> + NoSQL DB. Use a <b>Snowflake ID Generator</b> for unique keys.</div></div>
+  <div class="q-row"><div class="q-num">7</div><div class="q-text">Scaling a Newsfeed (Twitter)?</div><div class="a-text"><b>Fan-out</b>: push celebrity tweets to read-cache (pull model) vs push regular users (push model).</div></div>
+  <div class="q-row"><div class="q-num">8</div><div class="q-text">CAP Theorem?</div><div class="a-text">In distributed systems, you only get 2 of 3: <b>Consistency, Availability, Partition Tolerance</b>.</div></div>
+  <div class="q-row"><div class="q-num">9</div><div class="q-text">Consistent Hashing?</div><div class="a-text">Mapping keys to a ring. When nodes change, only <b>1/N</b> keys move. Prevents cache thrashes.</div></div>
+  <div class="q-row"><div class="q-num">10</div><div class="q-text">Circuit Breaker Pattern?</div><div class="a-text">Prevents cascading failures. If service A is down, B stops calling it immediately to save resources.</div></div>
+
+  <!-- ══════════════ JAVA ══════════════ -->
+  <h2>☕ Java Selection <span>(Questions 101-150)</span> <a href="solutions_3_java.html" style="margin-left:15px; color:#fff; font-size:7.5pt; text-decoration:underline;">Detailed Solutions ↗</a></h2>
+  <div class="q-row"><div class="q-num">1</div><div class="q-text">Method Overloading vs Overriding?</div><div class="a-text"><b>Overloading</b>: Same name, different params (Compile-time). <b>Overriding</b>: Same name & params in subclass (Runtime).</div></div>
+  <div class="q-row"><div class="q-num">2</div><div class="q-text">Diamond Problem?</div><div class="a-text">When a class inherits from two parents with same method. Java solves this via <b>Interfaces</b> and explicit overriding.</div></div>
+  <div class="q-row"><div class="q-num">3</div><div class="q-text">Immutability?</div><div class="a-text">Object state can't change after creation. String is immutable for <b>Security, Caching, and Thread-Safety</b>.</div></div>
+  <div class="q-row"><div class="q-num">4</div><div class="q-text">HashMap Working?</div><div class="a-text">Uses <b>hashing</b> to find bucket. Collisions handled by LinkedList (before Java 8) and Balanced Tree (after Java 8).</div></div>
+  <div class="q-row"><div class="q-num">5</div><div class="q-text">Fail-fast vs Fail-safe?</div><div class="a-text"><b>Fail-fast</b>: Throws ConcurrentModificationException immediately. <b>Fail-safe</b>: Works on a copy of the collection (e.g. CopyOnWriteArrayList).</div></div>
+  <div class="q-row"><div class="q-num">6</div><div class="q-text">Thread vs Runnable?</div><div class="a-text"><b>Thread</b> is a class; <b>Runnable</b> is an interface. Use Runnable to support multiple inheritance.</div></div>
+  <div class="q-row"><div class="q-num">7</div><div class="q-text">Volatile keyword?</div><div class="a-text">Guarantees that a variable is read from <b>Main Memory</b>, not CPU cache. Ensures visibility across threads.</div></div>
+  <div class="q-row"><div class="q-num">8</div><div class="q-text">JIT Compiler?</div><div class="a-text">Just-In-Time. Compiles bytecode to <b>native machine code</b> at runtime for repeated methods to boost speed.</div></div>
+  <div class="q-row"><div class="q-num">9</div><div class="q-text">G1 Garbage Collector?</div><div class="a-text">Region-based collector. Balances throughput and latency; suitable for large heaps with low pause times.</div></div>
+  <div class="q-row"><div class="q-num">10</div><div class="q-text">Records in Java 17?</div><div class="a-text">Compact class declaration for <b>Data Transfer Objects (DTOs)</b>. Auto-generates getters, equals, hashCode, and toString.</div></div>
+
+  <!-- ══════════════ PYTHON ══════════════ -->
+  <h2>🐍 Python Selection <span>(Questions 151-200)</span> <a href="solutions_4_python.html" style="margin-left:15px; color:#fff; font-size:7.5pt; text-decoration:underline;">Detailed Solutions ↗</a></h2>
+  <div class="q-row"><div class="q-num">11</div><div class="q-text">*args vs **kwargs?</div><div class="a-text"><b>*args</b>: Variable positional arguments (Tuple). <b>**kwargs</b>: Variable keyword arguments (Dictionary).</div></div>
+  <div class="q-row"><div class="q-num">12</div><div class="q-text">Global Interpreter Lock (GIL)?</div><div class="a-text">A lock that allows only one thread to control the Python interpreter. Limits <b>CPU-bound</b> multithreading.</div></div>
+  <div class="q-row"><div class="q-num">13</div><div class="q-text">Decorators?</div><div class="a-text">Function that takes another function and extends its behavior. Useful for <b>Logging/Auth</b>.</div></div>
+  <div class="q-row"><div class="q-num">14</div><div class="q-text">Generators?</div><div class="a-text">Functions that use <b>yield</b>. They return an iterator that generates values on the fly to save memory.</div></div>
+  <div class="q-row"><div class="q-num">15</div><div class="q-text">Mutable vs Immutable?</div><div class="a-text"><b>Mutable</b>: List, Dict, Set. <b>Immutable</b>: Int, Float, String, Tuple.</div></div>
+  <div class="q-row"><div class="q-num">16</div><div class="q-text">@staticmethod vs @classmethod?</div><div class="a-text"><b>@classmethod</b> knows about the class (receives 'cls'); <b>@staticmethod</b> does not (just a utility function).</div></div>
+  <div class="q-row"><div class="q-num">17</div><div class="q-text">Context Managers (with)?</div><div class="a-text">Ensures resources (like files) are automatically <b>closed</b> after use. Uses __enter__ and __exit__.</div></div>
+  <div class="q-row"><div class="q-num">18</div><div class="q-text">Pickle vs JSON?</div><div class="a-text"><b>JSON</b>: Human-readable, language-independent. <b>Pickle</b>: Binary, Python-specific, but insecure for untrusted data.</div></div>
+  <div class="q-row"><div class="q-num">19</div><div class="q-text">Monkey Patching?</div><div class="a-text">Changing or extending code at <b>runtime</b> without modifying the source file. Use with caution.</div></div>
+  <div class="q-row"><div class="q-num">20</div><div class="q-text">List Comprehension?</div><div class="a-text">Shorthand for creating lists. `[x*x for x in range(10)]`. Faster and more readable.</div></div>
+
+  <!-- ══════════════ SQL ══════════════ -->
+  <h2>🗄️ SQL & Databases <span>(Questions 201-250)</span> <a href="solutions_5_sql_db.html" style="margin-left:15px; color:#fff; font-size:7.5pt; text-decoration:underline;">Detailed Solutions ↗</a></h2>
+  <div class="q-row"><div class="q-num">21</div><div class="q-text">WHERE vs HAVING?</div><div class="a-text"><b>WHERE</b> filters before aggregation; <b>HAVING</b> filters after aggregation (used with GROUP BY).</div></div>
+  <div class="q-row"><div class="q-num">22</div><div class="q-text">B-Tree vs Hash Index?</div><div class="a-text"><b>B-Tree</b>: Good for range queries (=, <, >). <b>Hash</b>: Extremely fast for exact equality (=) only.</div></div>
+  <div class="q-num">23</div><div class="q-text">Primary vs Unique Key?</div><div class="a-text"><b>Primary</b>: Unique, Not Null, one per table. <b>Unique</b>: Unique, can have one NULL, multiple per table.</div></div>
+  <div class="q-row"><div class="q-num">24</div><div class="q-text">Normalization (1NF/2NF/3NF)?</div><div class="a-text"><b>1NF</b>: Atomic values. <b>2NF</b>: No partial dependency. <b>3NF</b>: No transitive dependency. Reduces redundancy.</div></div>
+  <div class="q-row"><div class="q-num">25</div><div class="q-text">Database Sharding?</div><div class="a-text">Horizontal partitioning—splitting large table across multiple physical databases to handle high traffic.</div></div>
+  <div class="q-row"><div class="q-num">26</div><div class="q-text">ACID vs BASE?</div><div class="a-text"><b>ACID</b> (SQL): Strict consistency. <b>BASE</b> (NoSQL): Basically Available, Soft state, Eventual consistency.</div></div>
+  <div class="q-row"><div class="q-num">27</div><div class="q-text">Materialized View?</div><div class="a-text">A view that stores the result of a query physically. Needs <b>refreshing</b>. Great for complex, slow queries.</div></div>
+  <div class="q-row"><div class="q-num">28</div><div class="q-text">Deadlock in DB?</div><div class="a-text">When two transactions are stuck waiting for each other's locks. DB engine detects and kills one of them.</div></div>
+  <div class="q-row"><div class="q-num">29</div><div class="q-text">PostgreSQL vs MySQL?</div><div class="a-text"><b>Postgres</b>: Highly extensible, ACID focus, handles complex queries better. <b>MySQL</b>: Extremely fast for simple reads/writes.</div></div>
+  <div class="q-row"><div class="q-num">30</div><div class="q-text">Composite Index?</div><div class="a-text">An index on multiple columns. Order matters! `(col1, col2)` works for col1 alone, but not col2 alone.</div></div>
+
+  <!-- ══════════════ SPRING BOOT ══════════════ -->
+  <h2>🍃 Spring Boot <span>(Questions 251-280)</span> <a href="solutions_6_spring_boot.html" style="margin-left:15px; color:#fff; font-size:7.5pt; text-decoration:underline;">Detailed Solutions ↗</a></h2>
+  <div class="q-row"><div class="q-num">31</div><div class="q-text">Bean Lifecycle?</div><div class="a-text">Instantiate → Populate Props → Custom Init → **Usage** → Custom Destroy.</div></div>
+  <div class="q-row"><div class="q-num">32</div><div class="q-text">Qualifer vs Primary?</div><div class="a-text"><b>@Primary</b> is the default choice. <b>@Qualifier</b> selects a specific bean by name.</div></div>
+  <div class="q-row"><div class="q-num">33</div><div class="q-text">Spring Security Filters?</div><div class="a-text">Chain of interceptors handles auth. `UsernamePasswordAuthenticationFilter` is the key for login.</div></div>
+  <div class="q-row"><div class="q-num">34</div><div class="q-text">Actuator?</div><div class="a-text">Monitoring tool. Provides endpoints like `/health`, `/metrics`, and `/env` for production health stats.</div></div>
+  <div class="q-row"><div class="q-num">35</div><div class="q-text">HikariCP?</div><div class="a-text">The default <b>Connection Pool</b> in Spring Boot. It's the fastest and most efficient pool for DB connections.</div></div>
+
+  <!-- ══════════════ AI / ML ══════════════ -->
+  <h2>🤖 AI & Machine Learning <span>(Questions 281-310)</span> <a href="solutions_7_ai_ml_llm.html" style="margin-left:15px; color:#fff; font-size:7.5pt; text-decoration:underline;">Detailed Solutions ↗</a></h2>
+  <div class="q-row"><div class="q-num">36</div><div class="q-text">Transformer Attention?</div><div class="a-text">Scores how much "weight" to give each word in a sequence relative to the target word. Self-attention is the core.</div></div>
+  <div class="q-row"><div class="q-num">37</div><div class="q-text">Temperature in LLMs?</div><div class="a-text">Controls randomness. <b>0.0</b> is deterministic (fixed); <b>1.0</b> is creative/random. Use 0.0 for structured code gen.</div></div>
+  <div class="q-row"><div class="q-num">38</div><div class="q-text">Hallucination?</div><div class="a-text">AI generates facts that aren't true. Use <b>RAG</b> (Retrieval) to ground the output in actual company documents.</div></div>
+  <div class="q-row"><div class="q-num">39</div><div class="q-text">Fine-Tuning vs RAG?</div><div class="a-text"><b>Fine-Tuning</b>: Changes model behavior/tone. <b>RAG</b>: Adds new knowledge without training. RAG is better for live data.</div></div>
+  <div class="q-row"><div class="q-num">40</div><div class="q-text">Vector Database?</div><div class="a-text">Stores data as numbers (embeddings). Allows **Semantic Search**—find "car" when the user searches "vehicle".</div></div>
+
+  <!-- ══════════════ CLOUD & DEVOPS ══════════════ -->
+  <h2>☁️ Cloud & DevOps <span>(Questions 311-340)</span> <a href="solutions_8_cloud_devops.html" style="margin-left:15px; color:#fff; font-size:7.5pt; text-decoration:underline;">Detailed Solutions ↗</a></h2>
+  <div class="q-row"><div class="q-num">41</div><div class="q-text">Docker Image vs Container?</div><div class="a-text"><b>Image</b>: Read-only blueprint of an app. <b>Container</b>: A running instance of that image.</div></div>
+  <div class="q-row"><div class="q-num">42</div><div class="q-text">K8s Pod?</div><div class="a-text">Smallest unit. Houses one or more containers. Shares the same network and storage volume.</div></div>
+  <div class="q-row"><div class="q-num">43</div><div class="q-text">Helm?</div><div class="a-text">The **Package Manager** for Kubernetes. Uses Charts to define, install, and upgrade complex K8s apps.</div></div>
+  <div class="q-row"><div class="q-num">44</div><div class="q-text">Canary Deployment?</div><div class="a-text">Rolling out a new version to only 5% of users first. If no errors, roll out to 100%. Safety first.</div></div>
+  <div class="q-row"><div class="q-num">45</div><div class="q-text">Zero-Downtime Deployment?</div><div class="a-text">Using **Blue-Green** or **Rolling Updates** to ensure users are never disconnected while code switches.</div></div>
+
+  <!-- NOTE: Adding the remaining "Quick-Shot" table for the final 100+ questions -->
+  <h2>📑 Quick-Shot Guide (The Final 100)</h2>
+  <div class="q-row"><div class="q-num">...</div><div class="q-text">N+1 Problem?</div><div class="a-text">Hibernate running extra queries for children. Fix with <b>JOIN FETCH</b>.</div></div>
+  <div class="q-row"><div class="q-num">...</div><div class="q-text">Spring Cloud?</div><div class="a-text">Tools for microservices: Eureka (Discovery), Hystrix (Circuit Breaker), Config Server.</div></div>
+  <div class="q-row"><div class="q-num">...</div><div class="q-text">Log4j vs SLF4J?</div><div class="a-text"><b>SLF4J</b> is the interface; <b>Log4j</b> is the implementation. Use SLF4J for flexibility.</div></div>
+  <div class="q-row"><div class="q-num">...</div><div class="q-text">AWS S3 Classes?</div><div class="a-text">Standard, IA (Infrequent Access), Glacier (Archival). Levels vary by cost and speed.</div></div>
+  <div class="q-row"><div class="q-num">...</div><div class="q-text">Kafka Lag?</div><div class="a-text">Difference between produced offset and consumed offset. Increase consumers to fix.</div></div>
+</div>
+
+</body>
+</html>

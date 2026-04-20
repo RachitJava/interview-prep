@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Interview Answer Guide Vol 2 — Rachit Bishnoi</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 10mm; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 8.5pt; line-height: 1.4; color: #1a1a1a; background: #fff;
+    max-width: 210mm; padding: 10mm 15mm;
+  }
+  h1 { font-size: 16pt; color: #111; text-align: center; margin-bottom: 5px; }
+  .subtitle { font-size: 9pt; color: #6b7280; text-align: center; margin-bottom: 15px; border-bottom: 2px solid #10b981; padding-bottom: 10px; }
+  h2 {
+    font-size: 11pt; font-weight: 700; color: #fff; background: #10b981;
+    padding: 6px 12px; margin: 15px 0 10px 0; border-radius: 4px;
+  }
+  .q-block { margin-bottom: 12px; }
+  .question { font-weight: 700; color: #111827; }
+  .ans { color: #374151; margin-top: 2px; }
+  .ans b { color: #047857; }
+</style>
+</head>
+<body>
+
+<h1>🎯 Interview Master Answer Guide — Volume 2</h1>
+<div class="subtitle">Focus: Data Structures, System Design Patterns, and Advanced Java</div>
+
+<!-- ══════════════ DSA ══════════════ -->
+<h2>🌳 Data Structures & Algorithms (Core Logic)</h2>
+
+<div class="q-block">
+  <div class="question">1. How do you solve the 'Two Sum' problem in O(N)?</div>
+  <div class="ans">Use a <b>HashMap</b> to store the value and its index as you iterate. Check if `target - current_val` exists in the map. If yes, you found the pair.</div>
+</div>
+
+<div class="q-block">
+  <div class="question">2. Difference between BFS and DFS? When to use which?</div>
+  <div class="ans"><b>BFS (Queue)</b>: Explores level by level. Use for shortest path in unweighted graphs. <b>DFS (Stack/Recursion)</b>: Goes deep then backtracks. Use for topological sort, cycle detection, or searching a deep tree.</div>
+</div>
+
+<div class="q-block">
+  <div class="question">3. What is a 'Sliding Window'? Give an example.</div>
+  <div class="ans">A technique to handle sub-arrays/sub-strings. Instead of nested loops O(N²), move a 'window' of two pointers. <b>Example:</b> Finding the longest substring without repeating characters.</div>
+</div>
+
+<div class="q-block">
+  <div class="question">4. Explain 'Binary Search' and its complexity.</div>
+  <div class="ans">Divides a <b>sorted</b> array in half each time. <b>Complexity:</b> O(log N). Used in every search-related interview problem.</div>
+</div>
+
+<div class="q-block">
+  <div class="question">5. What is a 'Trie' and why do we use it for autocomplete?</div>
+  <div class="ans">A tree structure where each node is a character. It's efficient for <b>prefix searching</b>. Finding all words starting with "app" takes O(Length of search string), independent of how many words are in the dictionary.</div>
+</div>
+
+<!-- ══════════════ SYSTEM DESIGN ══════════════ -->
+<h2>🏗️ System Design (Architectural Patterns)</h2>
+
+<div class="q-block">
+  <div class="question">6. How would you design a 'Rate Limiter'? (Token Bucket Algorithm)</div>
+  <div class="ans">Use a <b>Token Bucket</b> algorithm. A bucket holds N tokens, filled at a fixed rate. Each request consumes 1 token. If the bucket is empty, drop the request. Best implementation: <b>Redis</b> with `lua` scripts for atomicity.</div>
+</div>
+
+<div class="q-block">
+  <div class="question">7. SQL vs NoSQL: Which one for an E-commerce system?</div>
+  <div class="ans"><b>SQL (Postgres/MySQL)</b> for Transactions, Orders, and Payments (ACID compliance is critical). <b>NoSQL (Mongo/Elastic)</b> for Product catalogs (flexible schema) or Search results (fast reads).</div>
+</div>
+
+<div class="q-block">
+  <div class="question">8. What is 'Consistent Hashing'? Why is it used in Load Balancing?</div>
+  <div class="ans">A way to map keys to servers so that when a server is added or removed, only <b>1/N</b> of keys move. Without it, adding a server causes a massive reshuffle, crashing the system. Critical for distributed caches like Redis clusters.</div>
+</div>
+
+<div class="q-block">
+  <div class="question">9. Describe the 'API Gateway' pattern.</div>
+  <div class="ans">A single entry point for all clients. It handles <b>Authentication, Rate Limiting, and Routing</b> to internal microservices. It hides the complexity of the internal network from the client.</div>
+</div>
+
+<div class="q-block">
+  <div class="question">10. How do you handle 'Read Heavy' systems at scale?</div>
+  <div class="ans">1. <b>Caching</b> (Redis/Memcached). 2. <b>Database Replication</b> (Read Replicas). 3. <b>CDN</b> for static assets. 4. <b>Materialized Views</b> in the DB.</div>
+</div>
+
+<!-- ══════════════ JAVA ══════════════ -->
+<h2>☕ Java & Multithreading (Enterprise Depth)</h2>
+
+<div class="q-block">
+  <div class="question">11. Abstract Class vs Interface (Java 8+)?</div>
+  <div class="ans"><b>Interface</b>: For "Can-do" behavior (e.g., Runnable). Supports multiple inheritance. Can have default/static methods now. <b>Abstract Class</b>: For "Is-a" relationship. Can have state (fields) and constructor. Use for shared code between related classes.</div>
+</div>
+
+<div class="q-block">
+  <div class="question">12. Immutable Class in Java: How to make one?</div>
+  <div class="ans">1. Mark class as <b>final</b>. 2. All fields <b>private and final</b>. 3. No setter methods. 4. Use <b>Deep Copy</b> in constructors and getters for mutable fields (like Dates or Lists).</div>
+</div>
+
+<div class="q-block">
+  <div class="question">13. ConcurrentHashMap vs Hashtable?</div>
+  <div class="ans"><b>Hashtable</b> locks the ENTIRE map (slow). <b>ConcurrentHashMap</b> (Java 8) uses <b>CAS (Compare-And-Swap)</b> and synchronized only on the specific bucket being updated. Much faster for multi-core CPUs.</div>
+</div>
+
+<div class="q-block">
+  <div class="question">14. What is the 'Diamond Problem'? How does Java solve it?</div>
+  <div class="ans">Occurs when a class implements two interfaces having the same default method. Java forces the developer to <b>override</b> and specify which interface method to use using `InterfaceName.super.methodName()`.</div>
+</div>
+
+<div class="q-block">
+  <div class="question">15. Explain Java 8 Streams `map()` vs `flatMap()`.</div>
+  <div class="ans"><b>map()</b> transforms one element into another. <b>flatMap()</b> transforms one element into a stream and then flattens all streams into one. Use flatMap when you have a List of Lists.</div>
+</div>
+
+<div class="q-block">
+  <div class="question">16. What is a 'Deadlock'? How to find it in production?</div>
+  <div class="ans">Two threads waiting for each other's locks. To find: Use `jstack` or `jconsole` to take a <b>Thread Dump</b>. It will explicitly list "Found one Java-level deadlock".</div>
+</div>
+
+<div style="text-align:center; margin-top:20px; font-size:9pt; color:#6b7280; border-top:1px solid #e5e7eb; padding-top:10px;">
+  <strong>Volume 2 Complete</strong> | Covers 16 more core questions with precise, punchy answers.<br>
+  I am continuing to Volume 3 (SQL, Python, DevOps) in the next step.
+</div>
+
+</body>
+</html>

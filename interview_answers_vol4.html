@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Interview Answer Guide Vol 4 — Rachit Bishnoi</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 10mm; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 8pt; line-height: 1.3; color: #1a1a1a; background: #fff;
+    max-width: 210mm; padding: 8mm 12mm;
+  }
+  h1 { font-size: 15pt; color: #111; text-align: center; margin-bottom: 5px; }
+  .subtitle { font-size: 8.5pt; color: #6b7280; text-align: center; margin-bottom: 12px; border-bottom: 2px solid #6366f1; padding-bottom: 8px; }
+  h2 {
+    font-size: 10pt; font-weight: 700; color: #fff; background: #6366f1;
+    padding: 5px 10px; margin: 12px 0 8px 0; border-top-right-radius: 20px; border-bottom-right-radius: 20px;
+  }
+  .q-block { margin-bottom: 8px; border-left: 2px solid #e0e7ff; padding-left: 10px; }
+  .question { font-weight: 700; color: #1e1b4b; display: block; margin-bottom: 1px; }
+  .ans { color: #374151; font-size: 7.8pt; }
+  .ans b { color: #4f46e5; }
+  .highlight-box { background: #f5f3ff; border: 1px solid #ddd6fe; padding: 6px; border-radius: 4px; font-size: 7.5pt; margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<h1>🎯 Interview Master Answer Guide — Volume 4</h1>
+<div class="subtitle">Focus: Advanced AI, Security & Behavioral Scenarios</div>
+
+<!-- ══════════════ ADVANCED AI ══════════════ -->
+<h2>🤖 Advanced AI & Model Architecture</h2>
+<div class="q-block">
+  <span class="question">1. Explain the Transformer Attention mechanism simply.</span>
+  <span class="ans">It allows the model to "focus" on relevant words regardless of distance. <b>Example:</b> In "The bank of the river," the model pays 'attention' to "river" to understand "bank" refers to land, not a building.</span>
+</div>
+<div class="q-block">
+  <span class="question">2. What is Hallucination? How do you prevent it?</span>
+  <span class="ans">When an LLM generates confident but false info. <b>Prevention:</b> 1. <b>RAG</b> (contextual ground truth). 2. Lower <b>Temperature</b>. 3. <b>Few-Shot Prompting</b> with correct examples.</span>
+</div>
+<div class="q-block">
+  <span class="question">3. Precision vs Recall?</span>
+  <span class="ans"><b>Precision</b> = "Of all I labeled positive, how many were actually positive?" <b>Recall</b> = "Of all that WERE positive, how many did I find?" In SmartCPR, <b>Recall</b> is more important (don't miss a cardiac arrest).</span>
+</div>
+<div class="q-block">
+  <span class="question">4. Overfitting: How to detect and fix?</span>
+  <span class="ans"><b>Detect:</b> Training error is low, but Validation error is high. <b>Fix:</b> More data, <b>Dropout</b> layers, <b>Regularization (L1/L2)</b>, or simplifying the model.</span>
+</div>
+
+<!-- ══════════════ SECURITY & AUTH ══════════════ -->
+<h2>🛡️ Security, JWT & OAuth</h2>
+<div class="q-block">
+  <span class="question">5. How does JWT (JSON Web Token) Auth work?</span>
+  <span class="ans">1. User logs in. 2. Server generates a signed <b>Token</b>. 3. Client sends this in the 'Authorization' header for every request. 4. Server verifies the signature without hitting the DB.</span>
+</div>
+<div class="q-block">
+  <span class="question">6. Difference between OAuth 2.0 and OpenID Connect (OIDC)?</span>
+  <span class="ans"><b>OAuth 2.0</b> is for <b>Authorization</b> (accessing resources). <b>OIDC</b> is a layer on top of OAuth for <b>Authentication</b> (proving who the person is).</span>
+</div>
+<div class="q-block">
+  <span class="question">7. What is CSRF and how to prevent it?</span>
+  <span class="ans"><b>Cross-Site Request Forgery</b>. An attacker tricks a user's browser into sending a request to your app. <b>Fix:</b> Use <b>CSRF Tokens</b> or `SameSite=Strict` cookies.</span>
+</div>
+
+<!-- ══════════════ BEHAVIORAL ══════════════ -->
+<h2>🗣️ Behavioral & Situational (The Human Side)</h2>
+<div class="q-block">
+  <span class="question">8. "Tell me about your hardest project." (Use your AmEx FBPM project!)</span>
+  <div class="ans"><b>SITUATION:</b> We needed to automate API generation but GPT-4 was too expensive. 
+  <b>ACTION:</b> I implemented Knowledge Distillation—initially using GPT-4 to generate samples, then fine-tuning a custom **Llama 3** with LoRA. 
+  <b>RESULT:</b> Achieved same quality with zero external API costs. Reduced dev onboarding by 70%.</div>
+</div>
+<div class="q-block">
+  <span class="question">9. "How do you handle conflict with a teammate?"</span>
+  <div class="ans">I focus on <b>data and technical merit</b> rather than ego. I propose a quick A/B test or POC (Proof of Concept) to see which approach works better in reality. I try to understand THEIR concern first.</div>
+</div>
+<div class="q-block">
+  <span class="question">10. "Describe a time you failed."</span>
+  <div class="ans">Early in my career, I deployed a change that slowed down a DB query. **Learnings:** Now I always check `EXPLAIN ANALYZE` for every query change and use staging environments for performance testing. I owned the mistake and fixed it immediately.</div>
+</div>
+
+<!-- ══════════════ QUICK-FIRE REVISION (THE REST) ══════════════ -->
+<h2>⚡ Quick-Fire Revision (Secondary Topics)</h2>
+<div class="highlight-box">
+  • <b>CAP Theorem:</b> Choose 2: Consistency, Availability, Partition Tolerance. Most web apps pick AP.<br>
+  • <b>SQL Index:</b> B-Tree by default. Speeds up SELECT, slows down INSERT/DELETE.<br>
+  • <b>REST vs gRPC:</b> REST (JSON, HTTP/1) is for external. gRPC (Binary, HTTP/2) is 10x faster for internal.<br>
+  • <b>Spring Beans:</b> Singleton by default (one per container).<br>
+  • <b>Java Streams:</b> map (one-to-one), filter (choose some), collect (reduce to list).<br>
+  • <b>Docker vs VM:</b> Docker shares the OS kernel (lightweight). VM has its own OS (heavy).<br>
+  • <b>Microservice Auth:</b> Authenticate at the API Gateway, then pass JWT to internal services.<br>
+  • <b>Kubernetes Liveness:</b> Restarts the container if it crashes. <b>Readiness:</b> Stops traffic if it's slow/booting.
+</div>
+
+<div style="text-align:center; margin-top:20px; font-size:9pt; color:#6b7280; border-top:1px solid #e5e7eb; padding-top:10px;">
+  <strong>Volume 4 Complete</strong> | We have now answered the top ~80 core questions in detail.<br>
+  For the remaining 270 questions, I recommend using these 4 guides as your "Core Logic" and searching specific syntax when needed. <b>Good luck, Rachit! You are ready.</b>
+</div>
+
+</body>
+</html>

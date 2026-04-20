@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rachit Bishnoi — Software & AI Engineer Resume</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+    font-size: 8.6pt; line-height: 1.32; color: #1a1a1a; background: #fff;
+    width: 210mm; height: 297mm; overflow: hidden;
+    padding: 10mm 14mm 7mm 14mm;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  .header { text-align: center; margin-bottom: 5px; border-bottom: 2.5px solid #1a56db; padding-bottom: 5px; }
+  .header h1 { font-size: 20pt; font-weight: 700; color: #111827; letter-spacing: 0.5px; margin-bottom: 1px; }
+  .header .subtitle { font-size: 9.5pt; color: #1a56db; font-weight: 600; margin-bottom: 3px; }
+  .header .contact { font-size: 8pt; color: #4b5563; }
+  .header .contact a { color: #1a56db; text-decoration: none; }
+  .header .contact span { margin: 0 4px; color: #d1d5db; }
+  .section { margin-bottom: 5px; }
+  .section-title {
+    font-size: 8.2pt; font-weight: 700; text-transform: uppercase; color: #1a56db;
+    letter-spacing: 1.1px; border-bottom: 1px solid #e5e7eb; padding-bottom: 1.5px; margin-bottom: 3px;
+  }
+  .summary { font-size: 8.4pt; color: #374151; line-height: 1.38; }
+  .summary strong { color: #111827; }
+  .skills-grid { display: grid; grid-template-columns: 100px 1fr; row-gap: 1px; font-size: 8.3pt; }
+  .skills-grid .label { font-weight: 600; color: #374151; }
+  .skills-grid .value { color: #4b5563; }
+  .job { margin-bottom: 4px; }
+  .job-header { display: flex; justify-content: space-between; align-items: baseline; }
+  .job-title { font-weight: 700; font-size: 8.8pt; color: #111827; }
+  .job-date { font-size: 7.8pt; color: #6b7280; font-weight: 500; white-space: nowrap; }
+  .job-company { font-size: 8.5pt; color: #111827; font-weight: 700; }
+  .job-via { font-size: 8pt; color: #6b7280; font-weight: 400; }
+  .job ul { padding-left: 13px; margin-top: 1px; }
+  .job li { font-size: 8.3pt; color: #374151; margin-bottom: 1px; line-height: 1.32; }
+  .job li strong { color: #111827; font-weight: 600; }
+  .projects-row { display: flex; gap: 8px; }
+  .project { flex: 1; }
+  .project-name { font-weight: 700; font-size: 8.4pt; color: #111827; }
+  .project-type { font-size: 7.4pt; color: #1a56db; font-weight: 600; }
+  .project-tech { font-size: 7.3pt; color: #6b7280; }
+  .project ul { padding-left: 13px; margin-top: 1px; }
+  .project li { font-size: 8pt; color: #374151; margin-bottom: 0.5px; line-height: 1.3; }
+  .edu-row { display: flex; justify-content: space-between; align-items: baseline; }
+  .edu-degree { font-weight: 600; font-size: 8.4pt; color: #111827; }
+  .edu-date { font-size: 7.8pt; color: #6b7280; }
+  .edu-school { font-size: 8pt; color: #4b5563; }
+  .edu-certs { font-size: 7.8pt; color: #6b7280; margin-top: 1px; }
+  @media print { body { padding: 10mm 14mm 7mm 14mm; } }
+</style>
+</head>
+<body>
+
+<!-- ═══════ HEADER ═══════ -->
+<div class="header">
+  <h1>RACHIT BISHNOI</h1>
+  <div class="subtitle">Software Engineer · AI/ML & GenAI · System Design · Cloud & Distributed Systems</div>
+  <div class="contact">
+    Noida, India
+    <span>|</span> <a href="mailto:rachitbishnoi16@gmail.com">rachitbishnoi16@gmail.com</a>
+    <span>|</span> +91-7042082836
+    <span>|</span> <a href="http://linkedin.com/in/rachit-bishnoi-b592a4117/">LinkedIn</a>
+    <span>|</span> <a href="https://github.com/RachitJava">GitHub</a>
+  </div>
+</div>
+
+<!-- ═══════ SUMMARY ═══════ -->
+<div class="section">
+  <div class="section-title">Professional Summary</div>
+  <div class="summary">
+    <strong>AI-focused Software Engineer</strong> with <strong>7.5 years</strong> building production-grade backend systems, AI/ML pipelines, and cloud-native microservices for <strong>American Express, Verizon, and Sabre</strong>. Currently leading development of an <strong>LLM-powered autonomous code generation platform</strong> at AmEx — automating API scaffolding, DB schema generation, and UI integrations from natural language prompts with custom-trained NLP models. Strong expertise in <strong>Data Structures & Algorithms</strong>, <strong>System Design</strong>, and <strong>Scalable Architecture</strong>. Passionate about bridging AI research with production-ready engineering.
+  </div>
+</div>
+
+<!-- ═══════ SKILLS ═══════ -->
+<div class="section">
+  <div class="section-title">Technical Skills</div>
+  <div class="skills-grid">
+    <div class="label">AI / GenAI</div>
+    <div class="value">LLM (GPT-4, Claude, Llama 3, Mistral), NLP, Prompt Engineering, RAG, LoRA Fine-Tuning, Knowledge Distillation, LangChain, Hugging Face</div>
+    <div class="label">ML Frameworks</div>
+    <div class="value">TensorFlow, scikit-learn, FOLD-RM (Explainable AI), ONNX, Real-Time Signal Processing, MLOps</div>
+    <div class="label">Languages</div>
+    <div class="value">Java (8/11/17), Python, SQL, GraphQL, JavaScript</div>
+    <div class="label">DSA</div>
+    <div class="value">Trees, Graphs, Dynamic Programming, Hashing, Sliding Window, Heap, Binary Search, Trie, Backtracking</div>
+    <div class="label">System Design</div>
+    <div class="value">Microservices, Event-Driven Architecture, API Gateway, Load Balancing, Caching, DB Sharding, CAP Theorem</div>
+    <div class="label">Frameworks</div>
+    <div class="value">Spring 6.1, Spring Boot 3, Hibernate/JPA, Flask, FastAPI, REST APIs, gRPC</div>
+    <div class="label">Cloud & DevOps</div>
+    <div class="value">AWS (EC2, S3, Lambda, RDS, SageMaker), GCP, Docker, Kubernetes, Jenkins, CI/CD, Terraform</div>
+    <div class="label">Data & Infra</div>
+    <div class="value">Kafka, RabbitMQ, PostgreSQL, MongoDB, Redis, Elasticsearch, Vector DBs (Pinecone), Kibana</div>
+  </div>
+</div>
+
+<!-- ═══════ EXPERIENCE ═══════ -->
+<div class="section">
+  <div class="section-title">Professional Experience</div>
+
+  <!-- AmEx -->
+  <div class="job">
+    <div class="job-header">
+      <div>
+        <span class="job-company">American Express</span>
+        <span class="job-via"> — Software Engineer (via Cognizant)</span>
+      </div>
+      <div class="job-date">Jul 2024 – Present</div>
+    </div>
+    <ul>
+      <li>Built an <strong>LLM-powered AI workflow engine</strong> that generates REST APIs, DBA schemas, and UI integration code from natural language prompts — reducing developer onboarding and feature delivery time by <strong>70%</strong></li>
+      <li>Designed <strong>knowledge distillation pipeline</strong> using <strong>LoRA fine-tuning on Llama 3</strong> — initially learning from GPT-4 outputs, then transitioning to <strong>self-hosted inference</strong>, eliminating paid API costs</li>
+      <li>Architected the <strong>Partner-Funded Cash Process</strong> system — managing payments, installments, evaluation & ageing — cutting manual reconciliation by <strong>40%</strong></li>
+      <li>Developed the <strong>Intercompany Loan System</strong> providing loan support across <strong>5+ business divisions</strong>, streamlining cross-entity financial operations</li>
+      <li>Led RRDW legacy decommission → Falcon migration, improving query performance <strong>3×</strong> and reducing infrastructure costs</li>
+    </ul>
+  </div>
+
+  <!-- Verizon -->
+  <div class="job">
+    <div class="job-header">
+      <div>
+        <span class="job-company">Verizon</span>
+        <span class="job-via"> — Software Engineer (via Cognizant)</span>
+      </div>
+      <div class="job-date">Feb 2022 – Jun 2024</div>
+    </div>
+    <ul>
+      <li>Led development of next-gen <strong>Billing Platform</strong> for 1,000+ retail/online stores — <strong>99.9% uptime</strong>, <strong>30% operational cost reduction</strong></li>
+      <li>Integrated <strong>AI-powered customer behavior APIs</strong> using ML classification, increasing upsell conversion by <strong>15%</strong></li>
+      <li>Developed <strong>12+ RESTful microservice APIs</strong> modernizing legacy workflows; owned full SDLC with <strong>90%+ code coverage</strong></li>
+    </ul>
+  </div>
+
+  <!-- Sabre -->
+  <div class="job">
+    <div class="job-header">
+      <div>
+        <span class="job-company">Sabre Corporation</span>
+        <span class="job-via"> — Senior Systems Engineer (via Infosys)</span>
+      </div>
+      <div class="job-date">Nov 2020 – Feb 2022</div>
+    </div>
+    <ul>
+      <li>Decomposed monolith into <strong>8+ microservices</strong> using event-driven architecture — <strong>60% faster deployments</strong>, independent scaling</li>
+      <li>Built GDS agent APIs handling <strong>100K+ daily requests</strong>; designed dynamic pricing engine for combo-plan bookings</li>
+    </ul>
+  </div>
+
+  <!-- Zenith -->
+  <div class="job">
+    <div class="job-header">
+      <div>
+        <span class="job-company">Zenith Systems Solutions</span>
+        <span class="job-via"> — Applications Engineer (via Ewandzdigital)</span>
+      </div>
+      <div class="job-date">Nov 2018 – Oct 2020</div>
+    </div>
+    <ul>
+      <li>Developed <strong>SDF Charging API</strong> and telecom billing suite (recharge, plan comparison, notifications) serving <strong>50K+ daily users</strong> on Spring Boot microservices</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ═══════ PROJECTS ═══════ -->
+<div class="section">
+  <div class="section-title">Projects</div>
+  <!-- Enterprise Project — Full Width -->
+  <div class="project" style="margin-bottom: 4px;">
+    <div class="project-name">FBPM Symphony Workflow <span class="project-type">[AmEx Enterprise]</span> <span class="project-tech">&nbsp;Python, Llama 3, LoRA, LangChain, RAG, Knowledge Distillation</span></div>
+    <ul>
+      <li>Enterprise workflow engine: natural language prompt → REST API scaffolding + DB schema + UI code generation; <strong>LoRA fine-tuned Llama 3</strong> distilled from GPT-4 outputs, achieving zero external API cost at production maturity</li>
+    </ul>
+  </div>
+  <!-- Self-Learning Projects — Side by Side -->
+  <div class="projects-row">
+    <div class="project">
+      <div class="project-name"><a href="https://github.com/RachitJava/SmartCPR-Guardian" style="color:#111827;text-decoration:none;">SmartCPR Guardian</a> <span class="project-type">[Self-Learning]</span> <span class="project-tech">&nbsp;Python, Flask, FOLD-RM, SocketIO &nbsp;<a href="https://github.com/RachitJava/SmartCPR-Guardian" style="color:#1a56db;font-size:7pt;">↗ GitHub</a></span></div>
+      <ul>
+        <li>Real-time cardiac arrest detection with <strong>explainable AI</strong> (FOLD-RM), counterfactual reasoning, <strong>7 clinical scenarios</strong>, live ECG waveforms</li>
+      </ul>
+    </div>
+    <div class="project">
+      <div class="project-name"><a href="https://github.com/RachitJava/trading" style="color:#111827;text-decoration:none;">AI Trading Engine</a> <span class="project-type">[Self-Learning]</span> <span class="project-tech">&nbsp;Python, Flask, WebSocket &nbsp;<a href="https://github.com/RachitJava/trading" style="color:#1a56db;font-size:7pt;">↗ GitHub</a></span></div>
+      <ul>
+        <li>Autonomous stock analyser with dual-mode trading (practice/live), AI-driven scoring engine, real-time signals & emergency kill switch</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ EDUCATION + CERTS ═══════ -->
+<div class="section">
+  <div class="section-title">Education & Certifications</div>
+  <div class="edu-row">
+    <div class="edu-degree">B.Tech — Electronics & Communication Engineering</div>
+    <div class="edu-date">Jun 2017</div>
+  </div>
+  <div class="edu-school">I.T.S Engineering College, Greater Noida (AKTU)</div>
+  <div class="edu-certs">
+    <strong>Certifications:</strong> Real-Time Network Packet Processing & Session Analysis — IIT (ISM) Dhanbad &nbsp;|&nbsp; Core Java, J2EE, Spring, Hibernate — Ducat
+  </div>
+</div>
+
+</body>
+</html>

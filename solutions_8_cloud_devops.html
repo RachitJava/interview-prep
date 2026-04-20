@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Solutions 8: Cloud, DevOps & Kafka — Rachit Bishnoi</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 10mm; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 8.5pt; line-height: 1.4; color: #1a1a1a; background: #fff;
+    max-width: 210mm; padding: 10mm 15mm;
+  }
+  h1 { font-size: 16pt; color: #111; text-align: center; margin-bottom: 5px; border-bottom: 2px solid #6b7280; padding-bottom: 10px; }
+  h2 { font-size: 11pt; font-weight: 700; color: #fff; background: #6b7280; padding: 6px 12px; margin: 15px 0 10px 0; border-radius: 4px; }
+  .solution { margin-bottom: 10px; border-bottom: 1px solid #f3f4f6; padding-bottom: 6px; }
+  .q-title { font-weight: 700; color: #111827; margin-bottom: 2px; }
+  .ans { color: #374151; font-size: 8.5pt; }
+  .ans b { color: #4b5563; }
+  .tag { font-size: 7pt; font-weight: 600; padding: 1px 4px; border-radius: 2px; margin-left: 3px; background: #ede9fe; color: #5b21b6; }
+</style>
+</head>
+<body>
+
+ <div style="text-align:center; margin-bottom:10px;"><a href="master_answer_compendium.html" style="font-size:8pt; color:#6b7280; text-decoration:none;">← Back to Master Compendium</a></div><h1>☁️ Solutions 8: Cloud, DevOps & Kafka (30 Topics)</h1>
+
+<div class="solution">
+  <div class="q-title">1. Docker — images vs containers <span class="tag">🔥Top</span></div>
+  <div class="ans"><b>Image</b>: Read-only snapshot of your app (blueprint). <b>Container</b>: A running instance of that image. You can run multiple containers from one image.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">2. Docker Compose</div>
+  <div class="ans">A tool for defining and running multi-container applications (e.g. App + DB + Redis). Uses a `docker-compose.yml` to orchestrate how they network together.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">3. Kubernetes — pods, services, deployments <span class="tag">🔥Top</span></div>
+  <div class="ans"><b>Pod</b>: Smallest unit (holds container). <b>Deployment</b>: Manages Pods (scaling/rolling updates). <b>Service</b>: Exposes Pods to network (load balancer). <b>Namespace</b>: Logical isolation.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">4. K8s — auto-scaling (HPA)</div>
+  <div class="ans"><b>Horizontal Pod Autoscaler</b>. Automatically increases or decreases the number of pods based on observed CPU utilization or custom metrics from Prometheus.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">5. K8s — rolling update vs canary</div>
+  <div class="ans"><b>Rolling</b>: Slowly replaces old pods with new ones. <b>Canary</b>: New version is released to 5% of users; if stable, roll out to 100%. <b>Blue-Green</b>: Two identical environments, switch traffic instantly.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">6. CI/CD pipeline design <span class="tag">🔥Top</span></div>
+  <div class="ans">1. <b>Build</b> (Docker build) 2. <b>Unit Test</b> 3. <b>Security Scan</b> (Snyk/Sonar) 4. <b>Staging Deploy</b> 5. <b>Approval</b> 6. <b>Production Deploy</b>. Done via GitHub Actions or Jenkins.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">7. Jenkins — pipeline-as-code</div>
+  <div class="ans">Defining build steps in a **Jenkinsfile** (Groovy syntax) stored in Git. Ensures the pipeline is version-controlled, just like the application code.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">8. Terraform — state management</div>
+  <div class="ans">Terraform uses a **State File** to track what resources exist in AWS. Always use <b>Remote State</b> (S3 + DynamoDB locking) so multiple developers don't conflict.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">9. AWS EC2 auto-scaling groups</div>
+  <div class="ans">Automatically launches or terminates EC2 instances to maintain a specific "Desired Capacity" or respond to traffic spikes (e.g. High CPU).</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">10. AWS S3 storage classes</div>
+  <div class="ans"><b>Standard</b> (high speed), <b>IA</b> (infrequent access), <b>Glacier</b> (long-term archive). Choosing the right class can cut AWS costs by 80%.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">11. AWS Lambda — cold starts <span class="tag">🔥Top</span></div>
+  <div class="ans">Delay when a function is called after a gap. AWS must provision a container. **Reduction**: Use 'Provisioned Concurrency', keep package size small, or use lightweight runtimes (Node/Go).</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">12. AWS RDS — read replicas</div>
+  <div class="ans">Creates copies of your DB for **Read-only** traffic. Offloads the main Master DB so it can focus on Writes. Good for scale.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">13. AWS SageMaker</div>
+  <div class="ans">AWS's platform for building, training, and deploying ML models. Handles the scaling of GPU training clusters and real-time inference endpoints.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">14. VPC & Subnets basics</div>
+  <div class="ans"><b>VPC</b>: Your private network in AWS. <b>Subnets</b>: Dividing VPC into ranges. **Public Subnet**: Connected to internet gateway. **Private Subnet**: No direct internet access (safe for DBs).</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">15. IAM — least privilege</div>
+  <div class="ans">Giving users/roles ONLY the exact permissions they need to do their job. Avoid `AdministratorAccess`; use specific policies like `S3ReadOnlyAccess`.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">16. Kafka — topics & partitions <span class="tag">🔥Top</span></div>
+  <div class="ans"><b>Topic</b>: Name of the stream. <b>Partition</b>: Division of topic for parallelism. Each partition can only be read by ONE consumer in a group at a time.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">17. Kafka — message ordering</div>
+  <div class="ans">Ordering is only guaranteed **within a partition**. To ensure ordering for a specific user, use `UserID` as the **Partition Key** so all their events land in the same partition.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">18. Kafka vs RabbitMQ <span class="tag">🔥Top</span></div>
+  <div class="ans"><b>Kafka</b>: Distributed log, messages are kept after being read, massive throughput. <b>RabbitMQ</b>: Traditional queue, messages deleted after read, complex routing/priority.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">19. Kafka — idempotent producer</div>
+  <div class="ans">Ensures a message is written exactly once even if network retries happen. Prevents duplicate data (e.g. double-charging a customer).</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">20. What is a service mesh (Istio)?</div>
+  <div class="ans">A layer between microservices that handles **Traffic splitting, Observability, and Retries** automatically. Uses "Sidecar Containers" to intercept all network calls.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">21. 12-Factor App <span class="tag">🔥Top</span></div>
+  <div class="ans">Best practices for cloud apps. Key ones: **Codebase** (version control), **Config** (env vars), **Backing Services** (DB/Queue as attached resources), **Statelessness**.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">22. Observability — logs, metrics, traces</div>
+  <div class="ans"><b>Logs</b> (what happened), <b>Metrics</b> (performance stats), <b>Traces</b> (how a single request traveled through 10 microservices).</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">23. Infrastructure as Code (IaC)</div>
+  <div class="ans">Using tools like **Terraform** or **CloudFormation** to write code that builds your servers. Benefits: Audit trail, version control, and replicable environments.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">24. How to handle secrets?</div>
+  <div class="ans">Never store in Git. Use **HashiCorp Vault**, **AWS Secrets Manager**, or K8s Secrets. Inject into apps at runtime via Environment Variables.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">25. What is GitOps?</div>
+  <div class="ans">A DevOps practice where the "Source of Truth" for infrastructure is a Git repository. Tools like **ArgoCD** watch Git and ensure the K8s cluster matches the code.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">26. Sync vs Async communication</div>
+  <div class="ans"><b>Sync</b> (REST): Immediate response. <b>Async</b> (Kafka): Send and forget. Use Async to decouple services and handle spikes (e.g. Invoice generation taking 5 mins).</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">27. API versioning strategies</div>
+  <div class="ans">**Header Versioning** (`Accept: v2`), **URL Versioning** (`/api/v1/user`), or **Query Params**. URL versioning is the most common for public APIs.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">28. Liveness vs Readiness probes</div>
+  <div class="ans"><b>Liveness</b>: Is the container dead? (Restart if failed). <b>Readiness</b>: Is the app ready to handle traffic? (Don't send users if it's still booting up).</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">29. How to debug a production issue? <span class="tag">🔥Top</span></div>
+  <div class="ans">1. <b>Isolate</b> (Is it one user or all?). 2. <b>Observe</b> (Check Grafana for CPU/Memory spikes). 3. <b>Drill down</b> (Check ELK logs). 4. <b>Fix & Record</b> (Post-mortem to avoid recurrence).</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">30. CI/CD for FBPM project <span class="tag">🔥Top</span></div>
+  <div class="ans"><b>Pipeline</b>: Trigger on Git Push → Run Llama-Lint → Build Docker image → Scan with Trivy → Deploy to AWS EKS → Run integration tests against rule engine.</div>
+</div>
+
+</body>
+</html>

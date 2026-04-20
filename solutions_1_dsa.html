@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Solutions 1: DSA — Rachit Bishnoi</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 10mm; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 8.5pt; line-height: 1.4; color: #1a1a1a; background: #fff;
+    max-width: 210mm; padding: 10mm 15mm;
+  }
+  h1 { font-size: 16pt; color: #111; text-align: center; margin-bottom: 5px; border-bottom: 2px solid #1a56db; padding-bottom: 10px; }
+  h2 { font-size: 11pt; font-weight: 700; color: #fff; background: #1a56db; padding: 6px 12px; margin: 15px 0 10px 0; border-radius: 4px; }
+  .solution { margin-bottom: 12px; border-bottom: 1px solid #f3f4f6; padding-bottom: 8px; }
+  .q-title { font-weight: 700; color: #111827; margin-bottom: 3px; }
+  .logic { margin-bottom: 2px; color: #374151; }
+  .complexity { font-size: 8pt; color: #6b7280; font-style: italic; }
+  .sol-link { display: inline-block; margin-top: 3px; color: #1a56db; font-weight: 600; text-decoration: none; font-size: 8pt; }
+  .sol-link:hover { text-decoration: underline; }
+  .tag { font-size: 7pt; font-weight: 600; padding: 1px 4px; border-radius: 2px; margin-left: 3px; background: #ede9fe; color: #5b21b6; }
+</style>
+</head>
+<body>
+
+ <div style="text-align:center; margin-bottom:10px;"><a href="master_answer_compendium.html" style="font-size:8pt; color:#6b7280; text-decoration:none;">← Back to Master Compendium</a></div><h1>🌳 Solutions 1: DSA (50 Topics)</h1>
+
+<h2>Arrays & Hashing</h2>
+<div class="solution">
+  <div class="q-title">1. Two Sum <span class="tag">🔥Top</span></div>
+  <div class="logic">Iterate through array, store `(target - current_val)` in a HashMap. If `target - current_val` is already in the map, you've found the pair indices.</div>
+  <div class="complexity">Time: O(N) | Space: O(N)</div>
+  <a href="https://leetcode.com/problems/two-sum/solutions/?q=java&orderBy=most_votes" class="sol-link">↗ View Java Solution</a>
+</div>
+
+<div class="solution">
+  <div class="q-title">2. Best Time to Buy & Sell Stock</div>
+  <div class="logic">Maintain a `min_price` seen so far. At each step, calculate `current_price - min_price` and update `max_profit`.</div>
+  <div class="complexity">Time: O(N) | Space: O(1)</div>
+  <a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock/solutions/?q=java&orderBy=most_votes" class="sol-link">↗ View Java Solution</a>
+</div>
+
+<div class="solution">
+  <div class="q-title">3. Contains Duplicate</div>
+  <div class="logic">Add each element to a HashSet. If `add()` returns false, a duplicate exists.</div>
+  <div class="complexity">Time: O(N) | Space: O(N)</div>
+  <a href="https://leetcode.com/problems/contains-duplicate/solutions/?q=java&orderBy=most_votes" class="sol-link">↗ View Java Solution</a>
+</div>
+
+<div class="solution">
+  <div class="q-title">4. Product of Array Except Self <span class="tag">🔥Top</span></div>
+  <div class="logic">Calculate prefix products in one pass, then suffix products in a second pass. Multiply them to get the result without division.</div>
+  <div class="complexity">Time: O(N) | Space: O(1) excluding output array</div>
+  <a href="https://leetcode.com/problems/product-of-array-except-self/solutions/?q=java&orderBy=most_votes" class="sol-link">↗ View Java Solution</a>
+</div>
+
+<div class="solution">
+  <div class="q-title">5. Maximum Subarray (Kadane's) <span class="tag">🔥Top</span></div>
+  <div class="logic">Iterate through array, adding elements to `current_sum`. If `current_sum` becomes negative, reset it to 0. Keep track of the `max_sum` seen.</div>
+  <div class="complexity">Time: O(N) | Space: O(1)</div>
+  <a href="https://leetcode.com/problems/maximum-subarray/solutions/?q=java&orderBy=most_votes" class="sol-link">↗ View Java Solution</a>
+</div>
+
+<div class="solution">
+  <div class="q-title">6. Group Anagrams</div>
+  <div class="logic">For each string, sort its characters to create a "key". Use a `HashMap<String, List<String>>` to group all strings with the same key.</div>
+  <div class="complexity">Time: O(N * K log K) where K is max string length | Space: O(N * K)</div>
+  <a href="https://leetcode.com/problems/group-anagrams/solutions/?q=java&orderBy=most_votes" class="sol-link">↗ View Java Solution</a>
+</div>
+
+<div class="solution">
+  <div class="q-title">7. Top K Frequent Elements</div>
+  <div class="logic">Count frequencies with a Map. Use a PriorityQueue (min-heap of size K) or Bucket Sort to find the top K keys.</div>
+  <div class="complexity">Time: O(N log K) or O(N) with bucket sort | Space: O(N)</div>
+  <a href="https://leetcode.com/problems/top-k-frequent-elements/solutions/?q=java&orderBy=most_votes" class="sol-link">↗ View Java Solution</a>
+</div>
+
+<div class="solution">
+  <div class="q-title">8. Encode and Decode Strings</div>
+  <div class="logic">Encode: Join strings with a delimiter like `len#string` (e.g., "5#hello5#world"). Decode: Parse the length, then skip that many characters.</div>
+  <div class="complexity">Time: O(N) | Space: O(N)</div>
+  <a href="https://leetcode.com/problems/encode-and-decode-strings/solutions/?q=java&orderBy=most_votes" class="sol-link">↗ View Java Solution</a>
+</div>
+
+<h2>Sliding Window</h2>
+<div class="solution">
+  <div class="q-title">9. Longest Substring Without Repeating <span class="tag">🔥Top</span></div>
+  <div class="logic">Use two pointers (L, R) and a HashSet. If `char[R]` is in set, remove `char[L]` and move L until `char[R]` can be added. Store max `R-L+1`.</div>
+  <div class="complexity">Time: O(N) | Space: O(min(m, n)) where m is charset size</div>
+  <a href="https://leetcode.com/problems/longest-substring-without-repeating-characters/solutions/?q=java&orderBy=most_votes" class="sol-link">↗ View Java Solution</a>
+</div>
+
+<div class="solution">
+  <div class="q-title">10. Minimum Window Substring</div>
+  <div class="logic">Sliding window + Frequency Map. Expand R until window contains all target chars, then shrink L as much as possible while maintaining validity.</div>
+  <div class="complexity">Time: O(N + M) | Space: O(M) where M is target string len</div>
+  <a href="https://leetcode.com/problems/minimum-window-substring/solutions/?q=java&orderBy=most_votes" class="sol-link">↗ View Java Solution</a>
+</div>
+
+<div class="solution">
+  <div class="q-title">11. Sliding Window Maximum</div>
+  <div class="logic">Use a Deque to store indices of potential maxima. Ensure elements in deque are in decreasing order of their array values. Max for current window is at `peekFirst()`.</div>
+  <div class="complexity">Time: O(N) | Space: O(K) where K is window size</div>
+  <a href="https://leetcode.com/problems/sliding-window-maximum/solutions/?q=java&orderBy=most_votes" class="sol-link">↗ View Java Solution</a>
+</div>
+
+<div class="solution">
+  <div class="q-title">12. Longest Repeating Character Replacement</div>
+  <div class="logic">Sliding window. Track max frequency of any char in current window. If `(window_len - max_freq) > k`, shrink from left. Window size is the answer.</div>
+  <div class="complexity">Time: O(N) | Space: O(26) for uppercase alphabet</div>
+  <a href="https://leetcode.com/problems/longest-repeating-character-replacement/solutions/?q=java&orderBy=most_votes" class="sol-link">↗ View Java Solution</a>
+</div>
+
+<h2>Two Pointers & Binary Search</h2>
+<div class="solution">
+  <div class="q-title">13. 3Sum <span class="tag">🔥Top</span></div>
+  <div class="logic">Sort array. Iterate with `i`, use Two Pointers (L, R) on remaining part to find `nums[i] + nums[L] + nums[R] == 0`. Skip duplicates for all three indices.</div>
+  <div class="complexity">Time: O(N²) | Space: O(1) or O(N) for sort</div>
+  <a href="https://leetcode.com/problems/3sum/solutions/?q=java&orderBy=most_votes" class="sol-link">↗ View Java Solution</a>
+</div>
+
+<div class="solution">
+  <div class="q-title">14. Container With Most Water</div>
+  <div class="logic">Two pointers at L=0 and R=len-1. Calculate `min(H[L], H[R]) * (R-L)`. Move the pointer that points to the SHORTER height.</div>
+  <div class="complexity">Time: O(N) | Space: O(1)</div>
+  <a href="https://leetcode.com/problems/container-with-most-water/solutions/?q=java&orderBy=most_votes" class="sol-link">↗ View Java Solution</a>
+</div>
+
+<div class="solution">
+  <div class="q-title">15. Trapping Rain Water <span class="tag">🔥Top</span></div>
+  <div class="logic">Two pointers at L and R. Track `leftMax` and `rightMax`. At each step, process the side with the smaller max height and add `max - current` to total.</div>
+  <div class="complexity">Time: O(N) | Space: O(1)</div>
+  <a href="https://leetcode.com/problems/trapping-rain-water/solutions/?q=java&orderBy=most_votes" class="sol-link">↗ View Java Solution</a>
+</div>
+
+<div class="solution">
+  <div class="q-title">16. Search in Rotated Sorted Array <span class="tag">🔥Top</span></div>
+  <div class="logic">Modified Binary Search. Determine which half is "sorted". If target lies within the sorted half, search there; otherwise search the other half.</div>
+  <div class="complexity">Time: O(log N) | Space: O(1)</div>
+  <a href="https://leetcode.com/problems/search-in-rotated-sorted-array/solutions/?q=java&orderBy=most_votes" class="sol-link">↗ View Java Solution</a>
+</div>
+
+<div class="solution">
+  <div class="q-title">17. Find Minimum in Rotated Array</div>
+  <div class="logic">Binary search. If `nums[mid] > nums[right]`, then minimum is in the right half. Otherwise, minimum is in the left half (including mid).</div>
+  <div class="complexity">Time: O(log N) | Space: O(1)</div>
+  <a href="https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/solutions/?q=java&orderBy=most_votes" class="sol-link">↗ View Java Solution</a>
+</div>
+
+<div class="solution">
+  <div class="q-title">18. Median of Two Sorted Arrays</div>
+  <div class="logic">Binary search on partitions of the smaller array. Ensure left side of partitions has same total count as right side and `maxLeft1 <= minRight2` and vice versa.</div>
+  <div class="complexity">Time: O(log(min(N,M))) | Space: O(1)</div>
+  <a href="https://leetcode.com/problems/median-of-two-sorted-arrays/solutions/?q=java&orderBy=most_votes" class="sol-link">↗ View Java Solution</a>
+</div>
+
+<h2>Linked List</h2>
+<div class="solution">
+  <div class="q-title">19. Reverse Linked List <span class="tag">🔥Top</span></div>
+  <div class="logic">Iterative: Use `prev`, `curr`, `next`. `curr.next = prev`, then shift all three forward. Recursive: Head recursion, then set `head.next.next = head`.</div>
+  <div class="complexity">Time: O(N) | Space: O(1) iterative</div>
+  <a href="https://leetcode.com/problems/reverse-linked-list/solutions/?q=java&orderBy=most_votes" class="sol-link">↗ View Java Solution</a>
+</div>
+
+<div class="solution">
+  <div class="q-title">20. Merge Two Sorted Lists</div>
+  <div class="logic">Iterative: Use dummy node and tail pointer. Compare heads, attach smaller, move pointers. Recursive: `if(L1.val < L2.val) L1.next = merge(L1.next, L2); return L1;`</div>
+  <div class="complexity">Time: O(M+N) | Space: O(1) iterative</div>
+  <a href="https://leetcode.com/problems/merge-two-sorted-lists/solutions/?q=java&orderBy=most_votes" class="sol-link">↗ View Java Solution</a>
+</div>
+
+<div class="solution">
+  <div class="q-title">21. Detect Cycle <span class="tag">🔥Top</span></div>
+  <div class="logic">Floyd's Tortoise and Hare. `slow` moves 1 step, `fast` moves 2 steps. If they meet, there is a cycle. If `fast` reaches null, no cycle.</div>
+  <div class="complexity">Time: O(N) | Space: O(1)</div>
+  <a href="https://leetcode.com/problems/linked-list-cycle/solutions/?q=java&orderBy=most_votes" class="sol-link">↗ View Java Solution</a>
+</div>
+
+<div class="solution">
+  <div class="q-title">22. LRU Cache <span class="tag">🔥Top</span></div>
+  <div class="logic">`HashMap<Integer, Node>` + Doubly Linked List. Map gives O(1) access; DLL maintains order of use. `put/get` moves node to front; evict from tail.</div>
+  <div class="complexity">Time: O(1) for all ops | Space: O(Capacity)</div>
+  <a href="https://leetcode.com/problems/lru-cache/solutions/?q=java&orderBy=most_votes" class="sol-link">↗ View Java Solution</a>
+</div>
+
+<div class="solution">
+  <div class="q-title">23. Merge K Sorted Lists</div>
+  <div class="logic">Use a PriorityQueue (min-heap) of size K. Add heads of all K lists. Poll smallest, attach to result, and add that polled node's `next` to heap.</div>
+  <div class="complexity">Time: O(N log K) | Space: O(K)</div>
+  <a href="https://leetcode.com/problems/merge-k-sorted-lists/solutions/?q=java&orderBy=most_votes" class="sol-link">↗ View Java Solution</a>
+</div>
+
+<h2>Trees & Graphs</h2>
+<div class="solution">
+  <div class="q-title">24. Invert Binary Tree</div>
+  <div class="logic">Recursively `swap(root.left, root.right)`. `temp = left; left = invert(right); right = invert(temp);`</div>
+  <div class="complexity">Time: O(N) | Space: O(H) recursion stack</div>
+  <a href="https://leetcode.com/problems/invert-binary-tree/solutions/?q=java&orderBy=most_votes" class="sol-link">↗ View Java Solution</a>
+</div>
+
+<div class="solution">
+  <div class="q-title">25. Max Depth of Binary Tree</div>
+  <div class="logic">`1 + max(depth(left), depth(right))`. Standard DFS traversal.</div>
+  <div class="complexity">Time: O(N) | Space: O(H)</div>
+  <a href="https://leetcode.com/problems/maximum-depth-of-binary-tree/solutions/?q=java&orderBy=most_votes" class="sol-link">↗ View Java Solution</a>
+</div>
+
+<div class="solution">
+  <div class="q-title">26. Validate BST <span class="tag">🔥Top</span></div>
+  <div class="logic">Recursion with range `(min, max)`. `isValid(node, min, max) = node.val > min && node.val < max && leftValid && rightValid`.</div>
+  <div class="complexity">Time: O(N) | Space: O(H)</div>
+  <a href="https://leetcode.com/problems/validate-binary-search-tree/solutions/?q=java&orderBy=most_votes" class="sol-link">↗ View Java Solution</a>
+</div>
+
+<div class="solution">
+  <div class="q-title">27. Level Order Traversal (BFS)</div>
+  <div class="logic">Use a Queue. Poll parent, add to level list, offer its non-null children to queue for next level.</div>
+  <div class="complexity">Time: O(N) | Space: O(W) max level width</div>
+  <a href="https://leetcode.com/problems/binary-tree-level-order-traversal/solutions/?q=java&orderBy=most_votes" class="sol-link">↗ View Java Solution</a>
+</div>
+
+<div class="solution">
+  <div class="q-title">28. Lowest Common Ancestor <span class="tag">🔥Top</span></div>
+  <div class="logic">If node is p or q, return node. Search left and right. If left and right both return non-null, current node is LCA. Otherwise return the non-null result.</div>
+  <div class="complexity">Time: O(N) | Space: O(H)</div>
+  <a href="https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/solutions/?q=java&orderBy=most_votes" class="sol-link">↗ View Java Solution</a>
+</div>
+
+<div class="solution">
+  <div class="q-title">29. Serialize/Deserialize Binary Tree</div>
+  <div class="logic">Serialize: Preorder traversal, use "X" for null and "," delimiter. Deserialize: Use a Queue/Pointer to rebuild via preorder recursion.</div>
+  <div class="complexity">Time: O(N) | Space: O(N)</div>
+  <a href="https://leetcode.com/problems/serialize-and-deserialize-binary-tree/solutions/?q=java&orderBy=most_votes" class="sol-link">↗ View Java Solution</a>
+</div>
+
+<div class="solution">
+  <div class="q-title">30. Number of Islands <span class="tag">🔥Top</span></div>
+  <div class="logic">Iterate grid. When '1' is found, increment count and sink that island using DFS (set all connected '1's to '0').</div>
+  <div class="complexity">Time: O(R*C) | Space: O(R*C) worst case stack</div>
+  <a href="https://leetcode.com/problems/number-of-islands/solutions/?q=java&orderBy=most_votes" class="sol-link">↗ View Java Solution</a>
+</div>
+
+<div class="solution">
+  <div class="q-title">31. Clone Graph</div>
+  <div class="logic">DFS/BFS + `HashMap<Node, CloneNode>`. Use map to prevent cycles and reuse already cloned nodes.</div>
+  <div class="complexity">Time: O(V+E) | Space: O(V)</div>
+  <a href="https://leetcode.com/problems/clone-graph/solutions/?q=java&orderBy=most_votes" class="sol-link">↗ View Java Solution</a>
+</div>
+
+<div class="solution">
+  <div class="q-title">32. Course Schedule <span class="tag">🔥Top</span></div>
+  <div class="logic">Kahn's Algorithm (BFS) or DFS (cycle detection). Build adjacency list + track in-degrees. If all nodes processed (in-degree 0), no cycle exists.</div>
+  <div class="complexity">Time: O(V+E) | Space: O(V+E)</div>
+  <a href="https://leetcode.com/problems/course-schedule/solutions/?q=java&orderBy=most_votes" class="sol-link">↗ View Java Solution</a>
+</div>
+
+<div class="solution">
+  <div class="q-title">33. Word Ladder</div>
+  <div class="logic">BFS on word variations. Change 1 char, check if in wordList. Use `Set` for O(1) lookups and track `visited` to find shortest path.</div>
+  <div class="complexity">Time: O(N * L² * 26) where L is word len | Space: O(N * L)</div>
+  <a href="https://leetcode.com/problems/word-ladder/solutions/?q=java&orderBy=most_votes" class="sol-link">↗ View Java Solution</a>
+</div>
+
+<h2>Dynamic Programming</h2>
+<div class="solution">
+  <div class="q-title">34. Climbing Stairs</div>
+  <div class="logic">Basically Fibonacci. `dp[i] = dp[i-1] + dp[i-2]`. Can optimize to O(1) space with two variables.</div>
+  <div class="complexity">Time: O(N) | Space: O(1) optimized</div>
+  <a href="https://leetcode.com/problems/climbing-stairs/solutions/?q=java&orderBy=most_votes" class="sol-link">↗ View Java Solution</a>
+</div>
+
+<div class="solution">
+  <div class="q-title">35. Coin Change <span class="tag">🔥Top</span></div>
+  <div class="logic">`dp[i] = min(dp[i], 1 + dp[i-coin])`. Fill DP array from 1 to target amount. Initialize with infinity.</div>
+  <div class="complexity">Time: O(Amount * N_coins) | Space: O(Amount)</div>
+  <a href="https://leetcode.com/problems/coin-change/solutions/?q=java&orderBy=most_votes" class="sol-link">↗ View Java Solution</a>
+</div>
+
+<div class="solution">
+  <div class="q-title">36. Longest Increasing Subsequence <span class="tag">🔥Top</span></div>
+  <div class="logic">`dp[i] = max(dp[j] + 1)` for all `j < i` where `nums[j] < nums[i]`. Can be solved in O(N log N) using patience sorting/binary search.</div>
+  <div class="complexity">Time: O(N²) or O(N log N) | Space: O(N)</div>
+  <a href="https://leetcode.com/problems/longest-increasing-subsequence/solutions/?q=java&orderBy=most_votes" class="sol-link">↗ View Java Solution</a>
+</div>
+
+<div class="solution">
+  <div class="q-title">37. House Robber</div>
+  <div class="logic">`dp[i] = max(dp[i-1], nums[i] + dp[i-2])`. Max of (don't rob current, rob current + total from 2 houses back).</div>
+  <div class="complexity">Time: O(N) | Space: O(1) optimized</div>
+  <a href="https://leetcode.com/problems/house-robber/solutions/?q=java&orderBy=most_votes" class="sol-link">↗ View Java Solution</a>
+</div>
+
+<div class="solution">
+  <div class="q-title">38. Word Break</div>
+  <div class="logic">`dp[i]` is true if `dp[j]` is true AND `s.substring(j, i)` is in dictionary.</div>
+  <div class="complexity">Time: O(N²) | Space: O(N)</div>
+  <a href="https://leetcode.com/problems/word-break/solutions/?q=java&orderBy=most_votes" class="sol-link">↗ View Java Solution</a>
+</div>
+
+<div class="solution">
+  <div class="q-title">39. Longest Common Subsequence</div>
+  <div class="logic">2D DP. `if(s1[i] == s2[j]) dp[i][j] = 1 + dp[i-1][j-1]; else dp[i][j] = max(dp[i-1][j], dp[i][j-1]);`</div>
+  <div class="complexity">Time: O(M*N) | Space: O(M*N)</div>
+  <a href="https://leetcode.com/problems/longest-common-subsequence/solutions/?q=java&orderBy=most_votes" class="sol-link">↗ View Java Solution</a>
+</div>
+
+<div class="solution">
+  <div class="q-title">40. 0/1 Knapsack <span class="tag">🔥Top</span></div>
+  <div class="logic">`dp[w] = max(dp[w], val[i] + dp[w-wt[i]])`. Use 1D DP array filled backward to save space and avoid using same item twice.</div>
+  <div class="complexity">Time: O(N*W) | Space: O(W) weight limit</div>
+  <a href="https://www.geeksforgeeks.org/0-1-knapsack-problem-dp-10/" class="sol-link">↗ View Java Solution</a>
+</div>
+
+<div class="solution">
+  <div class="q-title">41. Edit Distance</div>
+  <div class="logic">`if(s1[i] == s2[j]) return dp[i-1][j-1]; else return 1 + min(insert, delete, replace)`. 2D DP matrix.</div>
+  <div class="complexity">Time: O(M*N) | Space: O(M*N)</div>
+  <a href="https://leetcode.com/problems/edit-distance/solutions/?q=java&orderBy=most_votes" class="sol-link">↗ View Java Solution</a>
+</div>
+
+<h2>Heap, Stack & Trie</h2>
+<div class="solution">
+  <div class="q-title">42. Valid Parentheses</div>
+  <div class="logic">Push open brackets to Stack. If closing bracket seen, pop and check if matches. In end, stack must be empty.</div>
+  <div class="complexity">Time: O(N) | Space: O(N)</div>
+  <a href="https://leetcode.com/problems/valid-parentheses/solutions/?q=java&orderBy=most_votes" class="sol-link">↗ View Java Solution</a>
+</div>
+
+<div class="solution">
+  <div class="q-title">43. Min Stack</div>
+  <div class="logic">Use two stacks (standard stack + `minStack`). On push, add `min(val, minStack.peek())` to `minStack`.</div>
+  <div class="complexity">Time: O(1) for all | Space: O(N)</div>
+  <a href="https://leetcode.com/problems/min-stack/solutions/?q=java&orderBy=most_votes" class="sol-link">↗ View Java Solution</a>
+</div>
+
+<div class="solution">
+  <div class="q-title">44. Kth Largest Element <span class="tag">🔥Top</span></div>
+  <div class="logic">Min-heap of size K: O(N log K). QuickSelect: O(N) average. Binary search on value range: O(N log Range).</div>
+  <div class="complexity">Time: O(N log K) or O(N) | Space: O(K)</div>
+  <a href="https://leetcode.com/problems/kth-largest-element-in-an-array/solutions/?q=java&orderBy=most_votes" class="sol-link">↗ View Java Solution</a>
+</div>
+
+<div class="solution">
+  <div class="q-title">45. Find Median from Data Stream</div>
+  <div class="logic">Two heaps: `maxHeap` (left half) and `minHeap` (right half). Rebalance to ensure `maxHeap.size >= minHeap.size` and diff <= 1. Median is `maxHeap.peek()` or `avg(peeks)`.</div>
+  <div class="complexity">Time: O(log N) for add | Space: O(N)</div>
+  <a href="https://leetcode.com/problems/find-median-from-data-stream/solutions/?q=java&orderBy=most_votes" class="sol-link">↗ View Java Solution</a>
+</div>
+
+<div class="solution">
+  <div class="q-title">46. Implement Trie <span class="tag">🔥Top</span></div>
+  <div class="logic">Node with array `TrieNode[26]` and `boolean isEnd`. Traverse character by character, creating nodes if missing.</div>
+  <div class="complexity">Time: O(L) for all | Space: O(N*L)</div>
+  <a href="https://leetcode.com/problems/implement-trie-prefix-tree/solutions/?q=java&orderBy=most_votes" class="sol-link">↗ View Java Solution</a>
+</div>
+
+<div class="solution">
+  <div class="q-title">47. Word Search II</div>
+  <div class="logic">Trie + Backtracking (DFS). Add all lookup words to Trie. Start DFS from every cell; if prefix exists in Trie, continue; if `isEnd` true, add word.</div>
+  <div class="complexity">Time: O(M*N * 3^L) | Space: O(Total_Words_Chars)</div>
+  <a href="https://leetcode.com/problems/word-search-ii/solutions/?q=java&orderBy=most_votes" class="sol-link">↗ View Java Solution</a>
+</div>
+
+<h2>Backtracking & Intervals</h2>
+<div class="solution">
+  <div class="q-title">48. Combination Sum</div>
+  <div class="logic">Standard backtracking. `backtrack(idx, currentTarget, list)`. At each step, either take `nums[idx]` and keep idx (to allow reuse) or skip to `idx+1`.</div>
+  <div class="complexity">Time: O(2^T) where T is target value | Space: O(T/min_val)</div>
+  <a href="https://leetcode.com/problems/combination-sum/solutions/?q=java&orderBy=most_votes" class="sol-link">↗ View Java Solution</a>
+</div>
+
+<div class="solution">
+  <div class="q-title">49. Merge Intervals <span class="tag">🔥Top</span></div>
+  <div class="logic">Sort by start time. Iterate: if `curr.start <= prev.end`, merge by updating `prev.end = max(prev.end, curr.end)`. Else add new interval.</div>
+  <div class="complexity">Time: O(N log N) | Space: O(N) or O(log N) for sort</div>
+  <a href="https://leetcode.com/problems/merge-intervals/solutions/?q=java&orderBy=most_votes" class="sol-link">↗ View Java Solution</a>
+</div>
+
+<div class="solution">
+  <div class="q-title">50. N-Queens</div>
+  <div class="logic">Row-by-row backtracking. Track blocked `cols`, `diagonals` (r-c), and `anti-diagonals` (r+c) in Sets. If valid position, place Queen and recurse; then backtrack.</div>
+  <div class="complexity">Time: O(N!) | Space: O(N)</div>
+  <a href="https://leetcode.com/problems/n-queens/solutions/?q=java&orderBy=most_votes" class="sol-link">↗ View Java Solution</a>
+</div>
+
+</body>
+</html>

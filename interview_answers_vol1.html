@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Interview Answer Guide — Rachit Bishnoi</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 10mm; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 8.5pt; line-height: 1.4; color: #1a1a1a; background: #fff;
+    max-width: 210mm; padding: 10mm 15mm;
+  }
+  h1 { font-size: 18pt; color: #111; text-align: center; margin-bottom: 5px; }
+  .subtitle { font-size: 9pt; color: #6b7280; text-align: center; margin-bottom: 15px; border-bottom: 2px solid #1a56db; padding-bottom: 10px; }
+  h2 {
+    font-size: 11pt; font-weight: 700; color: #fff; background: #1a56db;
+    padding: 6px 12px; margin: 20px 0 10px 0; border-radius: 4px;
+    page-break-after: avoid;
+  }
+  .q-block { margin-bottom: 15px; border-left: 3px solid #e5e7eb; padding-left: 12px; }
+  .question { font-weight: 700; font-size: 9.5pt; color: #111827; margin-bottom: 4px; }
+  .answer-brief { font-style: italic; color: #1a56db; font-weight: 600; margin-bottom: 5px; }
+  .details { margin-left: 15px; list-style-type: disc; }
+  .details li { margin-bottom: 3px; }
+  .example { background: #f9fafb; padding: 8px; border-radius: 4px; margin-top: 5px; font-family: monospace; font-size: 8pt; color: #374151; }
+  .page-break { page-break-before: always; }
+</style>
+</head>
+<body>
+
+<h1>🎯 Interview Master Answer Guide</h1>
+<div class="subtitle">High-Impact Answers for Software & AI Engineering Roles | 2026 Edition</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<h2>🤖 Section 1: AI, LLM & GenAI (The Wow Factor)</h2>
+<!-- ══════════════════════════════════════════════════════ -->
+
+<div class="q-block">
+  <div class="question">1. Explain RAG (Retrieval-Augmented Generation). Why is it better than fine-tuning for most business cases?</div>
+  <div class="answer-brief">"RAG provides an LLM with external, up-to-date knowledge without re-training."</div>
+  <ul class="details">
+    <li><strong>How it works:</strong> We convert company docs into "embeddings" (vectors), store them in a Vector DB (Pinecone). When a user asks a question, we find relevant docs first and send them to the LLM as context.</li>
+    <li><strong>Why it's better:</strong> 
+      1. Zero training cost. 
+      2. No "hallucinations" (the AI can cite its sources). 
+      3. Real-time updates (just add a new doc to the DB).</li>
+  </ul>
+</div>
+
+<div class="q-block">
+  <div class="question">2. What is LoRA (Low-Rank Adaptation) and how does it reduce training cost?</div>
+  <div class="answer-brief">"LoRA is an efficient fine-tuning technique that trains only a tiny fraction of model weights."</div>
+  <ul class="details">
+    <li><strong>Concept:</strong> Instead of updating all 7 billion parameters of a model, LoRA inserts small "adapter" layers. We freeze the original model and only train these tiny adapters.</li>
+    <li><strong>Impact:</strong> Reduces VRAM requirements by 10x and model size by 10,000x. Can be done on a single consumer GPU.</li>
+  </ul>
+</div>
+
+<div class="q-block">
+  <div class="question">3. Explain Knowledge Distillation in the context of your AmEx project.</div>
+  <div class="answer-brief">"Training a small 'student' model to mimic a large 'teacher' model."</div>
+  <ul class="details">
+    <li><strong>The Process:</strong> I used GPT-4 (Teacher) to generate high-quality API code samples from prompts. I then used this data to fine-tune Llama 3 (Student).</li>
+    <li><strong>The Result:</strong> The resulting Student model has 90% of the Teacher's quality but costs 0$ in API fees because we host it ourselves.</li>
+  </ul>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<h2>🏗️ Section 2: System Design (High-Level Architecture)</h2>
+<!-- ══════════════════════════════════════════════════════ -->
+
+<div class="q-block">
+  <div class="question">4. Monolith vs Microservices: When would you choose which?</div>
+  <div class="answer-brief">"Monolith for speed of initial development; Microservices for scale and team independence."</div>
+  <ul class="details">
+    <li><strong>Monolith:</strong> Best for small teams or "0 to 1" startups. Simple to deploy and test.</li>
+    <li><strong>Microservices:</strong> Best for large scale (like Sabre where I worked). Allows teams to deploy independently. If the "Billing Service" fails, the "Search Service" stays up.</li>
+  </ul>
+</div>
+
+<div class="q-block">
+  <div class="question">5. How do you handle Distributed Transactions across microservices (Saga Pattern)?</div>
+  <div class="answer-brief">"Using the Saga Pattern to maintain consistency without heavy locking."</div>
+  <ul class="details">
+    <li><strong>Choreography:</strong> Each service performs its own transaction and publishes an event (e.g., OrderPlaced → PaymentService reacts).</li>
+    <li><strong>Compensations:</strong> If Payment fails, the Payment service publishes "PaymentFailed" and the Order service "undoes" the order. No global locks needed.</li>
+  </ul>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<h2>☕ Section 3: Java & Spring Boot (Core Backend)</h2>
+<!-- ══════════════════════════════════════════════════════ -->
+
+<div class="q-block">
+  <div class="question">6. Explain the internal working of a HashMap. How are collisions handled?</div>
+  <div class="answer-brief">"HashMap uses Hashing and Buckets (Array + LinkedList/Tree)."</div>
+  <ul class="details">
+    <li><strong>Storage:</strong> It uses `hashCode()` to find an index in an internal array.</li>
+    <li><strong>Collisions:</strong> If two keys have the same index, they are stored in a LinkedList (Chaining).</li>
+    <li><strong>Java 8 Optimization:</strong> If a bucket grows beyond 8 elements, the LinkedList converts into a Red-Black Tree for O(log N) performance.</li>
+  </ul>
+</div>
+
+<div class="q-block">
+  <div class="question">7. What is Spring Boot Auto-Configuration?</div>
+  <div class="answer-brief">"Spring Boot attempts to automatically configure your app based on the 'jars' it finds on the classpath."</div>
+  <ul class="details">
+    <li>If `spring-boot-starter-data-jpa` is present, it automatically sets up a DataSource and EntityManager.</li>
+    <li>We can override it anytime using the `application.properties` file.</li>
+  </ul>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<h2>🗄️ Section 4: SQL & Database (Data Integrity)</h2>
+<!-- ══════════════════════════════════════════════════════ -->
+
+<div class="q-block">
+  <div class="question">8. Indexing: Why does it speed up reads but slow down writes?</div>
+  <div class="answer-brief">"Indexes are like the Index page at the back of a book."</div>
+  <ul class="details">
+    <li><strong>Reads:</strong> Instead of scanning the whole table (Full Table Scan), the DB looks at the B-Tree index to find the exact location in O(log N).</li>
+    <li><strong>Writes:</strong> Every time you INSERT a row, the DB must also update the Index tree, which takes extra time and I/O.</li>
+  </ul>
+</div>
+
+<div class="q-block">
+  <div class="question">9. Explain Transaction Isolation Levels.</div>
+  <div class="answer-brief">"Controls how data changes made by one transaction are visible to others."</div>
+  <ul class="details">
+    <li><strong>Read Uncommitted:</strong> Fast but risky (Dirty Reads).</li>
+    <li><strong>Read Committed:</strong> Most common (Prevents Dirty Reads).</li>
+    <li><strong>Repeatable Read:</strong> (MySQL Default) Prevents changes to data you've already read.</li>
+    <li><strong>Serializable:</strong> Perfect consistency but very slow (highest locking).</li>
+  </ul>
+</div>
+
+<div class="page-break"></div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<h2>🐍 Section 5: Python (AI & Scripting)</h2>
+<!-- ══════════════════════════════════════════════════════ -->
+
+<div class="q-block">
+  <div class="question">10. What is a Decorator in Python? Give a practical example.</div>
+  <div class="answer-brief">"A function that wraps another function to add behavior without modifying its source code."</div>
+  <div class="example">
+@timer_decorator
+def complex_calculation():
+    # do work...
+  </div>
+  <ul class="details">
+    <li>Used for Logging, Authentication, or Timing. In my current project, I use them for measuring LLM response times.</li>
+  </ul>
+</div>
+
+<div class="q-block">
+  <div class="question">11. Generators (yield) vs Lists: When to use what?</div>
+  <div class="answer-brief">"Generators use 'Lazy Evaluation' to save memory."</div>
+  <ul class="details">
+    <li><strong>List:</strong> Loads 1 million records into RAM immediately. Great if you need to access them multiple times.</li>
+    <li><strong>Generator:</strong> Generates one record at a time as you loop. Perfect for processing huge LLM training datasets that don't fit in RAM.</li>
+  </ul>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<h2>☁️ Section 6: Cloud & DevOps (Deployment)</h2>
+<!-- ══════════════════════════════════════════════════════ -->
+
+<div class="q-block">
+  <div class="question">12. Why Docker? What's the difference between an Image and a Container?</div>
+  <div class="answer-brief">"Docker solves the 'Works on my machine' problem."</div>
+  <ul class="details">
+    <li><strong>Image:</strong> A snapshot/blueprint of your app (OS + Runtime + Code). It's read-only.</li>
+    <li><strong>Container:</strong> A running instance of that Image.</li>
+  </ul>
+</div>
+
+<div class="q-block">
+  <div class="question">13. Kafka: What is a Consumer Group?</div>
+  <div class="answer-brief">"A way to scale message consumption by distributing partitions among multiple consumers."</div>
+  <ul class="details">
+    <li>If you have 10 partitions and 5 consumers in a group, each consumer handles 2 partitions. This allows parallel processing of massive billing streams at Verizon.</li>
+  </ul>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<h2>🌳 Section 7: DSA (The Logic Core)</h2>
+<!-- ══════════════════════════════════════════════════════ -->
+
+<div class="q-block">
+  <div class="question">14. How do you find a cycle in a Linked List? (Floyd’s Cycle Finding)</div>
+  <div class="answer-brief">"Using two pointers: Slow and Fast."</div>
+  <ul class="details">
+    <li>The Slow pointer moves 1 step; Fast pointer moves 2 steps.</li>
+    <li>If they ever meet, there is a loop. If Fast reaches `null`, there is no loop.</li>
+    <li><strong>Time:</strong> O(N) | <strong>Space:</strong> O(1)</li>
+  </ul>
+</div>
+
+<div class="q-block">
+  <div class="question">15. What is Dynamic Programming (DP) and when to use it?</div>
+  <div class="answer-brief">"Breaking a big problem into subproblems and storing results (Memoization)."</div>
+  <ul class="details">
+    <li>Use it when you see **Overlapping Subproblems** (calculating the same thing twice) and **Optimal Substructure**.</li>
+    <li>Common example: Fibonacci or Knapsack problem.</li>
+  </ul>
+</div>
+
+<div style="text-align:center; margin-top:20px; font-size:9pt; color:#6b7280; border-top:1px solid #e5e7eb; padding-top:10px;">
+  <strong>This is Volume 1</strong> | I have prepared the first 15 "High Impact" answers covering all domains.<br>
+  Would you like me to continue with the next batch of 25 answers, or focus on a specific category?
+</div>
+
+</body>
+</html>

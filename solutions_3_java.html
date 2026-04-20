@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Solutions 3: Java — Rachit Bishnoi</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 10mm; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 8.5pt; line-height: 1.4; color: #1a1a1a; background: #fff;
+    max-width: 210mm; padding: 10mm 15mm;
+  }
+  h1 { font-size: 16pt; color: #111; text-align: center; margin-bottom: 5px; border-bottom: 2px solid #ef4444; padding-bottom: 10px; }
+  h2 { font-size: 11pt; font-weight: 700; color: #fff; background: #ef4444; padding: 6px 12px; margin: 15px 0 10px 0; border-radius: 4px; }
+  .solution { margin-bottom: 10px; border-bottom: 1px solid #f3f4f6; padding-bottom: 6px; }
+  .q-title { font-weight: 700; color: #111827; margin-bottom: 2px; }
+  .ans { color: #374151; font-size: 8.5pt; }
+  .ans b { color: #dc2626; }
+  .tag { font-size: 7pt; font-weight: 600; padding: 1px 4px; border-radius: 2px; margin-left: 3px; background: #ede9fe; color: #5b21b6; }
+</style>
+</head>
+<body>
+
+ <div style="text-align:center; margin-bottom:10px;"><a href="master_answer_compendium.html" style="font-size:8pt; color:#6b7280; text-decoration:none;">← Back to Master Compendium</a></div><h1>☕ Solutions 3: Java (50 Topics)</h1>
+
+<h2>Core Java & OOP</h2>
+<div class="solution">
+  <div class="q-title">1. What are the 4 OOP pillars? <span class="tag">🔥Top</span></div>
+  <div class="ans"><b>Abstraction</b> (hiding complexity), <b>Encapsulation</b> (data hiding), <b>Inheritance</b> (code reuse), and <b>Polymorphism</b> (one interface, multiple forms). Example: A "Bank" interface with different "CreditCard" implementations.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">2. Abstract class vs Interface — when to use which? <span class="tag">🔥Top</span></div>
+  <div class="ans">Use <b>Interface</b> for "behavioral" contracts (e.g., Runnable). Supports multiple inheritance. Use <b>Abstract Class</b> for shared "state" and default implementation between related classes.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">3. What is method overloading vs overriding?</div>
+  <div class="ans"><b>Overloading</b>: Same method name, different parameters in the same class (Compile-time). <b>Overriding</b>: Subclass provides specific implementation for a method defined in parent (Runtime).</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">4. What is polymorphism? Compile-time vs runtime?</div>
+  <div class="ans">Ability of an object to take on many forms. <b>Compile-time</b>: Overloading. <b>Runtime</b>: Method Overriding (decided by the object type at execution).</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">5. Explain SOLID principles <span class="tag">🔥Top</span></div>
+  <div class="ans"><b>S</b>ingle Responsibility, <b>O</b>pen/Closed, <b>L</b>iskov Substitution, <b>I</b>nterface Segregation, <b>D</b>ependency Inversion. They ensure code is maintainable and extensible.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">6. What is the diamond problem? How does Java solve it?</div>
+  <div class="ans">When a class implements two interfaces with the same default method. Java forces the developer to <b>explicitly override</b> that method to resolve ambiguity.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">7. What are access modifiers? Default vs protected?</div>
+  <div class="ans"><b>Private</b> (class only), <b>Default</b> (package only), <b>Protected</b> (package + subclasses), <b>Public</b> (everywhere).</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">8. Explain static keyword — variable, method, block, class</div>
+  <div class="ans">Belongs to the <b>class</b> rather than any specific instance. Static variables/methods can be accessed without creating an object. Static blocks run once when class is loaded.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">9. What is the difference between == and .equals()?</div>
+  <div class="ans"><b>==</b> compares the <b>memory address</b> (reference). <b>.equals()</b> compares the <b>content/value</b> of the objects (needs to be overridden for custom objects).</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">10. What is immutability? Why is String immutable? <span class="tag">🔥Top</span></div>
+  <div class="ans">Object state cannot change after creation. String is immutable for <b>Security</b> (SQL injection), <b>Caching</b> (String Pool), and <b>Thread-safety</b>.</div>
+</div>
+
+<h2>Collections Framework</h2>
+<div class="solution">
+  <div class="q-title">11. ArrayList vs LinkedList — when to use? <span class="tag">🔥Top</span></div>
+  <div class="ans"><b>ArrayList</b>: Better for search/read (O(1)). <b>LinkedList</b>: Better for frequent insertions/deletions at start/end (O(1) if you have the node).</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">12. HashMap internal working <span class="tag">🔥Top</span></div>
+  <div class="ans">Uses <b>hashing</b> to find an index (bucket). If multiple keys map to same bucket (collision), they are stored in a LinkedList. In Java 8, if a bucket reaches 8 elements, it converts to a <b>Balanced Tree</b> (Red-Black Tree).</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">13. HashMap vs ConcurrentHashMap <span class="tag">🔥Top</span></div>
+  <div class="ans"><b>HashMap</b> is not thread-safe. <b>ConcurrentHashMap</b> allows concurrent threads to read/write using <b>bucket-level locking</b> (Java 7) or CAS (Java 8+). Much more performant than SynchronizedMap.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">14. HashSet vs TreeSet vs LinkedHashSet</div>
+  <div class="ans"><b>HashSet</b>: Random order (fastest). <b>TreeSet</b>: Sorted order (uses TreeMap). <b>LinkedHashSet</b>: Insertion order maintained (uses Doubly-linked list).</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">15. How does HashMap handle collisions?</div>
+  <div class="ans">Via <b>Chaining</b> (using a LinkedList/Tree). In Java 8, it also performs <b>Treeification</b> when a bucket grows too large to keep search time O(log N).</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">16. Contract between hashCode() and equals()?</div>
+  <div class="ans">If two objects are equal according to `equals()`, they **must** have the same `hashCode()`. However, two objects with the same `hashCode()` are not necessarily equal.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">17. Comparable vs Comparator</div>
+  <div class="ans"><b>Comparable</b>: Natural sorting (modify class, implement `compareTo`). <b>Comparator</b>: Custom sorting (external class, implement `compare`).</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">18. Fail-fast vs fail-safe iterators</div>
+  <div class="ans"><b>Fail-fast</b>: Throws `ConcurrentModificationException` if collection is modified during iteration. <b>Fail-safe</b>: Works on a copy (e.g. `CopyOnWriteArrayList`), so no exception.</div>
+</div>
+
+<h2>Multithreading & Concurrency</h2>
+<div class="solution">
+  <div class="q-title">19. Thread vs Runnable vs Callable <span class="tag">🔥Top</span></div>
+  <div class="ans"><b>Thread</b>: Class to extend. <b>Runnable</b>: Interface with `run()` (no return). <b>Callable</b>: Interface with `call()` that can <b>return a result</b> and throw checked exceptions.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">20. synchronized keyword — method vs block level</div>
+  <div class="ans"><b>Method</b>: Locks the entire object. <b>Block</b>: Locks only a specific part of code. Block-level is more efficient as it reduces wait time for other threads.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">21. What is a deadlock? How to prevent it? <span class="tag">🔥Top</span></div>
+  <div class="ans">Situation where two threads are waiting for each other's locks forever. <b>Prevention</b>: Ensure all threads acquire locks in the same fixed order.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">22. volatile keyword — what does it guarantee?</div>
+  <div class="ans">Guarantees <b>Visibility</b>. Ensures that variable reads/writes go to main memory, not CPU cache. Doesn't guarantee atomicity.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">23. Executor framework — ThreadPool</div>
+  <div class="ans">A managed pool of threads. Instead of creating expensive new threads, reuse idle ones. Types: Fixed, Cached, Scheduled.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">24. CompletableFuture</div>
+  <div class="ans">Used for <b>Asynchronous programming</b>. Allows chaining of tasks without blocking the main thread. Supports functional methods like `thenApply`, `thenCombine`.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">25. What is the happens-before relationship?</div>
+  <div class="ans">A memory consistency property. Guarantees that memory writes by one specific statement are visible to another specific statement across threads.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">26. ReentrantLock vs synchronized</div>
+  <div class="ans"><b>ReentrantLock</b> offers more features: Fairness, `tryLock()` (non-blocking), and multiple condition variables.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">27. Producer-Consumer problem</div>
+  <div class="ans">Solved using a <b>BlockingQueue</b>. When queue is full, producer waits; when empty, consumer waits. Handles all synchronization internally.</div>
+</div>
+
+<h2>Java 8+ Features</h2>
+<div class="solution">
+  <div class="q-title">28. Lambda expressions <span class="tag">🔥Top</span></div>
+  <div class="ans">Concise way to implement single-method interfaces (Functional Interfaces). Enables functional programming in Java.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">29. Stream API <span class="tag">🔥Top</span></div>
+  <div class="ans">Allows <b>pipeline processing</b> of collections using map, filter, reduce. Doesn't change source data.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">30. Optional <span class="tag">🔥Top</span></div>
+  <div class="ans">A container object used to represent either a value or "empty". Forces the developer to handle the `null` case explicitly.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">31. Functional interfaces</div>
+  <div class="ans">Interfaces with exactly one abstract method. <b>Predicate</b> (test), <b>Function</b> (transform), <b>Consumer</b> (action), <b>Supplier</b> (provide).</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">32. Method references — :: operator</div>
+  <div class="ans">Syntactic sugar for lambdas that call an existing method. Example: `System.out::println` instead of `x -> System.out.println(x)`.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">33. Default methods in interfaces</div>
+  <div class="ans">Allows interfaces to have method bodies. Added in Java 8 to evolve existing interfaces without breaking implementing classes.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">34. Stream parallel() — pitfalls</div>
+  <div class="ans">Divides steam into sub-streams for multi-core processing. <b>Pitfalls</b>: Overhead for small lists, non-thread-safe state modification, order matters.</div>
+</div>
+
+<h2>JVM & Memory</h2>
+<div class="solution">
+  <div class="q-title">35. JVM architecture <span class="tag">🔥Top</span></div>
+  <div class="ans"><b>ClassLoader</b> (loads classes), <b>Runtime Data Areas</b> (Heap, Stack, PC), <b>Execution Engine</b> (JIT, GC).</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">36. Heap vs Stack memory</div>
+  <div class="ans"><b>Heap</b>: Stores objects, global access, GC handles it. <b>Stack</b>: Stores local variables and method calls, thread-specific, LIFO order.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">37. Garbage Collection types</div>
+  <div class="ans"><b>Serial</b> (single-thread), <b>Parallel</b> (multi-thread throughput), <b>G1</b> (low latency, balanced), <b>ZGC</b> (ultra-low latency for large heaps).</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">38. What is memory leak in Java?</div>
+  <div class="ans">When objects are no longer used but still referenced. Common causes: Static fields, unclosed listeners, long-running threads.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">39. String pool — how does it work?</div>
+  <div class="ans">A special memory area in the Heap that stores unique string literals. Prevents creating duplicate strings to save memory.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">40. ClassNotFoundException vs NoClassDefFoundError</div>
+  <div class="ans"><b>Exception</b>: Happens at runtime when trying to load via class name. <b>Error</b>: Happens when the class was present at compile-time but missing at runtime.</div>
+</div>
+
+<h2>Design Patterns & Best Practices</h2>
+<div class="solution">
+  <div class="q-title">41. Singleton pattern <span class="tag">🔥Top</span></div>
+  <div class="ans">Ensures a class has only one instance. Thread-safe implementation: Double-checked locking or using an <b>Enum</b> (most secure).</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">42. Factory vs Abstract Factory</div>
+  <div class="ans"><b>Factory</b>: Creates one type of object. <b>Abstract Factory</b>: Creates "families" of related objects without specifying their concrete classes.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">43. Builder pattern</div>
+  <div class="ans">Used for creating complex objects with many optional parameters. Prevents "telescoping constructors" and makes code readable.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">44. Observer pattern</div>
+  <div class="ans">One-to-many dependency. When one object changes state, all its dependents are notified. Example: Publisher-Subscriber models.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">45. Strategy pattern</div>
+  <div class="ans">Defines a family of algorithms and makes them interchangeable at runtime. Example: Choosing different payment methods (PayPal/Card).</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">46. Decorator pattern</div>
+  <div class="ans">Wraps an object to add new functionality without changing its structure. Example: `BufferedInputStream` decorating `FileInputStream`.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">47. Exception handling best practices <span class="tag">🔥Top</span></div>
+  <div class="ans">Don't catch `Exception`. Be specific. Use <b>custom exceptions</b> for business logic. Always close resources in `finally` or use try-with-resources.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">48. What is try-with-resources?</div>
+  <div class="ans">Closing resources automatically if they implement `AutoCloseable`. Avoids manual `finally` blocks and memory leaks.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">49. Serialization</div>
+  <div class="ans">Saving an object's state to byte stream. `transient` keyword prevents a field from being serialized (useful for passwords).</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">50. What's new in Java 17? <span class="tag">🔥Top</span></div>
+  <div class="ans"><b>Records</b> (immutable data classes), <b>Sealed Classes</b> (restricted hierarchy), <b>Pattern Matching for Switch</b>, and removal of old features.</div>
+</div>
+
+</body>
+</html>

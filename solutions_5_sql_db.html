@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Solutions 5: SQL & DB — Rachit Bishnoi</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 10mm; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 8.5pt; line-height: 1.4; color: #1a1a1a; background: #fff;
+    max-width: 210mm; padding: 10mm 15mm;
+  }
+  h1 { font-size: 16pt; color: #111; text-align: center; margin-bottom: 5px; border-bottom: 2px solid #ef4444; padding-bottom: 10px; }
+  h2 { font-size: 11pt; font-weight: 700; color: #fff; background: #ef4444; padding: 6px 12px; margin: 15px 0 10px 0; border-radius: 4px; }
+  .solution { margin-bottom: 10px; border-bottom: 1px solid #f3f4f6; padding-bottom: 6px; }
+  .q-title { font-weight: 700; color: #111827; margin-bottom: 2px; }
+  .ans { color: #374151; font-size: 8.5pt; }
+  .ans b { color: #dc2626; }
+  .tag { font-size: 7pt; font-weight: 600; padding: 1px 4px; border-radius: 2px; margin-left: 3px; background: #ede9fe; color: #5b21b6; }
+</style>
+</head>
+<body>
+
+ <div style="text-align:center; margin-bottom:10px;"><a href="master_answer_compendium.html" style="font-size:8pt; color:#6b7280; text-decoration:none;">← Back to Master Compendium</a></div><h1>🗄️ Solutions 5: SQL & Database (50 Topics)</h1>
+
+<h2>SQL Queries</h2>
+<div class="solution">
+  <div class="q-title">1. Difference between WHERE and HAVING <span class="tag">🔥Top</span></div>
+  <div class="ans"><b>WHERE</b> filters individual rows before grouping. <b>HAVING</b> filters summary groups after the GROUP BY clause.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">2. INNER vs LEFT vs FULL Join <span class="tag">🔥Top</span></div>
+  <div class="ans"><b>INNER</b> (matching both), <b>LEFT</b> (all from left + matching right), <b>FULL</b> (all from both, NULLs for mismatches).</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">3. Subquery vs CTE <span class="tag">🔥Top</span></div>
+  <div class="ans"><b>Subquery</b>: Nested query. <b>CTE (Common Table Expression - WITH)</b>: Named, more readable, and supports recursion. CTEs are generally preferred for complex logic.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">4. Window functions <span class="tag">🔥Top</span></div>
+  <div class="ans">Perform calculations across a set of table rows that are somehow related to the current row. `ROW_NUMBER()` (unique), `RANK()` (skips ties), `DENSE_RANK()` (doesn't skip ties).</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">5. Find the 2nd highest salary</div>
+  <div class="ans">`SELECT MAX(salary) FROM emp WHERE salary < (SELECT MAX(salary) FROM emp)` or `SELECT salary FROM emp ORDER BY salary DESC LIMIT 1 OFFSET 1`.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">6. Find duplicate rows</div>
+  <div class="ans">`SELECT col, COUNT(*) FROM table GROUP BY col HAVING COUNT(*) > 1`.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">7. UNION vs UNION ALL</div>
+  <div class="ans"><b>UNION ALL</b>: Simply joins results (fastest). <b>UNION</b>: joins results and removes duplicates (requires extra sort/dedup).</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">8. GROUP BY — find department-wise max</div>
+  <div class="ans">`SELECT dept_no, MAX(salary) FROM employees GROUP BY dept_no`.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">9. Self-join — managers example</div>
+  <div class="ans">Joining a table to itself. `SELECT E.name, M.name as Manager FROM emp E JOIN emp M ON E.mgr_id = M.id`.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">10. COALESCE vs NULLIF</div>
+  <div class="ans"><b>COALESCE</b> returns first non-null value. <b>NULLIF</b> returns NULL if two arguments are equal (prevents divide-by-zero).</div>
+</div>
+
+<h2>Indexing & Performance</h2>
+<div class="solution">
+  <div class="q-title">11. What is an index? B-Tree vs Hash <span class="tag">🔥Top</span></div>
+  <div class="ans">A data structure that speeds up retrieval. <b>B-Tree</b>: Standard, supports range searches (<, >). <b>Hash</b>: Extremely fast but only for exact equality (=).</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">12. Clustered vs Non-Clustered <span class="tag">🔥Top</span></div>
+  <div class="ans"><b>Clustered</b>: Physically reorders rows in the table; only one per table (usually Primary Key). <b>Non-Clustered</b>: Separate structure from the table that points to the values.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">13. When does index hurt?</div>
+  <div class="ans">During **INSERT, UPDATE, DELETE** operations as the index must be updated alongside the data. Also adds storage overhead.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">14. What is a covering index?</div>
+  <div class="ans">An index where all the columns in the SELECT clause are present in the index itself. The DB doesn't have to touch the actual table at all (Index-Only Scan).</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">15. EXPLAIN/ANALYZE <span class="tag">🔥Top</span></div>
+  <div class="ans">Tool to view the execution plan. Look for **Index Scans** (good) vs **Seq Scans** (bad for large tables). It shows total cost and actual timing.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">16. What causes full table scan?</div>
+  <div class="ans">Searching without an index, using `NOT`, `LIKE '%value'` (leading wildcard), or if the index is too fragmented.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">17. How to optimize slow query? <span class="tag">🔥Top</span></div>
+  <div class="ans">1. Use `EXPLAIN`. 2. Add appropriate Indexes. 3. Avoid `SELECT *`. 4. Avoid N+1 queries. 5. Consider Materialized Views for complex aggregations.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">18. What is query caching?</div>
+  <div class="ans">The DB stores the results of a specific SELECT query. If the identical query is run again (and data hasn't changed), results are returned instantly from memory.</div>
+</div>
+
+<h2>Database Design & Normalization</h2>
+<div class="solution">
+  <div class="q-title">19. Normalization (1NF, 2NF, 3NF) <span class="tag">🔥Top</span></div>
+  <div class="ans"><b>1NF</b>: No duplicate rows/cols. <b>2NF</b>: No partial dependency on PK. <b>3NF</b>: No transitive dependency. Aim: Minimize redundancy.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">20. When to denormalize? <span class="tag">🔥Top</span></div>
+  <div class="ans">In <b>Read-Heavy</b> systems (Reporting/Analytics) where performance is more important than space. Reduces the number of joins.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">21. Primary vs Unique vs Foreign</div>
+  <div class="ans"><b>Primary</b>: Identity, unique, non-null. <b>Unique</b>: Unique, can have NULL. <b>Foreign</b>: Links to PK of another table to maintain integrity.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">22. What are constraints?</div>
+  <div class="ans">Rules enforced on data. `CHECK` (logic, e.g., age > 18), `NOT NULL` (mandatory), `DEFAULT` (fallback value).</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">23. 1:1, 1:N, M:N relationships</div>
+  <div class="ans"><b>1:1</b>: Unique FK in one table. <b>1:N</b>: FK in the 'Many' table. <b>M:N</b>: Junction table required (e.g., student_id, course_id).</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">24. Design a schema for E-commerce</div>
+  <div class="ans">Tables: Users, Products, Categories, Orders (FK to User), Order_Items (Junction between Order and Product), Payments.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">25. What is an ER diagram?</div>
+  <div class="ans">Entity-Relationship diagram. Visual representation of tables, their columns, and how they relate (connecting lines).</div>
+</div>
+
+<h2>Transactions & ACID</h2>
+<div class="solution">
+  <div class="q-title">26. What is ACID? <span class="tag">🔥Top</span></div>
+  <div class="ans"><b>Atomicity</b> (everything or nothing), <b>Consistency</b> (DB remains valid), <b>Isolation</b> (safe concurrent runs), <b>Durability</b> (persists after crash).</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">27. Isolation levels <span class="tag">🔥Top</span></div>
+  <div class="ans"><b>Read Uncommitted</b> (dirty reads), <b>Read Committed</b> (No dirty reads), <b>Repeatable Read</b> (No phantom updates), <b>Serializable</b> (Perfect isolation, slowest).</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">28. What are dirty, phantom, non-repeatable reads?</div>
+  <div class="ans"><b>Dirty</b>: Reading uncommitted data. <b>Non-Repeatable</b>: Data changes while you read twice. <b>Phantom</b>: New rows appear while you read a range.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">29. Optimistic vs Pessimistic locking</div>
+  <div class="ans"><b>Optimistic</b>: Assume no conflict; check version number on update. <b>Pessimistic</b>: Lock the row immediately (SELECT FOR UPDATE).</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">30. What is a deadlock in DB?</div>
+  <div class="ans">T1 locks R1 and waits for R2. T2 locks R2 and waits for R1. DB aborts one to clear the jam.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">31. What are savepoints?</div>
+  <div class="ans">Markers within a transaction that allow you to roll back a specific PART of a transaction without losing everything.</div>
+</div>
+
+<h2>NoSQL & Advanced</h2>
+<div class="solution">
+  <div class="q-title">32. SQL vs NoSQL <span class="tag">🔥Top</span></div>
+  <div class="ans"><b>SQL</b>: Fixed schema, ACID, vertical scale. <b>NoSQL</b>: Dynamic, horizontal scale, BASE. Use SQL for Finance, NoSQL for Large Social/Catalog data.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">33. MongoDB — document model</div>
+  <div class="ans">Stores data in JSON-like BSON documents. No predefined schema. Collections of documents instead of tables of rows.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">34. Redis — use cases <span class="tag">🔥Top</span></div>
+  <div class="ans">Caching, Session management, Leaderboards (Sorted sets), Pub/Sub, Distributed locking. Extremely fast as it's in-memory.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">35. What is eventual consistency?</div>
+  <div class="ans">Guarantees that if no new updates are made, all reads will eventually return the last updated value. Used in distributed systems like Cassandra.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">36. PostgreSQL vs MySQL</div>
+  <div class="ans"><b>Postgres</b>: Fully ACID, complex queries, feature rich. <b>MySQL</b>: Simple read/write performance, easier setup, standard for many web apps.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">37. Materialized view</div>
+  <div class="ans">Physical copy of view results. Speeds up complex reports significantly at the cost of disk space and stale data (needs manual refresh).</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">38. Stored procedures vs functions</div>
+  <div class="ans"><b>Procedures</b>: Can return multiple/no values, can call transactions. <b>Functions</b>: Must return one value, only for calculations.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">39. Triggers — when and why?</div>
+  <div class="ans">Automatically runs code when INSERT/UPDATE occurs. Used for audit logs or enforcing complex business integrity rules.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">40. DB migration — zero downtime</div>
+  <div class="ans">Steps: 1. Add column (allow NULLs). 2. Double-write both columns. 3. Migrate old data. 4. Point app to new column. 5. Drop old column.</div>
+</div>
+
+<h2>Practical SQL Problems</h2>
+<div class="solution">
+  <div class="q-title">41. Employees earning more than manager</div>
+  <div class="ans">`SELECT E.name FROM emp E JOIN emp M ON E.mgr_id = M.id WHERE E.salary > M.salary`.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">42. Running total</div>
+  <div class="ans">`SUM(val) OVER (ORDER BY date) as running_total`.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">43. Find consecutive login days</div>
+  <div class="ans">Use `ROW_NUMBER()` and subtract from `date`. Grouping by the resulting "Date Group" identifies sequences.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">44. Pivot table</div>
+  <div class="ans">Using `CASE WHEN` to turn row values into column headers: `SUM(CASE WHEN month='Jan' THEN val ELSE 0 END) as Jan`.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">45. Delete duplicate rows keeping one</div>
+  <div class="ans">`DELETE FROM table WHERE id NOT IN (SELECT MIN(id) FROM table GROUP BY duplicate_col)`.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">46. Find Nth highest salary</div>
+  <div class="ans">`SELECT DISTINCT salary FROM emp E1 WHERE n-1 = (SELECT COUNT(DISTINCT salary) FROM emp E2 WHERE E2.salary > E1.salary)`.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">47. Customers who bought all products</div>
+  <div class="ans">`SELECT customer_id FROM orders GROUP BY customer_id HAVING COUNT(DISTINCT product_id) = (SELECT COUNT(*) FROM products)`.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">48. Moving average last 7 days</div>
+  <div class="ans">`AVG(price) OVER (ORDER BY date ROWS BETWEEN 6 PRECEDING AND CURRENT ROW)`.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">49. Recursive CTE — org hierarchy</div>
+  <div class="ans">`WITH RECURSIVE org AS (SELECT id, mgr_id FROM emp WHERE mgr_id IS NULL UNION ALL SELECT E.id, E.mgr_id FROM emp E JOIN org O ON E.mgr_id = O.id)`.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">50. Social media schema <span class="tag">🔥Top</span></div>
+  <div class="ans">Tables: Users, Posts, Comments (FK Post, User), Likes (Junction User-Post), Follows (Self-joining Junction User-User).</div>
+</div>
+
+</body>
+</html>

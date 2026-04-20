@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Solutions 2: System Design — Rachit Bishnoi</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 10mm; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 8.5pt; line-height: 1.4; color: #1a1a1a; background: #fff;
+    max-width: 210mm; padding: 10mm 15mm;
+  }
+  h1 { font-size: 16pt; color: #111; text-align: center; margin-bottom: 5px; border-bottom: 2px solid #16a34a; padding-bottom: 10px; }
+  h2 { font-size: 11pt; font-weight: 700; color: #fff; background: #16a34a; padding: 6px 12px; margin: 15px 0 10px 0; border-radius: 4px; }
+  .solution { margin-bottom: 12px; border-bottom: 1px solid #f3f4f6; padding-bottom: 8px; }
+  .q-title { font-weight: 700; color: #111827; margin-bottom: 3px; }
+  .components { margin-bottom: 2px; color: #374151; font-size: 8pt; }
+  .bottleneck { color: #991b1b; font-weight: 600; font-size: 8pt; }
+  .sol-link { display: inline-block; margin-top: 3px; color: #16a34a; font-weight: 600; text-decoration: none; font-size: 8pt; }
+  .tag { font-size: 7pt; font-weight: 600; padding: 1px 4px; border-radius: 2px; margin-left: 3px; background: #ede9fe; color: #5b21b6; }
+</style>
+</head>
+<body>
+
+ <div style="text-align:center; margin-bottom:10px;"><a href="master_answer_compendium.html" style="font-size:8pt; color:#6b7280; text-decoration:none;">← Back to Master Compendium</a></div><h1>🏗️ Solutions 2: System Design (50 Topics)</h1>
+
+<h2>Classic System Design (Must-Know)</h2>
+
+<div class="solution">
+  <div class="q-title">1. Design a URL Shortener (TinyURL) <span class="tag">🔥Top</span></div>
+  <div class="components"><b>Components:</b> API Gateway, App Service, Hash Generator (Base62), NoSQL DB (for fast lookup), Cache (for hot URLs).</div>
+  <div class="bottleneck"><b>Bottleneck:</b> Collision in Hashing. <b>Solution:</b> Pre-generate unique IDs using a centralized ID Generator (Snowflake).</div>
+  <a href="https://www.geeksforgeeks.org/system-design/system-design-url-shortening-service/" class="sol-link">↗ View Architecture Details</a>
+</div>
+
+<div class="solution">
+  <div class="q-title">2. Design Twitter/X <span class="tag">🔥Top</span></div>
+  <div class="components"><b>Components:</b> Fan-out Service, Redis Cluster (In-memory Newsfeed), Load Balancer, User/Follow Graph DB (Neo4j or sharded SQL).</div>
+  <div class="bottleneck"><b>Bottleneck:</b> Celebrity Tweet Fan-out. <b>Solution:</b> Hydrate celebrity tweets at read-time (Pull model) vs regular users at write-time (Push model).</div>
+  <a href="https://www.geeksforgeeks.org/system-design/twitter-system-design-a-complete-case-study/" class="sol-link">↗ View Architecture Details</a>
+</div>
+
+<div class="solution">
+  <div class="q-title">3. Design Instagram</div>
+  <div class="components"><b>Components:</b> S3 (Storage), CDN, Postgres (Metadata), Redis (Feed), Background Workers (Resizing).</div>
+  <div class="bottleneck"><b>Bottleneck:</b> Read heavy feed. <b>Solution:</b> Pre-compute feeds and store in Redis. Use CDN for global edge delivery.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">4. Design WhatsApp/Chat System <span class="tag">🔥Top</span></div>
+  <div class="components"><b>Components:</b> WebSocket Servers (Bidirectional), Session Manager, Message Store (Cassandra/NoSQL for high throughput).</div>
+  <div class="bottleneck"><b>Bottleneck:</b> Managing 1 million+ persistent connections. <b>Solution:</b> Horizontal scaling of WebSocket servers with a persistent session mapping in Redis.</div>
+  <a href="https://www.geeksforgeeks.org/system-design/design-whatsapp-messenger/" class="sol-link">↗ View Architecture Details</a>
+</div>
+
+<div class="solution">
+  <div class="q-title">5. Design YouTube</div>
+  <div class="components"><b>Components:</b> Transcoder (Encoding), CDN (Content delivery), Object Storage (S3), NoSQL (Comments/Metadata), Recommendation Engine.</div>
+  <div class="bottleneck"><b>Bottleneck:</b> Massive Upload Bandwidth. <b>Solution:</b> Parallel Chunk Upload + Offline Background Processing/Encoding.</div>
+  <a href="https://www.geeksforgeeks.org/system-design/youtube-system-design-a-complete-case-study/" class="sol-link">↗ View Architecture Details</a>
+</div>
+
+<div class="solution">
+  <div class="q-title">6. Design Netflix <span class="tag">🔥Top</span></div>
+  <div class="components"><b>Components:</b> Microservices for Catalog, CDN (Open Connect), Adaptive Bitrate Streaming (HLS), Personalization engine.</div>
+  <div class="bottleneck"><b>Bottleneck:</b> Global Latency. <b>Solution:</b> Massive use of local CDNs and local caches inside ISP networks.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">7. Design Uber/Ola <span class="tag">🔥Top</span></div>
+  <div class="components"><b>Components:</b> Geospatial Index (Quadtree/Google S2), Dispatch Service, Ride Service, Real-time Location Tracking (WebSockets).</div>
+  <div class="bottleneck"><b>Bottleneck:</b> Real-time location updates of 1M drivers. <b>Solution:</b> Quadtree sharding by geo-location; Pub/sub for driver updates to nearby riders.</div>
+  <a href="https://www.geeksforgeeks.org/system-design/system-design-of-uber-app-uber-system-architecture/" class="sol-link">↗ View Architecture Details</a>
+</div>
+
+<div class="solution">
+  <div class="q-title">8. Design Amazon/E-Commerce</div>
+  <div class="components"><b>Components:</b> Inventory Service, Cart Service, Order Management, Payment Gateway (Third-party), Search (Elasticsearch).</div>
+  <div class="bottleneck"><b>Bottleneck:</b> Flash Sale Concurrency. <b>Solution:</b> Use Message Queues for order processing; Redis-based distributed locking for inventory.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">9. Design Google Search</div>
+  <div class="components"><b>Components:</b> Crawler (Spider), Indexer (Inverted Index), Ranking Engine (PageRank), Result Merger.</div>
+  <div class="bottleneck"><b>Bottleneck:</b> Document Processing Latency. <b>Solution:</b> MapReduce/Spark for distributed indexing of trillions of pages.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">10. Design Google Maps</div>
+  <div class="components"><b>Components:</b> Map Rendering (Tiles), Routing Service (Dijkstra/A*), Traffic Updates (Crowdsourced data).</div>
+  <div class="bottleneck"><b>Bottleneck:</b> Shortest Path Calculation. <b>Solution:</b> Pre-compute paths for major junctions; Hierarchical routing graphs.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">11. Design Dropbox/Google Drive <span class="tag">🔥Top</span></div>
+  <div class="components"><b>Components:</b> Chunking Service (Block-level), Metadata DB, Sync Service (Notification), Object Storage.</div>
+  <div class="bottleneck"><b>Bottleneck:</b> Large file sync. <b>Solution:</b> Block-level deduplication (only upload changed chunks) + Differential sync.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">12. Design Rate Limiter <span class="tag">🔥Top</span></div>
+  <div class="components"><b>Components:</b> Token Bucket, Leaky Bucket, Fixed Window, Sliding Window Log, Sliding Window Counter.</div>
+  <div class="bottleneck"><b>Bottleneck:</b> Multi-node Distributed Lock. <b>Solution:</b> Redis LUA scripts to update counters atomically without locking.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">13. Design Notification System</div>
+  <div class="components"><b>Components:</b> Message Queue, Notification Workers, Third Party Gateways (Twilio/Firebase), Retry Logic.</div>
+  <div class="bottleneck"><b>Bottleneck:</b> Failure of 3rd Party APIs. <b>Solution:</b> Dead-letter queues (DLQ) and exponential backoff retry.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">14. Design Pastebin</div>
+  <div class="components"><b>Components:</b> Key generator, Object Storage (Text), Analytics.</div>
+  <div class="bottleneck"><b>Bottleneck:</b> Storage Growth. <b>Solution:</b> TTL (automatic deletion) + Cold storage for old pastes.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">15. Design Zoom/Video Conferencing</div>
+  <div class="components"><b>Components:</b> Signaling Server, SFU (Selective Forwarding Unit), MCU (Multipoint Control Unit), WebRTC.</div>
+  <div class="bottleneck"><b>Bottleneck:</b> Network Jitter/Latency. <b>Solution:</b> Adaptive bitrate switching; SFU instead of MCU to reduce server-side transcoding.</div>
+</div>
+
+<h2>Data-Intensive Systems</h2>
+
+<div class="solution">
+  <div class="q-title">16. Design a Cache (Redis) <span class="tag">🔥Top</span></div>
+  <div class="components"><b>Components:</b> Eviction Policy (LRU/LFU), TTL, In-memory Storage, Persistence (RDB/AOF).</div>
+  <div class="bottleneck"><b>Bottleneck:</b> Cache Stampede / Thundering Herd. <b>Solution:</b> Mutex/Locking; Prefetching data before it expires.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">17. Design a Message Queue (Kafka) <span class="tag">🔥Top</span></div>
+  <div class="components"><b>Components:</b> Broker, Topic, Partition, Producer, Consumer.</div>
+  <div class="bottleneck"><b>Bottleneck:</b> Rebalance Overhead. <b>Solution:</b> Static partition assignment or reducing consumer count.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">18. Design a Key-Value Store</div>
+  <div class="components"><b>Components:</b> Consistent Hashing, Replication, Sloppy Quorum, Vector Clocks (Conflict resolution).</div>
+  <div class="bottleneck"><b>Bottleneck:</b> Network Partitioning. <b>Solution:</b> Use Gossip protocol for failure detection.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">19. Design a Search Engine</div>
+  <div class="components"><b>Components:</b> Inverted Index, TF-IDF Ranking, Distributed Indexing.</div>
+  <div class="bottleneck"><b>Bottleneck:</b> High Indexing Latency. <b>Solution:</b> Incremental Indexing via ElasticSearch/Solr logic.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">20. Design a Web Crawler</div>
+  <div class="components"><b>Components:</b> URL Frontier (Queue), IP Fetcher, HTML Parser, Duplicate Remover (Bloom Filter).</div>
+  <div class="bottleneck"><b>Bottleneck:</b> Politeness Policy. <b>Solution:</b> Per-domain queuing; delay timers.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">21. Design a Logging System</div>
+  <div class="components"><b>Components:</b> Log Shipper (Logstash), Indexer (Elastic), Visualizer (Kibana), Buffer (Kafka).</div>
+  <div class="bottleneck"><b>Bottleneck:</b> Massive Log Volume. <b>Solution:</b> Sampling; Compression; Tiered storage.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">22. Design a Metrics/Monitoring System</div>
+  <div class="components"><b>Components:</b> Collector, Time Series DB (Prometheus/InfluxDB), Alerter, Dashboard (Grafana).</div>
+  <div class="bottleneck"><b>Bottleneck:</b> High Cardinality Data. <b>Solution:</b> Downsampling (reducing resolution of old data).</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">23. Design Typeahead/Autocomplete <span class="tag">🔥Top</span></div>
+  <div class="components"><b>Components:</b> Trie Data Structure, Frequency Map, Cache for Top 10 results.</div>
+  <div class="bottleneck"><b>Bottleneck:</b> Searching Trie in real-time. <b>Solution:</b> Pre-compute top results at each Trie node; Use sampling to update frequencies.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">24. Design a Recommendation System</div>
+  <div class="components"><b>Components:</b> Data Collector, Feature Store, Model Trainer, Ranking Gateway.</div>
+  <div class="bottleneck"><b>Bottleneck:</b> Training/Prediction Latency. <b>Solution:</b> Offline training; Online inference using pre-computed embeddings.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">25. Design a CDN</div>
+  <div class="components"><b>Components:</b> Edge Servers, Origin Server, Pull/Push Cache, Global Load Balancer.</div>
+  <div class="bottleneck"><b>Bottleneck:</b> Cache Expiry Consistency. <b>Solution:</b> Immediate invalidation API; Versioned assets (file.v1.css).</div>
+</div>
+
+<h2>Architecture Concepts (Theory)</h2>
+
+<div class="solution">
+  <div class="q-title">26. Monolith vs Microservices <span class="tag">🔥Top</span></div>
+  <div class="bottleneck"><b>Concept:</b> Monolith is easy to deploy/test. Microservices allow independent scale/deployment but add network complexity. Use Monolith for early startups; Microservices for large teams (Sabre/Verizon).</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">27. SQL vs NoSQL <span class="tag">🔥Top</span></div>
+  <div class="bottleneck"><b>Concept:</b> SQL (ACID, Fixed Schema) for Transactions. NoSQL (BASE, Flexible) for massive reads or unstructured data (AmEx telemetry).</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">28. CAP Theorem</div>
+  <div class="bottleneck"><b>Concept:</b> Consistency, Availability, Partition Tolerance. Pick two. In a distributed network (P), you must choose between C (Strict truth) or A (Response always).</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">29. Consistent Hashing</div>
+  <div class="bottleneck"><b>Concept:</b> Mapping keys to a ring. When nodes change, only K/N keys are moved. Prevents massive cache thrashes. Used in DynamoDB/Redis Cluster.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">30. Database Sharding <span class="tag">🔥Top</span></div>
+  <div class="bottleneck"><b>Concept:</b> Horizontal split of data by key (e.g. UserID). <b>Cons:</b> No more joins across shards; complicated re-sharding.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">31. Database Replication</div>
+  <div class="bottleneck"><b>Concept:</b> Master-Slave (Master for writes, Slaves for reads). Improves read scale and redundancy.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">32. Load Balancing</div>
+  <div class="bottleneck"><b>Concept:</b> Round Robin, Least Connections. L4 (IP/Port) vs L7 (Application/Header). Nginx is a great L7 example.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">33. API Gateway Pattern</div>
+  <div class="bottleneck"><b>Concept:</b> Central entry point for Auth, Logging, Rate Limiting. Aggregates microservices into one interface.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">34. Circuit Breaker Pattern</div>
+  <div class="bottleneck"><b>Concept:</b> Prevents cascading failures. If service A is slow, B "opens circuit" and returns error immediately instead of waiting/timing out.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">35. CQRS</div>
+  <div class="bottleneck"><b>Concept:</b> Command Query Responsibility Segregation. Writing data and Reading data use different models/DBs for perfect optimization.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">36. Event Sourcing</div>
+  <div class="bottleneck"><b>Concept:</b> Instead of storing state (balance=10), store events (+5, +3, +2). Perfect for audit trails in Finance (AmEx).</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">37. Saga Pattern <span class="tag">🔥Top</span></div>
+  <div class="bottleneck"><b>Concept:</b> Distributed Transactions. Series of local transactions. If one fails, run "Compensating Transactions" to undo previous steps.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">38. Idempotency</div>
+  <div class="bottleneck"><b>Concept:</b> Doing an action multiple times gives the same result. Crucial for payments (sending a unique `request_id`).</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">39. Long Polling vs WebSockets vs SSE</div>
+  <div class="bottleneck"><b>Concept:</b> WebSockets (Real-time, Bi-directional). SSE (Server-to-Client only). Long Polling (Client waits for server response).</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">40. OAuth 2.0 / JWT <span class="tag">🔥Top</span></div>
+  <div class="bottleneck"><b>Concept:</b> OAuth for session delegation; JWT for stateless authentication. JWTs are signed objects that server verifies without DB.</div>
+</div>
+
+<h2>AI/ML System Design (Trending)</h2>
+
+<div class="solution">
+  <div class="q-title">41. Design an LLM Chatbot <span class="tag">🔥Top</span></div>
+  <div class="components"><b>Components:</b> Frontend, Orchestrator (LangChain), Vector DB, LLM (Llama/GPT), Context Buffer.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">42. Design a RAG Pipeline <span class="tag">🔥Top</span></div>
+  <div class="components"><b>Components:</b> Document Loader, Chunker, Embedder, Vector Store (Pinecone), Generator.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">43. Design a Model Training Pipeline</div>
+  <div class="components"><b>Components:</b> Data Lake, ETL, Feature Store, Training Cluster, Model Registry (MLflow).</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">44. Design a Fraud Detection System</div>
+  <div class="components"><b>Components:</b> Event Stream (Kafka), Real-time Feature Aggregator (Flink), Model Inference, Alert Service.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">45. Design a Ranking Engine</div>
+  <div class="components"><b>Components:</b> Candidate Generation (Recall), Scoring (Precision), Re-ranking (Diversity).</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">46. Design a Real-Time Analytics Dashboard</div>
+  <div class="components"><b>Components:</b> Data Stream, OLAP DB (ClickHouse/Druid), Dashboard Backend, WebSockets.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">47. Design an A/B Testing Platform</div>
+  <div class="components"><b>Components:</b> Experiment Config, Traffic Splitter (Hashing), Metric Collector, Statistical Analyzer.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">48. Design a Feature Store</div>
+  <div class="components"><b>Components:</b> Offline Store (S3), Online Store (Redis), Feature Registry, Ingestion Pipeline.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">49. Design a Content Moderation System</div>
+  <div class="components"><b>Components:</b> Filter API, AI Classifier (LLM), Human Review Queue, User Reputation DB.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">50. Design an AI Code Gen Platform (FBPM) <span class="tag">🔥Top</span></div>
+  <div class="components"><b>Components:</b> Rule Engine (FOLD-RM), Code Generator (Teacher: GPT-4, Student: Llama 3), Fine-tuning Pipeline, IDE Plugin.</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interview Prep Hub — Rachit Bishnoi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-hover: #4f46e5;
+            --bg-dark: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+            --accent: #10b981;
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            min-height: 100vh;
+            background: radial-gradient(circle at top right, #1e1b4b, #0f172a);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* --- Header Section --- */
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-dim);
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-link {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .social-link:hover { color: var(--primary); }
+
+        /* --- Featured Links --- */
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+
+        .main-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            padding: 30px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .main-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
+        }
+
+        .main-card h2 {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .main-card p {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+        }
+
+        .badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        /* --- Solution Categories --- */
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, var(--glass-border), transparent);
+        }
+
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .sol-card {
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid var(--glass-border);
+            padding: 24px;
+            border-radius: 16px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s;
+        }
+
+        .sol-card:hover {
+            background: var(--card-bg);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px -10px rgba(99, 102, 241, 0.3);
+        }
+
+        .sol-card .icon {
+            font-size: 1.8rem;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .sol-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .sol-card p {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            line-height: 1.4;
+        }
+
+        /* --- Footer --- */
+        footer {
+            margin-top: 100px;
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid var(--glass-border);
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+
+        /* --- Animations --- */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 640px) {
+            h1 { font-size: 2.2rem; }
+            .solutions-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Interview Prep Dashboard</h1>
+        <p class="subtitle">Comprehensive 100% Coverage System for Senior Software & AI Engineering Roles at Tier-1 Firms.</p>
+        <div class="social-links">
+            <a href="https://github.com/RachitJava" class="social-link"><span>GitHub</span></a>
+            <a href="http://linkedin.com/in/rachit-bishnoi-b592a4117/" class="social-link"><span>LinkedIn</span></a>
+            <a href="resume.html" class="social-link"><span>Interactive Resume</span></a>
+        </div>
+    </header>
+
+    <div class="featured-grid">
+        <a href="master_answer_compendium.html" class="main-card">
+            <span class="badge">Must Read</span>
+            <h2>🎯 Master Compendium</h2>
+            <p>Direct mapping of 350+ questions to high-impact architecturally-sound answers. The ultimate study guide.</p>
+        </a>
+        <a href="question_bank.html" class="main-card">
+            <h2>📜 Full Question Bank</h2>
+            <p>Curated list of common & advanced questions across all tech stacks with difficulty and priority tags.</p>
+        </a>
+    </div>
+
+    <h2 class="section-title">Deep-Dive Solutions</h2>
+    <div class="solutions-grid">
+        <a href="solutions_1_dsa.html" class="sol-card">
+            <span class="icon">🌳</span>
+            <h3>Data Structures</h3>
+            <p>LeetCode patterns, optimization techniques, and classic algorithmic deep-dives.</p>
+        </a>
+        <a href="solutions_2_system_design.html" class="sol-card">
+            <span class="icon">🏗️</span>
+            <h3>System Design</h3>
+            <p>Scaling from 0 to 1M users. Microservices, Kafka, Databases, and CAP theorem.</p>
+        </a>
+        <a href="solutions_3_java.html" class="sol-card">
+            <span class="icon">☕</span>
+            <h3>Java Mastery</h3>
+            <p>JVM internals, Multithreading, Memory management, and Spring Boot ecosystem.</p>
+        </a>
+        <a href="solutions_4_python.html" class="sol-card">
+            <span class="icon">🐍</span>
+            <h3>Python & Scripting</h3>
+            <p>GIL, Decorators, Generators, and Python's role in modern AI architectures.</p>
+        </a>
+        <a href="solutions_5_sql_db.html" class="sol-card">
+            <span class="icon">🗄️</span>
+            <h3>SQL & Database</h3>
+            <p>Indexing strategies, ACID vs BASE, Sharding, and Replication patterns.</p>
+        </a>
+        <a href="solutions_6_spring_boot.html" class="sol-card">
+            <span class="icon">🍃</span>
+            <h3>Spring Boot</h3>
+            <p>Cloud-native development with Spring Cloud, Actuator, and Security.</p>
+        </a>
+        <a href="solutions_7_ai_ml_llm.html" class="sol-card">
+            <span class="icon">🤖</span>
+            <h3>AI, ML & LLM</h3>
+            <p>Generative AI, LoRA fine-tuning, RAG pipelines, and model orchestration.</p>
+        </a>
+        <a href="solutions_8_cloud_devops.html" class="sol-card">
+            <span class="icon">☁️</span>
+            <h3>Cloud & DevOps</h3>
+            <p>AWS, Kubernetes, CI/CD pipelines, and Infrastructure as Code (Terraform).</p>
+        </a>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Rachit Bishnoi | Built for Scalability & Impact</p>
+    </footer>
+</div>
+
+</body>
+</html>

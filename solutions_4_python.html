@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Solutions 4: Python — Rachit Bishnoi</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 10mm; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 8.5pt; line-height: 1.4; color: #1a1a1a; background: #fff;
+    max-width: 210mm; padding: 10mm 15mm;
+  }
+  h1 { font-size: 16pt; color: #111; text-align: center; margin-bottom: 5px; border-bottom: 2px solid #fbbf24; padding-bottom: 10px; }
+  h2 { font-size: 11pt; font-weight: 700; color: #fff; background: #fbbf24; padding: 6px 12px; margin: 15px 0 10px 0; border-radius: 4px; }
+  .solution { margin-bottom: 10px; border-bottom: 1px solid #f3f4f6; padding-bottom: 6px; }
+  .q-title { font-weight: 700; color: #111827; margin-bottom: 2px; }
+  .ans { color: #374151; font-size: 8.5pt; }
+  .ans b { color: #d97706; }
+  .tag { font-size: 7pt; font-weight: 600; padding: 1px 4px; border-radius: 2px; margin-left: 3px; background: #ede9fe; color: #5b21b6; }
+</style>
+</head>
+<body>
+
+ <div style="text-align:center; margin-bottom:10px;"><a href="master_answer_compendium.html" style="font-size:8pt; color:#6b7280; text-decoration:none;">← Back to Master Compendium</a></div><h1>🐍 Solutions 4: Python (50 Topics)</h1>
+
+<h2>Core Python</h2>
+<div class="solution">
+  <div class="q-title">1. List vs Tuple vs Set vs Dictionary <span class="tag">🔥Top</span></div>
+  <div class="ans"><b>List</b> (Mutable, Ordered), <b>Tuple</b> (Immutable, Ordered), <b>Set</b> (Mutable, Unordered, Unique), <b>Dictionary</b> (Key-Value pairs, Ordered by insertion in 3.7+).</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">2. What are *args and **kwargs? <span class="tag">🔥Top</span></div>
+  <div class="ans"><b>*args</b>: Variable number of non-keyword arguments (received as a tuple). <b>**kwargs</b>: Variable number of keyword arguments (received as a dictionary).</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">3. What is GIL (Global Interpreter Lock)? <span class="tag">🔥Top</span></div>
+  <div class="ans">A mutex that allows only one thread to control the Python interpreter. Prevents multiple native threads from executing Python bytecodes at once. Affects <b>multi-core CPU-bound</b> performance.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">4. Mutable vs Immutable objects in Python</div>
+  <div class="ans"><b>Mutable</b>: Can change after creation (List, Dict, Set). <b>Immutable</b>: Cannot change (Int, Float, Str, Tuple). Changing an immutable object creates a NEW copy.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">5. List comprehension vs generator expression</div>
+  <div class="ans"><b>List Comp `[]`</b>: Returns a full list immediately. <b>Generator `()`</b>: Returns an iterator that yields one value at a time (saves memory).</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">6. Deep copy vs shallow copy <span class="tag">🔥Top</span></div>
+  <div class="ans"><b>Shallow</b>: Copies reference of nested objects. <b>Deep</b>: Recursively copies everything (nested objects are independent).</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">7. What are decorators? <span class="tag">🔥Top</span></div>
+  <div class="ans">Functions that wrap another function to modify its behavior without changing source code. Used for logging, authentication, and timing.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">8. What is a closure in Python?</div>
+  <div class="ans">A technique where a nested function remembers the values from its enclosing scope even after the outer function has finished executing.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">9. Lambda functions — when to use?</div>
+  <div class="ans">One-line anonymous functions. Use for simple, short transformations, often inside `map()`, `filter()`, or `sort()`.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">10. What does "if __name__ == '__main__'" do?</div>
+  <div class="ans">Ensures that code inside the block only runs if the script is executed directly, not when imported as a module in another script.</div>
+</div>
+
+<h2>OOP in Python</h2>
+<div class="solution">
+  <div class="q-title">11. @staticmethod vs @classmethod vs instance method <span class="tag">🔥Top</span></div>
+  <div class="ans"><b>Instance</b> (needs `self`), <b>Class</b> (needs `cls`, can access class state), <b>Static</b> (utility only, no `self`/`cls`).</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">12. What is __init__ vs __new__?</div>
+  <div class="ans"><b>__new__</b>: Creates the actual instance (constructor). <b>__init__</b>: Initializes the instance (initializer). `__new__` is rarely overridden except for Singeltons or immutable types.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">13. What is MRO (Method Resolution Order)?</div>
+  <div class="ans">The order in which Python searches for a method in a multiple-inheritance hierarchy. Uses C3 Linearization. View using `ClassName.mro()`.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">14. Multiple inheritance — diamond problem?</div>
+  <div class="ans">When a class inherits from two parents who have a common ancestor. Python's <b>MRO</b> resolves this reliably by defining a strict search order.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">15. What are dunder/magic methods?</div>
+  <div class="ans">Methods starting and ending with double underscores. `__str__` (readable), `__repr__` (unambiguous), `__len__`, `__eq__`.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">16. Abstract base classes (ABC) in Python</div>
+  <div class="ans">Force subclasses to implement specific methods. Defined in the `abc` module using the `@abstractmethod` decorator.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">17. Property decorator — getter/setter</div>
+  <div class="ans">Allows a method to be accessed like an attribute. Use `@property` for getters and `@name.setter` for setters to encapsulate data.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">18. What is monkey patching?</div>
+  <div class="ans">Changing or extending code at runtime. Example: Redefining a function of a library at execution time for testing purposes.</div>
+</div>
+
+<h2>Advanced Python</h2>
+<div class="solution">
+  <div class="q-title">19. What are generators? yield vs return <span class="tag">🔥Top</span></div>
+  <div class="ans"><b>return</b> exits function. <b>yield</b> pauses function, saving its state to continue later. Generators are memory efficient for big data.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">20. What are context managers? (with statement) <span class="tag">🔥Top</span></div>
+  <div class="ans">Handle resource setup/cleanup. `with open() as f`. Implemented via `__enter__` and `__exit__`.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">21. asyncio — async/await <span class="tag">🔥Top</span></div>
+  <div class="ans">Single-threaded event loop for handling high-concurrency I/O bound tasks. Excellent for network calls and fast APIs.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">22. Multithreading vs Multiprocessing in Python</div>
+  <div class="ans"><b>Threading</b> (Shared memory, hit by GIL, good for I/O). <b>Multiprocessing</b> (Separate memory, bypasses GIL, good for CPU-bound tasks).</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">23. What is a metaclass?</div>
+  <div class="ans">A class that creates another class. "Classes are instances of metaclasses". Typical base is `type`.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">24. Python memory management — reference counting</div>
+  <div class="ans">Python counts how many references point to an object. When it hits 0, the object is immediately deleted. Also uses <b>Generational GC</b> for cycles.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">25. What are slots in Python?</div>
+  <div class="ans">`__slots__` tells Python not to use a dynamic `__dict__` for each instance. Saves massive memory when creating millions of objects.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">26. Type hints — why and how to use them</div>
+  <div class="ans">Annotations like `def foo(x: int) -> str:`. Improves IDE support, readability, and allows static analysis (e.g. `mypy`).</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">27. Dataclasses — @dataclass decorator</div>
+  <div class="ans">Auto-generates `__init__`, `__repr__`, and `__eq__` for data-only classes. Added in 3.7.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">28. What is pip vs conda vs poetry?</div>
+  <div class="ans"><b>pip</b> (standard package manager), <b>conda</b> (environment + science packages), <b>poetry</b> (modern dependency management and packaging).</div>
+</div>
+
+<h2>Python for Data/AI</h2>
+<div class="solution">
+  <div class="q-title">29. NumPy — arrays, broadcasting <span class="tag">🔥Top</span></div>
+  <div class="ans"><b>Broadcasting</b>: How NumPy treats arrays of different shapes during arithmetic. Small arrays are "stretched" to match the shape of larger arrays.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">30. Pandas — DataFrame operations</div>
+  <div class="ans">Provides tabular data structures. Key ops: `groupby`, `merge` (joining), `pivot_table`, and `vectorized` string operations.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">31. How to read a 10GB CSV file in Python?</div>
+  <div class="ans">Use <b>Chunking</b> in Pandas: `pd.read_csv('file.csv', chunksize=100000)`. Process one page at a time.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">32. What is pickle? Security concerns?</div>
+  <div class="ans">Serialization for Python objects. <b>Danger</b>: De-pickling can execute arbitrary code. Never unpickle data from untrusted sources.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">33. Virtual environments</div>
+  <div class="ans">Isolates project dependencies (`venv`). Ensures Project A doesn't break Project B when they need different library versions.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">34. Python's import system — __init__.py</div>
+  <div class="ans">`__init__.py` makes a directory a package. Can also be used for package-level initialization and exposing specific members.</div>
+</div>
+
+<h2>Flask/FastAPI</h2>
+<div class="solution">
+  <div class="q-title">35. Flask vs FastAPI <span class="tag">🔥Top</span></div>
+  <div class="ans"><b>Flask</b>: Synchronous, mature, simple. <b>FastAPI</b>: Asynchronous (async code), uses Pydantic for validation, 10x faster performance.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">36. How does Flask routing work?</div>
+  <div class="ans">Uses the `@app.route('/')` decorator to map a URL to a specific Python function.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">37. What is WSGI vs ASGI? <span class="tag">🔥Top</span></div>
+  <div class="ans"><b>WSGI</b>: Synchronous standard for Flask/Django. <b>ASGI</b>: Asynchronous successor for FastAPI, supports WebSockets and HTTP/2.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">38. How to handle authentication in Flask?</div>
+  <div class="ans">Use **Flask-Login** for sessions or **Flask-JWT-Extended** for token-based auth.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">39. Blueprint in Flask</div>
+  <div class="ans">Organizes a large app into smaller, reusable sub-components (modules) like `user_bp`, `admin_bp`.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">40. FastAPI — Pydantic models</div>
+  <div class="ans">Pydantic performs data validation and serialization. If a request body doesn't match the model schema, FastAPI returns an error automatically.</div>
+</div>
+
+<h2>Python Coding Problems</h2>
+<div class="solution">
+  <div class="q-title">41. Reverse a string without slicing</div>
+  <div class="ans">`"".join(reversed(text))` or using a loop to build a new string from back to front.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">42. Find duplicates in a list — O(n)</div>
+  <div class="ans">`seen = set(); dups = [x for x in nums if x in seen or seen.add(x)]`. One pass through list.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">43. Flatten a nested list</div>
+  <div class="ans">Recursive function: `for sub in mylist: if isinstance(sub, list): flatten(sub) else: out.append(sub)`.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">44. Implement a LRU cache using OrderedDict</div>
+  <div class="ans">Check if key in dict; if yes, move to end (MRU). If over capacity, pop item with `last=False`.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">45. Merge two sorted lists</div>
+  <div class="ans">Standard two-pointer approach, comparing heads and building a result list.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">46. Check if string is palindrome</div>
+  <div class="ans">`s == s[::-1]` (slicing) or two pointers comparing outer characters moving inward.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">47. Find most frequent element</div>
+  <div class="ans">`collections.Counter(mylist).most_common(1)` or using a simple dictionary to count.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">48. Implement binary search</div>
+  <div class="ans">Classic `while low <= high: mid = (low+high)//2; check nums[mid]`.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">49. Write a thread-safe singleton</div>
+  <div class="ans">Using a **Lock** around instance creation inside the `__new__` method or a MetaClass.</div>
+</div>
+
+<div class="solution">
+  <div class="q-title">50. Implement rate limiter decorator <span class="tag">🔥Top</span></div>
+  <div class="ans">Use `time.time()` inside a decorator to track last call timestamp. If `now - last < interval`, raise Exception or return 429.</div>
+</div>
+
+</body>
+</html>

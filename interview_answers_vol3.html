@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Interview Answer Guide Vol 3 — Rachit Bishnoi</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 10mm; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 8pt; line-height: 1.35; color: #1a1a1a; background: #fff;
+    max-width: 210mm; padding: 8mm 12mm;
+  }
+  h1 { font-size: 15pt; color: #111; text-align: center; margin-bottom: 5px; }
+  .subtitle { font-size: 8.5pt; color: #6b7280; text-align: center; margin-bottom: 12px; border-bottom: 2px solid #ef4444; padding-bottom: 8px; }
+  h2 {
+    font-size: 10pt; font-weight: 700; color: #fff; background: #ef4444;
+    padding: 5px 10px; margin: 12px 0 8px 0; border-radius: 3px;
+  }
+  .q-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .q-block { margin-bottom: 8px; border-bottom: 1px solid #f3f4f6; padding-bottom: 5px; }
+  .question { font-weight: 700; color: #111827; display: block; margin-bottom: 2px; }
+  .ans { color: #374151; font-size: 7.8pt; }
+  .ans b { color: #dc2626; }
+</style>
+</head>
+<body>
+
+<h1>🎯 Interview Master Answer Guide — Volume 3</h1>
+<div class="subtitle">Focus: SQL, Python, Cloud & infrastructure</div>
+
+<!-- ══════════════ SQL & DB ══════════════ -->
+<h2>🗄️ SQL & Databases (Tuning & Logic)</h2>
+<div class="q-grid">
+  <div class="q-block">
+    <span class="question">1. WHERE vs HAVING?</span>
+    <span class="ans"><b>WHERE</b> filters rows BEFORE grouping. <b>HAVING</b> filters groups AFTER the GROUP BY operation.</span>
+  </div>
+  <div class="q-block">
+    <span class="question">2. INNER vs LEFT vs RIGHT Join?</span>
+    <span class="ans"><b>INNER</b>: Only matching rows. <b>LEFT</b>: All from left + matching from right. <b>RIGHT</b>: All from right + matching from left.</span>
+  </div>
+  <div class="q-block">
+    <span class="question">3. What is a Window Function?</span>
+    <span class="ans">Performs calculation across set of rows related to current row. <b>Example:</b> `RANK() OVER(ORDER BY salary DESC)` to find Nth highest salary.</span>
+  </div>
+  <div class="q-block">
+    <span class="question">4. How to find 2nd highest salary?</span>
+    <span class="ans">`SELECT salary FROM emp ORDER BY salary DESC LIMIT 1 OFFSET 1;` or use a subquery with `MAX()`.</span>
+  </div>
+  <div class="q-block">
+    <span class="question">5. Database Sharding?</span>
+    <span class="ans">Horizontal partitioning. Split one big table into multiple DBs based on a key (e.g., `user_id % 10`). Scalability.</span>
+  </div>
+  <div class="q-block">
+    <span class="question">6. What is ACID?</span>
+    <span class="ans"><b>A</b>tomicity (all or nothing), <b>C</b>onsistency, <b>I</b>solation, <b>D</b>urability. Ensures reliable transactions.</span>
+  </div>
+</div>
+
+<!-- ══════════════ PYTHON ══════════════ -->
+<h2>🐍 Python for AI & Backend</h2>
+<div class="q-grid">
+  <div class="q-block">
+    <span class="question">7. What is the GIL?</span>
+    <span class="ans"><b>Global Interpreter Lock</b>. Prevents multiple native threads from executing Python bytecodes at once. Limits CPU-bound multithreading. Solution: Multiprocessing.</span>
+  </div>
+  <div class="q-block">
+    <span class="question">8. *args vs **kwargs?</span>
+    <span class="ans"><b>*args</b>: Pass variable number of non-keyword arguments (as tuple). <b>**kwargs</b>: Pass variable number of keyword arguments (as dict).</span>
+  </div>
+  <div class="q-block">
+    <span class="question">9. List vs Tuple?</span>
+    <span class="ans"><b>List</b>: Mutable, slower, more memory. <b>Tuple</b>: Immutable, faster, less memory (fixed size).</span>
+  </div>
+  <div class="q-block">
+    <span class="question">10. Asyncio in Python?</span>
+    <span class="ans">Uses a single-threaded event loop to handle concurrent I/O (network calls). <b>`async` / `await`</b> syntax. Great for high-concurrency APIs like FastAPI.</span>
+  </div>
+  <div class="q-block">
+    <span class="question">11. Deep copy vs Shallow copy?</span>
+    <span class="ans"><b>Shallow</b>: Copies object reference (nested objects shared). <b>Deep</b>: Recursively copies everything (totally independent).</span>
+  </div>
+  <div class="q-block">
+    <span class="question">12. Python Decorators?</span>
+    <span class="ans">Wrappers to modify function behavior. Used for @logging, @auth, @timing.</span>
+  </div>
+</div>
+
+<!-- ══════════════ CLOUD & DEVOPS ══════════════ -->
+<h2>☁️ Cloud, DevOps & Kafka</h2>
+<div class="q-grid">
+  <div class="q-block">
+    <span class="question">13. Kafka Partitions?</span>
+    <span class="ans">Basis for parallelism. One partition can only be read by ONE consumer in a group. More partitions = More throughput.</span>
+  </div>
+  <div class="q-block">
+    <span class="question">14. CI/CD Pipeline Stages?</span>
+    <span class="ans">1. <b>Build</b> (Compile code) → 2. <b>Test</b> (Unit/Integration) → 3. <b>Security Scan</b> → 4. <b>Deploy</b> (to Staging/Prod).</span>
+  </div>
+  <div class="q-block">
+    <span class="question">15. Terraform 'State' file?</span>
+    <span class="ans">A JSON file tracking current infra. Tells Terraform what exists so it only creates/updates what's NEW. Never delete it!</span>
+  </div>
+  <div class="q-block">
+    <span class="question">16. Docker Image vs Layer?</span>
+    <span class="ans">Images are made of <b>Layers</b>. Each Dockerfile command (RUN, COPY) creates a layer. Layers are cached to speed up builds.</span>
+  </div>
+  <div class="q-block">
+    <span class="question">17. Kubernetes 'Pod'?</span>
+    <span class="ans">Smallest deployable unit in K8s. Usually contains ONE container. Pods are ephemeral (they die and restart).</span>
+  </div>
+  <div class="q-block">
+    <span class="question">18. AWS Lambda 'Cold Start'?</span>
+    <span class="ans">Delay when a function is triggered after inactivity. AWS must spin up a new container. Solve with 'Provisioned Concurrency'.</span>
+  </div>
+</div>
+
+<!-- ══════════════ SPRING BOOT ══════════════ -->
+<h2>🍃 Spring Boot (The Engine)</h2>
+<div class="q-grid">
+  <div class="q-block">
+    <span class="question">19. @Autowired vs Constructor DI?</span>
+    <span class="ans"><b>Constructor DI</b> (Recommended): Better for testing, allows 'final' fields, prevents circular dependency.</span>
+  </div>
+  <div class="q-block">
+    <span class="question">20. What is @Transactional?</span>
+    <span class="ans">Wraps a method in a DB transaction. If any exception occurs, it <b>rolls back</b> all changes automatically.</span>
+  </div>
+  <div class="q-block">
+    <span class="question">21. Spring Boot 'Starters'?</span>
+    <span class="ans">Curated sets of dependencies. `spring-boot-starter-web` gives you Tomcat, Spring MVC, and JSON support in one click.</span>
+  </div>
+  <div class="q-block">
+    <span class="question">22. N+1 Query Problem?</span>
+    <span class="ans">When Hibernate runs 1 query for parent + N queries for children. <b>Fix</b>: Use `JOIN FETCH` in JPQL or `@EntityGraph`.</span>
+  </div>
+</div>
+
+<div style="text-align:center; margin-top:20px; font-size:9pt; color:#6b7280; border-top:1px solid #e5e7eb; padding-top:10px;">
+  <strong>Volume 3 Complete</strong> | Covers another 22 essential questions.<br>
+  I am moving to Volume 4 (The final deep-dive into AI, Security, and Scenarios).
+</div>
+
+</body>
+</html>

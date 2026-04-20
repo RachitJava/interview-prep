@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Resume Cheat Sheet — Rachit Bishnoi</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+    font-size: 7.8pt; line-height: 1.3; color: #1a1a1a; background: #fff;
+    width: 210mm; padding: 8mm 12mm 6mm 12mm;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  h1 { font-size: 14pt; color: #111827; text-align: center; margin-bottom: 2px; }
+  .subtitle { font-size: 8pt; color: #6b7280; text-align: center; margin-bottom: 8px; }
+  h2 {
+    font-size: 8.5pt; font-weight: 700; text-transform: uppercase; color: #fff;
+    background: #1a56db; padding: 2px 8px; margin: 6px 0 3px 0; letter-spacing: 0.8px; border-radius: 2px;
+  }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 2px; }
+  th {
+    background: #f3f4f6; font-size: 7.2pt; font-weight: 700; text-align: left;
+    padding: 2px 5px; color: #374151; border-bottom: 1px solid #e5e7eb;
+  }
+  td { padding: 2px 5px; font-size: 7.5pt; color: #374151; border-bottom: 1px solid #f3f4f6; vertical-align: top; }
+  td:first-child { font-weight: 600; color: #111827; white-space: nowrap; width: 105px; }
+  td:nth-child(2) { width: 38%; }
+  .page-break { page-break-before: always; padding-top: 8mm; }
+  .oneliners td:first-child { width: 200px; font-weight: 600; font-style: italic; }
+  .oneliners td:nth-child(2) { width: auto; font-style: normal; }
+  @media print { body { padding: 8mm 12mm 6mm 12mm; } }
+</style>
+</head>
+<body>
+
+<h1>📋 Resume Cheat Sheet — Interview Quick Reference</h1>
+<div class="subtitle">Rachit Bishnoi | Every skill explained in 1-2 lines | Read before interviews</div>
+
+<!-- ═══════ AI / GenAI ═══════ -->
+<h2>🤖 AI / GenAI</h2>
+<table>
+<tr><th>Skill</th><th>What It Is</th><th>Why/How You Use It</th></tr>
+<tr><td>LLM</td><td>Large Language Model — AI trained on massive text to understand & generate language</td><td>Use GPT-4/Llama to generate code from prompts in FBPM Symphony Workflow</td></tr>
+<tr><td>GPT-4</td><td>OpenAI's paid LLM — best at reasoning, code generation, complex tasks</td><td>Your workflow uses GPT-4 as the "teacher" to generate high-quality outputs</td></tr>
+<tr><td>Claude</td><td>Anthropic's LLM — strong at long documents, safe outputs, code analysis</td><td>Alternative to GPT-4; used for comparison and fallback</td></tr>
+<tr><td>Llama 3</td><td>Meta's open-source LLM — free, self-hosted, no API costs</td><td>You fine-tune Llama 3 to replace GPT-4, eliminating paid API dependency</td></tr>
+<tr><td>Mistral</td><td>French open-source LLM — fastest inference, great for code</td><td>Alternative to Llama; considered for production due to speed</td></tr>
+<tr><td>NLP</td><td>Natural Language Processing — making machines understand human language</td><td>Core technique behind your prompt-to-code workflow</td></tr>
+<tr><td>Prompt Engineering</td><td>Crafting input text to get best output from an LLM</td><td>You design prompts telling GPT-4/Llama exactly what API/schema to generate</td></tr>
+<tr><td>RAG</td><td>Retrieval-Augmented Generation — feed relevant docs to LLM before it answers</td><td>Retrieve existing code templates from vector DB, then LLM generates based on those</td></tr>
+<tr><td>LoRA Fine-Tuning</td><td>Low-Rank Adaptation — trains only ~1% of model weights, very efficient</td><td>Fine-tune Llama 3 cheaply on a single GPU using LoRA adapters</td></tr>
+<tr><td>Knowledge Distillation</td><td>Training a small model to mimic a large model's outputs</td><td>GPT-4 (teacher) → generates data → Llama 3 (student) learns → stop paying GPT-4</td></tr>
+<tr><td>LangChain</td><td>Python framework connecting LLMs to tools, databases, and APIs</td><td>Chain: prompt → retrieve templates → LLM generates → validate output</td></tr>
+<tr><td>Hugging Face</td><td>Platform with 100K+ open-source AI models ready to download</td><td>Download Llama/Mistral models from here and fine-tune them locally</td></tr>
+</table>
+
+<!-- ═══════ ML Frameworks ═══════ -->
+<h2>🧠 ML Frameworks</h2>
+<table>
+<tr><th>Skill</th><th>What It Is</th><th>Why/How You Use It</th></tr>
+<tr><td>TensorFlow</td><td>Google's ML framework for building & training neural networks</td><td>Building ML classification models (customer behavior at Verizon)</td></tr>
+<tr><td>scikit-learn</td><td>Python ML library for classical algorithms (not deep learning)</td><td>Quick prototyping — classification, regression, clustering</td></tr>
+<tr><td>FOLD-RM</td><td>Explainable AI — generates human-readable IF-THEN rules</td><td>SmartCPR: "IF hr<30 AND spo2<85 THEN arrest" — doctors understand WHY</td></tr>
+<tr><td>ONNX</td><td>Open format to export ML models across frameworks</td><td>Train in TensorFlow, deploy anywhere — makes models portable</td></tr>
+<tr><td>MLOps</td><td>DevOps for ML — CI/CD for training, deploying, monitoring models</td><td>Manage lifecycle: train → test → deploy → monitor drift</td></tr>
+</table>
+
+<!-- ═══════ DSA ═══════ -->
+<h2>🌳 DSA (Data Structures & Algorithms)</h2>
+<table>
+<tr><th>Topic</th><th>What It Is</th><th>Common Interview Use</th></tr>
+<tr><td>Trees</td><td>Hierarchical data (Binary Tree, BST, Trie)</td><td>Autocomplete, file systems, DOM parsing</td></tr>
+<tr><td>Graphs</td><td>Nodes + edges (BFS, DFS, Dijkstra)</td><td>Social networks, shortest path, dependency resolution</td></tr>
+<tr><td>Dynamic Programming</td><td>Break problem into subproblems, cache results</td><td>Fibonacci, knapsack, longest subsequence, coin change</td></tr>
+<tr><td>Hashing</td><td>Key→value lookup in O(1) using HashMap</td><td>Two Sum, anagram detection, frequency counting</td></tr>
+<tr><td>Sliding Window</td><td>Fixed/variable window moves across array</td><td>Max subarray sum, longest substring without repeats</td></tr>
+<tr><td>Heap</td><td>Priority Queue — always gives min/max in O(1)</td><td>Top K elements, merge K sorted lists, median finder</td></tr>
+<tr><td>Binary Search</td><td>Divide sorted array in half each step — O(log n)</td><td>Search in rotated array, find peak element</td></tr>
+<tr><td>Trie</td><td>Tree for storing strings character by character</td><td>Autocomplete, spell checker, word search</td></tr>
+<tr><td>Backtracking</td><td>Try all options, undo bad choices</td><td>Sudoku solver, N-Queens, permutations/combinations</td></tr>
+</table>
+
+<!-- ═══════ System Design ═══════ -->
+<h2>🏗️ System Design</h2>
+<table>
+<tr><th>Concept</th><th>What It Is</th><th>Your Example</th></tr>
+<tr><td>Microservices</td><td>App split into small independent services, each doing one thing</td><td>Decomposed Sabre's monolith into 8+ services</td></tr>
+<tr><td>Event-Driven</td><td>Services communicate via events/messages, not direct calls</td><td>Kafka publishes "order_placed" → billing, inventory react</td></tr>
+<tr><td>API Gateway</td><td>Single entry point that routes requests to correct service</td><td>Client → gateway → routes to billing/auth/user service</td></tr>
+<tr><td>Load Balancing</td><td>Distributes traffic across servers so none overloads</td><td>Verizon 1000+ stores balanced for 99.9% uptime</td></tr>
+<tr><td>Caching</td><td>Store frequent data in fast memory (Redis)</td><td>Cache sessions/ API responses → avoid DB hits</td></tr>
+<tr><td>DB Sharding</td><td>Split one big DB into smaller pieces across servers</td><td>Shard by user_id or region when single DB can't handle load</td></tr>
+<tr><td>CAP Theorem</td><td>Distributed system: only 2 of 3 — Consistency, Availability, Partition Tolerance</td><td>Most pick AP (available) and use eventual consistency</td></tr>
+</table>
+
+<!-- ═══════ Frameworks ═══════ -->
+<h2>🔧 Frameworks</h2>
+<table>
+<tr><th>Skill</th><th>What It Is</th><th>Why/How You Use It</th></tr>
+<tr><td>Spring 6.1</td><td>Java enterprise framework — DI, security, web</td><td>Core framework for all Java backend work</td></tr>
+<tr><td>Spring Boot 3</td><td>Auto-configured Spring — fast startup</td><td>Build REST APIs: @RestController, @Service, @Repository</td></tr>
+<tr><td>Hibernate/JPA</td><td>Maps Java objects to DB tables (ORM)</td><td>@Entity User → auto-creates users table; no raw SQL</td></tr>
+<tr><td>Flask</td><td>Lightweight Python web framework</td><td>SmartCPR and Trading Engine dashboards</td></tr>
+<tr><td>FastAPI</td><td>Modern Python — async, auto-docs, type hints</td><td>Faster alternative to Flask for production AI APIs</td></tr>
+<tr><td>REST APIs</td><td>HTTP-based: GET, POST, PUT, DELETE on resources</td><td>Every project exposes REST endpoints</td></tr>
+<tr><td>gRPC</td><td>Google's fast binary protocol for service-to-service comms</td><td>10× faster than REST for internal microservice calls</td></tr>
+</table>
+
+<!-- ═══════ PAGE 2 ═══════ -->
+<div class="page-break"></div>
+
+<!-- ═══════ Cloud & DevOps ═══════ -->
+<h2>☁️ Cloud & DevOps</h2>
+<table>
+<tr><th>Skill</th><th>What It Is</th><th>Why/How You Use It</th></tr>
+<tr><td>AWS EC2</td><td>Virtual servers in the cloud</td><td>Run your Java/Python apps on EC2 instances</td></tr>
+<tr><td>AWS S3</td><td>Cloud file storage — unlimited, cheap, durable</td><td>Store logs, model artifacts, backups, static assets</td></tr>
+<tr><td>AWS Lambda</td><td>Serverless — run code on demand, pay per execution</td><td>Trigger: "new file uploaded → process it"</td></tr>
+<tr><td>AWS RDS</td><td>Managed database service (PostgreSQL, MySQL)</td><td>Production DBs here — auto backups, scaling</td></tr>
+<tr><td>AWS SageMaker</td><td>Train & deploy ML models on powerful GPUs</td><td>Train Llama 3 fine-tuning jobs</td></tr>
+<tr><td>GCP</td><td>Google Cloud — alternative to AWS</td><td>Some projects use GCP services</td></tr>
+<tr><td>Docker</td><td>Package app + dependencies into a portable container</td><td>"Works on my machine" → Docker ensures it works everywhere</td></tr>
+<tr><td>Kubernetes (K8s)</td><td>Orchestrate thousands of Docker containers</td><td>Auto-scale: 2 pods at night → 50 pods during peak</td></tr>
+<tr><td>Jenkins</td><td>CI/CD server — auto build, test, deploy on git push</td><td>Push code → Jenkins tests → deploys to production</td></tr>
+<tr><td>CI/CD</td><td>Continuous Integration/Deployment — automate releases</td><td>Every commit triggers: build → test → deploy</td></tr>
+<tr><td>Terraform</td><td>Infrastructure as Code — define infra in config files</td><td>terraform apply → creates EC2, RDS, load balancer in minutes</td></tr>
+</table>
+
+<!-- ═══════ Data & Infra ═══════ -->
+<h2>📊 Data & Infrastructure</h2>
+<table>
+<tr><th>Skill</th><th>What It Is</th><th>Why/How You Use It</th></tr>
+<tr><td>Kafka</td><td>Distributed message streaming — millions of events/sec</td><td>Order events → Kafka → billing, analytics consume</td></tr>
+<tr><td>RabbitMQ</td><td>Message queue — reliable task passing between services</td><td>Simpler alternative to Kafka for smaller workloads</td></tr>
+<tr><td>PostgreSQL</td><td>Advanced relational DB — JSON, full-text search support</td><td>Primary production database for structured data</td></tr>
+<tr><td>MongoDB</td><td>NoSQL document DB — flexible schema, JSON-like data</td><td>Good for rapidly changing structures, logs</td></tr>
+<tr><td>Redis</td><td>In-memory cache — microsecond reads</td><td>Cache sessions, API responses, real-time leaderboards</td></tr>
+<tr><td>Elasticsearch</td><td>Full-text search engine — search millions of docs instantly</td><td>"Find all invoices containing 'refund'" in milliseconds</td></tr>
+<tr><td>Vector DBs (Pinecone)</td><td>Stores AI embeddings for semantic search</td><td>RAG pipeline: store code templates → find most relevant for a prompt</td></tr>
+<tr><td>Kibana</td><td>Dashboard for Elasticsearch — visualize logs & metrics</td><td>Monitor production: error spikes, slow queries, traffic</td></tr>
+</table>
+
+<!-- ═══════ Tools ═══════ -->
+<h2>🧪 Tools & Testing</h2>
+<table>
+<tr><th>Skill</th><th>What It Is</th><th>Why/How You Use It</th></tr>
+<tr><td>Git</td><td>Version control — track every code change</td><td>Every project; push to GitHub</td></tr>
+<tr><td>JUnit</td><td>Java unit testing framework</td><td>assertEquals(expected, actual)</td></tr>
+<tr><td>Mockito</td><td>Java mocking library — fake dependencies in tests</td><td>when(repo.findById(1)).thenReturn(user)</td></tr>
+<tr><td>Postman</td><td>API testing tool — send requests, see responses</td><td>Test REST APIs manually before automation</td></tr>
+<tr><td>Agile/Scrum</td><td>2-week sprints, daily standups, sprint reviews</td><td>Your workflow at AmEx and Verizon</td></tr>
+<tr><td>Linux</td><td>Server OS — all production servers run Linux</td><td>Terminal commands, shell scripts, server management</td></tr>
+</table>
+
+<!-- ═══════ Project Terms ═══════ -->
+<h2>🏥 Project-Specific Terms</h2>
+<table>
+<tr><th>Term</th><th>What It Is</th><th>Context</th></tr>
+<tr><td>FOLD-RM</td><td>Rule-based explainable AI — IF-THEN rules humans can read</td><td>SmartCPR: doctors understand the AI's decision</td></tr>
+<tr><td>MC3G</td><td>Counterfactual reasoning — "what would need to change?"</td><td>"If SpO2 were 95 instead of 70, patient would be stable"</td></tr>
+<tr><td>SocketIO</td><td>Real-time bidirectional communication (WebSocket wrapper)</td><td>SmartCPR: server pushes vitals every 200ms</td></tr>
+<tr><td>WebSocket</td><td>Persistent connection for real-time data streaming</td><td>Trading Engine: live price updates</td></tr>
+<tr><td>GDS</td><td>Global Distribution System — connects airlines & agents</td><td>Sabre: agent searches flight → GDS returns options</td></tr>
+<tr><td>FBPM</td><td>Financial Business Process Management — AmEx platform</td><td>Your current project at American Express</td></tr>
+</table>
+
+<!-- ═══════ Interview One-Liners ═══════ -->
+<h2>⚡ Quick Interview One-Liners</h2>
+<table class="oneliners">
+<tr><th>"Tell me about X"</th><th>Your Answer</th></tr>
+<tr><td>"What is RAG?"</td><td>Instead of making the LLM memorize everything, we retrieve relevant docs from a vector DB and feed them as context — so it always has up-to-date, accurate info.</td></tr>
+<tr><td>"What is LoRA?"</td><td>It freezes 99% of model weights and only trains tiny adapter layers — fine-tune a 7B model on a single GPU in hours instead of weeks.</td></tr>
+<tr><td>"What is Knowledge Distillation?"</td><td>Use a big expensive model (GPT-4) as teacher to generate training data, then train a small free model (Llama) to produce the same quality output.</td></tr>
+<tr><td>"Why microservices?"</td><td>Independent deployment, scaling, and team ownership. At Sabre, we went from 1 big deploy to 8 services — deploy time dropped 60%.</td></tr>
+<tr><td>"What is CAP Theorem?"</td><td>In a distributed system, you can only guarantee 2 of 3: Consistency, Availability, Partition Tolerance. Most systems pick AP + eventual consistency.</td></tr>
+<tr><td>"Why Docker + K8s?"</td><td>Docker packages the app identically everywhere. K8s auto-scales — traffic spikes, it spins up more containers automatically.</td></tr>
+<tr><td>"What is a Vector DB?"</td><td>Stores AI embeddings — numerical representations of text — and finds semantically similar items. We use Pinecone in our RAG pipeline.</td></tr>
+<tr><td>"What is event-driven arch?"</td><td>Services publish events to Kafka instead of calling each other. Loose coupling, better scalability, independent failure handling.</td></tr>
+</table>
+
+</body>
+</html>
