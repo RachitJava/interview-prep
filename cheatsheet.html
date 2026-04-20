@@ -9,10 +9,18 @@
   @page { size: A4; margin: 0; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
-    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
-    font-size: 7.8pt; line-height: 1.3; color: #1a1a1a; background: #fff;
-    width: 210mm; padding: 8mm 12mm 6mm 12mm;
-    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+        font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+    font-size: 7.8pt;
+    line-height: 1.3;
+    color: #1a1a1a;
+    background: #fff;
+    width: 210mm;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    margin: 0; padding: 0;
+  }
+  .page-container {
+    padding: 8mm 12mm 6mm 12mm;
   }
   h1 { font-size: 14pt; color: #111827; text-align: center; margin-bottom: 2px; }
   .subtitle { font-size: 8pt; color: #6b7280; text-align: center; margin-bottom: 8px; }
@@ -34,7 +42,7 @@
   @media print { body { padding: 8mm 12mm 6mm 12mm; } }
 
   /* --- Site Header Nav --- */
-  .site-header { background: #fff; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 100; margin: -40px -20px 20px -20px; text-align: center; }
+  .site-header { background: #fff; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 100; margin: 0 0 20px 0; text-align: center; }
   .site-header nav { max-width: 1000px; margin: 0 auto; padding: 10px; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
   .site-header a { text-decoration: none; color: #475569; font-size: 8pt; font-weight: 500; padding: 4px 8px; border-radius: 4px; transition: all 0.2s; }
   .site-header a:hover { background: #f8fafc; color: #2563eb; }
@@ -72,6 +80,7 @@
     <a href="resume.html">📄 Resume</a>
   </nav>
 </header>
+<div class="page-container">
 
 
 <h1>📋 Resume Cheat Sheet — Interview Quick Reference</h1>
@@ -219,5 +228,6 @@
 <tr><td>"What is event-driven arch?"</td><td>Services publish events to Kafka instead of calling each other. Loose coupling, better scalability, independent failure handling.</td></tr>
 </table>
 
+</div>
 </body>
 </html>

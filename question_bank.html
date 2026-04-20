@@ -9,9 +9,17 @@
   @page { size: A4; margin: 10mm 12mm; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
-    font-family: 'Inter', Arial, sans-serif;
-    font-size: 10.5pt; line-height: 1.5; color: #1a1a1a; background: #ffffff;
-    max-width: 1000px; margin: 0 auto; padding: 40px 20px;
+        font-family: 'Inter', Arial, sans-serif;
+    font-size: 10.5pt;
+    line-height: 1.5;
+    color: #1a1a1a;
+    background: #ffffff;
+    margin: 0; padding: 0;
+  }
+  .page-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 20px;
   }
   h1 { font-size: 16pt; color: #111; text-align: center; margin-bottom: 2px; }
   .subtitle { font-size: 8.5pt; color: #6b7280; text-align: center; margin-bottom: 10px; }
@@ -37,7 +45,7 @@
   @media print { body { padding: 0; } h2 { page-break-inside: avoid; } }
 
   /* --- Site Header Nav --- */
-  .site-header { background: #fff; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 100; margin: -40px -20px 20px -20px; text-align: center; }
+  .site-header { background: #fff; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 100; margin: 0 0 20px 0; text-align: center; }
   .site-header nav { max-width: 1000px; margin: 0 auto; padding: 10px; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
   .site-header a { text-decoration: none; color: #475569; font-size: 8pt; font-weight: 500; padding: 4px 8px; border-radius: 4px; transition: all 0.2s; }
   .site-header a:hover { background: #f8fafc; color: #2563eb; }
@@ -75,6 +83,7 @@
     <a href="resume.html">📄 Resume</a>
   </nav>
 </header>
+<div class="page-container">
 
 
 <h1>🎯 Top Interview Questions — Complete Question Bank</h1>
@@ -651,5 +660,6 @@
   🔥 = Most frequently asked in 2026 interviews | Solve these and you're job-ready!
 </div>
 
+</div>
 </body>
 </html>
