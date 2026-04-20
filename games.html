@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interview Focus Room — Brain Games</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #fff; color: #1e293b; line-height: 1.6; }
+        
+        .site-header { background: #fff; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 100; text-align: center; }
+        .site-header nav { max-width: 1000px; margin: 0 auto; padding: 10px; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+        .site-header a { text-decoration: none; color: #475569; font-size: 8pt; font-weight: 500; padding: 4px 8px; border-radius: 4px; transition: all 0.2s; }
+        .site-header a:hover { background: #f8fafc; color: #2563eb; }
+        .site-header a.active { background: #2563eb; color: #fff; }
+
+        .page-container { max-width: 800px; margin: 0 auto; padding: 60px 20px; text-align: center; }
+
+        h1 { font-size: 32px; font-weight: 800; margin-bottom: 15px; color: #0f172a; }
+        p.subtitle { color: #64748b; font-size: 18px; margin-bottom: 50px; }
+
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .game-card {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 40px 30px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .game-card:hover {
+            transform: translateY(-5px);
+            border-color: #2563eb;
+            box-shadow: 0 12px 20px -5px rgba(37, 99, 235, 0.1);
+        }
+
+        .game-card .icon { font-size: 40px; }
+        .game-card h3 { font-size: 22px; color: #0f172a; }
+        .game-card p { color: #64748b; font-size: 15px; }
+        .game-card .btn-fake {
+            align-self: flex-start;
+            background: #eff6ff;
+            color: #2563eb;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 24px; }
+            p.subtitle { font-size: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="site-header">
+  <nav>
+    <a href="index.html">🏠 Home</a>
+    <a href="solutions_1_dsa.html">🌳 DSA</a>
+    <a href="solutions_2_system_design.html">🏗️ System Design</a>
+    <a href="solutions_3_java.html">☕ Java</a>
+    <a href="solutions_4_python.html">🐍 Python</a>
+    <a href="solutions_5_sql_db.html">🗄️ SQL</a>
+    <a href="solutions_6_spring_boot.html">🍃 Spring</a>
+    <a href="solutions_7_ai_ml_llm.html">🤖 AI/ML</a>
+    <a href="solutions_8_cloud_devops.html">☁️ Cloud</a>
+    <a href="question_bank.html">📜 Q-Bank</a>
+    <a href="master_answer_compendium.html">🎯 Master</a>
+    <a href="resume.html">📄 Resume</a>
+    <a href="games.html" class="active">🕹️ Games</a>
+  </nav>
+</header>
+
+<div class="page-container">
+    <h1>Interview Focus Room</h1>
+    <p class="subtitle">Warm up your cognitive focus before technical deep-dives.</p>
+
+    <div class="game-grid">
+        <a href="focus_game.html" class="game-card">
+            <span class="icon">🎯</span>
+            <h3>Focus Booster</h3>
+            <p>Schulte Grid training to expand peripheral vision and improve target search speed. Ideal for warming up before reading complex system architectures.</p>
+            <span class="btn-fake">Play Schulte Grid</span>
+        </a>
+
+        <a href="memory_game.html" class="game-card">
+            <span class="icon">🧠</span>
+            <h3>Sequence Master</h3>
+            <p>Advanced pattern recall game. Strengthens short-term memory and sequential logic processing for algorithm visualization.</p>
+            <span class="btn-fake">Start Sequence Recall</span>
+        </a>
+    </div>
+</div>
+
+</body>
+</html>

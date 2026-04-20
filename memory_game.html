@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sequence Master — Pattern Memory Game</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #fff; color: #1e293b; line-height: 1.6; }
+        
+        .site-header { background: #fff; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 100; text-align: center; }
+        .site-header nav { max-width: 1000px; margin: 0 auto; padding: 10px; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+        .site-header a { text-decoration: none; color: #475569; font-size: 8pt; font-weight: 500; padding: 4px 8px; border-radius: 4px; transition: all 0.2s; }
+        .site-header a:hover { background: #f8fafc; color: #2563eb; }
+        .site-header a.active { background: #2563eb; color: #fff; }
+
+        .page-container { max-width: 600px; margin: 0 auto; padding: 40px 20px; text-align: center; }
+
+        h1 { font-size: 24px; margin-bottom: 10px; color: #0f172a; }
+        p.desc { color: #64748b; font-size: 14px; margin-bottom: 30px; }
+
+        .stats { display: flex; justify-content: center; gap: 40px; margin-bottom: 30px; font-weight: 700; color: #0f172a; }
+        .stat-label { font-size: 12px; color: #64748b; text-transform: uppercase; display: block; }
+
+        .game-board {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .tile {
+            aspect-ratio: 1;
+            background: #f1f5f9;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid #e2e8f0;
+        }
+
+        .tile.active { background: #2563eb; transform: scale(0.95); box-shadow: 0 0 20px rgba(37, 99, 235, 0.4); }
+        .tile.error { background: #ef4444; animation: shake 0.4s; }
+        
+        .tile:hover:not(.active) { background: #e2e8f0; }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        .btn {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 40px;
+            font-size: 16px;
+            transition: all 0.2s;
+        }
+        .btn:hover { background: #1d4ed8; transform: translateY(-1px); }
+        .btn:disabled { background: #cbd5e1; cursor: not-allowed; transform: none; }
+
+        .status-msg { margin-top: 20px; font-weight: 600; min-height: 24px; color: #2563eb; }
+    </style>
+</head>
+<body>
+
+
+<header class="site-header">
+  <nav>
+    <a href="index.html">🏠 Home</a>
+    <a href="solutions_1_dsa.html">🌳 DSA</a>
+    <a href="solutions_2_system_design.html">🏗️ System Design</a>
+    <a href="solutions_3_java.html">☕ Java</a>
+    <a href="solutions_4_python.html">🐍 Python</a>
+    <a href="solutions_5_sql_db.html">🗄️ SQL</a>
+    <a href="solutions_6_spring_boot.html">🍃 Spring</a>
+    <a href="solutions_7_ai_ml_llm.html">🤖 AI/ML</a>
+    <a href="solutions_8_cloud_devops.html">☁️ Cloud</a>
+    <a href="question_bank.html">📜 Q-Bank</a>
+    <a href="master_answer_compendium.html">🎯 Master</a>
+    <a href="resume.html">📄 Resume</a>
+    <a href="games.html">🕹️ Games</a>
+  </nav>
+</header>
+
+
+<div class="page-container">
+    <h1>Sequence Master</h1>
+    <p class="desc">Watch the pattern and repeat it. Trains short-term memory and focus intensity.</p>
+
+    <div class="stats">
+        <div><span class="stat-label">Level</span><span id="level">1</span></div>
+        <div><span class="stat-label">Best</span><span id="best">0</span></div>
+    </div>
+
+    <div class="game-board" id="board">
+        <div class="tile" data-id="0"></div>
+        <div class="tile" data-id="1"></div>
+        <div class="tile" data-id="2"></div>
+        <div class="tile" data-id="3"></div>
+        <div class="tile" data-id="4"></div>
+        <div class="tile" data-id="5"></div>
+        <div class="tile" data-id="6"></div>
+        <div class="tile" data-id="7"></div>
+        <div class="tile" data-id="8"></div>
+    </div>
+
+    <div class="status-msg" id="msg">Press Start to Begin</div>
+    <button class="btn" id="startBtn">Start Game</button>
+</div>
+
+<script>
+    let sequence = [];
+    let playerSequence = [];
+    let level = 1;
+    let best = localStorage.getItem('best_memory') || 0;
+    let isShowing = false;
+
+    const board = document.getElementById('board');
+    const tiles = document.querySelectorAll('.tile');
+    const levelEl = document.getElementById('level');
+    const bestEl = document.getElementById('best');
+    const msgEl = document.getElementById('msg');
+    const startBtn = document.getElementById('startBtn');
+
+    bestEl.textContent = best;
+
+    startBtn.addEventListener('click', () => {
+        resetGame();
+        nextLevel();
+    });
+
+    tiles.forEach(tile => {
+        tile.addEventListener('click', () => {
+            if (isShowing) return;
+            
+            const id = parseInt(tile.dataset.id);
+            flashTile(tile);
+            playerSequence.push(id);
+            checkSequence();
+        });
+    });
+
+    function resetGame() {
+        sequence = [];
+        playerSequence = [];
+        level = 1;
+        levelEl.textContent = level;
+        startBtn.disabled = true;
+    }
+
+    function nextLevel() {
+        playerSequence = [];
+        levelEl.textContent = level;
+        sequence.push(Math.floor(Math.random() * 9));
+        showSequence();
+    }
+
+    async function showSequence() {
+        isShowing = true;
+        msgEl.textContent = "Watch carefully...";
+        await sleep(800);
+        
+        for (const id of sequence) {
+            flashTile(tiles[id]);
+            await sleep(600);
+        }
+        
+        isShowing = false;
+        msgEl.textContent = "Your turn!";
+    }
+
+    function flashTile(tile) {
+        tile.classList.add('active');
+        setTimeout(() => tile.classList.remove('active'), 300);
+    }
+
+    function checkSequence() {
+        const i = playerSequence.length - 1;
+        
+        if (playerSequence[i] !== sequence[i]) {
+            gameOver();
+            return;
+        }
+
+        if (playerSequence.length === sequence.length) {
+            msgEl.textContent = "Correct!";
+            level++;
+            if (level > best) {
+                best = level;
+                bestEl.textContent = best;
+                localStorage.setItem('best_memory', best);
+            }
+            setTimeout(nextLevel, 1000);
+        }
+    }
+
+    function gameOver() {
+        msgEl.textContent = "Game Over!";
+        tiles[playerSequence[playerSequence.length-1]].classList.add('error');
+        setTimeout(() => {
+            tiles.forEach(t => t.classList.remove('error'));
+            startBtn.disabled = false;
+            startBtn.textContent = "Play Again";
+        }, 800);
+    }
+
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+</script>
+
+</body>
+</html>
