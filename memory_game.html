@@ -67,7 +67,22 @@
         .btn:disabled { background: #cbd5e1; cursor: not-allowed; transform: none; }
 
         .status-msg { margin-top: 20px; font-weight: 600; min-height: 24px; color: #2563eb; }
-    </style>
+    
+  /* --- Zoom Controls --- */
+  .zoom-controls {
+    position: fixed; bottom: 20px; right: 20px;
+    background: #fff; border: 1px solid #e2e8f0; border-radius: 10px;
+    box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); display: flex; gap: 5px; padding: 6px; z-index: 1000;
+  }
+  .zoom-btn {
+    width: 34px; height: 34px; border: none; background: #f1f5f9; color: #475569;
+    font-weight: 700; cursor: pointer; border-radius: 6px; transition: all 0.2s;
+    display: flex; align-items: center; justify-content: center; font-size: 13px;
+  }
+  .zoom-btn:hover { background: #2563eb; color: #fff; }
+  @media print { .zoom-controls { display: none; } }
+
+</style>
 </head>
 <body>
 
@@ -215,6 +230,40 @@
     function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
+</script>
+
+
+<div class="zoom-controls">
+  <button class="zoom-btn" onclick="changeZoom(-1)" title="Zoom Out">A-</button>
+  <button class="zoom-btn" onclick="changeZoom(0)" title="Reset">A</button>
+  <button class="zoom-btn" onclick="changeZoom(1)" title="Zoom In">A+</button>
+</div>
+
+<script>
+  let zoomLevel = parseFloat(localStorage.getItem('zoomLevel')) || 1;
+  
+  function applyZoom() {
+    // Target the main content containers
+    const containers = document.querySelectorAll('.page-container, .container, .resume-paper');
+    containers.forEach(el => {
+      el.style.fontSize = zoomLevel + 'em';
+    });
+    // Also adjust headings slightly
+    const headings = document.querySelectorAll('h1, h2, h3');
+    headings.forEach(el => {
+      el.style.transformOrigin = 'left center';
+    });
+  }
+
+  function changeZoom(delta) {
+    if (delta === 0) zoomLevel = 1;
+    else zoomLevel = Math.max(0.5, Math.min(3, zoomLevel + delta * 0.1));
+    localStorage.setItem('zoomLevel', zoomLevel);
+    applyZoom();
+  }
+  
+  // Apply on load
+  window.addEventListener('DOMContentLoaded', applyZoom);
 </script>
 
 </body>
