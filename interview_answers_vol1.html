@@ -10,7 +10,7 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     font-family: 'Inter', Arial, sans-serif;
-    font-size: 11pt; line-height: 1.6; color: #1a1a1a; background: #f8fafb;
+    font-size: 11pt; line-height: 1.6; color: #1a1a1a; background: #ffffff;
     max-width: 900px; margin: 0 auto; padding: 40px 20px;
   }
   h1 { font-size: 18pt; color: #111; text-align: center; margin-bottom: 5px; }
@@ -27,9 +27,34 @@
   .details li { margin-bottom: 3px; }
   .example { background: #f9fafb; padding: 8px; border-radius: 4px; margin-top: 5px; font-family: monospace; font-size: 8pt; color: #374151; }
   .page-break { page-break-before: always; }
+
+  /* --- Site Header Nav --- */
+  .site-header { background: #fff; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 100; margin: -40px -20px 20px -20px; text-align: center; }
+  .site-header nav { max-width: 1000px; margin: 0 auto; padding: 10px; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+  .site-header a { text-decoration: none; color: #475569; font-size: 8pt; font-weight: 500; padding: 4px 8px; border-radius: 4px; transition: all 0.2s; }
+  .site-header a:hover { background: #f8fafc; color: #2563eb; }
+
 </style>
 </head>
 <body>
+
+<header class="site-header">
+  <nav>
+    <a href="index.html">🏠 Home</a>
+    <a href="solutions_1_dsa.html">🌳 DSA</a>
+    <a href="solutions_2_system_design.html">🏗️ System Design</a>
+    <a href="solutions_3_java.html">☕ Java</a>
+    <a href="solutions_4_python.html">🐍 Python</a>
+    <a href="solutions_5_sql_db.html">🗄️ SQL</a>
+    <a href="solutions_6_spring_boot.html">🍃 Spring</a>
+    <a href="solutions_7_ai_ml_llm.html">🤖 AI/ML</a>
+    <a href="solutions_8_cloud_devops.html">☁️ Cloud</a>
+    <a href="question_bank.html">📜 Q-Bank</a>
+    <a href="master_answer_compendium.html">🎯 Master</a>
+    <a href="resume.html">📄 Resume</a>
+  </nav>
+</header>
+
 
 <h1>🎯 Interview Master Answer Guide</h1>
 <div class="subtitle">High-Impact Answers for Software & AI Engineering Roles | 2026 Edition</div>

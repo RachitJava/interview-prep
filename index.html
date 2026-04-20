@@ -1,281 +1,239 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interview Prep Hub — Rachit Bishnoi</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #6366f1;
-            --primary-hover: #4f46e5;
-            --bg-dark: #0f172a;
-            --card-bg: rgba(30, 41, 59, 0.7);
-            --text-main: #f8fafc;
-            --text-dim: #94a3b8;
-            --accent: #10b981;
-            --glass-border: rgba(255, 255, 255, 0.1);
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --bg: #ffffff;
+            --bg-alt: #f8fafc;
+            --text: #0f172a;
+            --text-dim: #475569;
+            --border: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-main);
+            background-color: var(--bg);
+            color: var(--text);
             line-height: 1.6;
             min-height: 100vh;
-            background: radial-gradient(circle at top right, #1e1b4b, #0f172a);
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 20px;
         }
 
-        /* --- Header Section --- */
-        header {
+        /* --- Header / Nav --- */
+        .site-header {
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            margin-bottom: 40px;
+        }
+
+        .site-header nav {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .site-header a {
+            text-decoration: none;
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            font-weight: 500;
+            padding: 6px 12px;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .site-header a:hover {
+            background: var(--bg-alt);
+            color: var(--primary);
+        }
+
+        .site-header a.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* --- Hero --- */
+        .hero {
             text-align: center;
+            padding: 60px 20px;
+            background: var(--bg-alt);
+            border-radius: 20px;
             margin-bottom: 60px;
-            animation: fadeInDown 0.8s ease-out;
         }
 
         h1 {
-            font-size: 3rem;
+            font-size: 2.8rem;
             font-weight: 800;
-            margin-bottom: 10px;
-            background: linear-gradient(to right, #818cf8, #c084fc);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--text);
+            margin-bottom: 16px;
+            letter-spacing: -0.025em;
         }
 
-        .subtitle {
-            font-size: 1.1rem;
+        .hero p {
+            font-size: 1.125rem;
             color: var(--text-dim);
             max-width: 700px;
-            margin: 0 auto 30px;
+            margin: 0 auto;
         }
 
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .social-link {
-            color: var(--text-dim);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .social-link:hover { color: var(--primary); }
-
-        /* --- Featured Links --- */
-        .featured-grid {
+        /* --- Grid --- */
+        .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 24px;
-            margin-bottom: 60px;
+            margin-bottom: 80px;
         }
 
-        .main-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(12px);
-            border: 1px solid var(--glass-border);
-            padding: 30px;
-            border-radius: 20px;
+        .card {
+            background: white;
+            border: 1px solid var(--border);
+            padding: 32px;
+            border-radius: 12px;
             text-decoration: none;
             color: inherit;
-            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.3s;
-            position: relative;
-            overflow: hidden;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .main-card:hover {
-            transform: translateY(-8px);
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
             border-color: var(--primary);
         }
 
-        .main-card h2 {
-            font-size: 1.4rem;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .main-card p {
-            color: var(--text-dim);
-            font-size: 0.95rem;
-        }
-
-        .badge {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: var(--primary);
-            color: white;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-        }
-
-        /* --- Solution Categories --- */
-        .section-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 30px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .section-title::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: linear-gradient(to right, var(--glass-border), transparent);
-        }
-
-        .solutions-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-            gap: 20px;
-        }
-
-        .sol-card {
-            background: rgba(15, 23, 42, 0.5);
-            border: 1px solid var(--glass-border);
-            padding: 24px;
-            border-radius: 16px;
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.3s;
-        }
-
-        .sol-card:hover {
-            background: var(--card-bg);
-            border-color: var(--primary);
-            box-shadow: 0 10px 30px -10px rgba(99, 102, 241, 0.3);
-        }
-
-        .sol-card .icon {
-            font-size: 1.8rem;
-            margin-bottom: 16px;
+        .card .icon {
+            font-size: 2rem;
+            margin-bottom: 20px;
             display: block;
         }
 
-        .sol-card h3 {
-            font-size: 1.1rem;
+        .card h3 {
+            font-size: 1.25rem;
             margin-bottom: 8px;
+            font-weight: 700;
         }
 
-        .sol-card p {
-            font-size: 0.85rem;
+        .card p {
+            font-size: 0.95rem;
             color: var(--text-dim);
-            line-height: 1.4;
         }
 
-        /* --- Footer --- */
-        footer {
-            margin-top: 100px;
+        .footer {
             text-align: center;
             padding: 40px 0;
-            border-top: 1px solid var(--glass-border);
+            border-top: 1px solid var(--border);
             color: var(--text-dim);
-            font-size: 0.9rem;
-        }
-
-        /* --- Animations --- */
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
+            font-size: 0.875rem;
         }
 
         @media (max-width: 640px) {
-            h1 { font-size: 2.2rem; }
-            .solutions-grid { grid-template-columns: 1fr; }
+            h1 { font-size: 2rem; }
+            .hero { padding: 40px 15px; }
+            .site-header nav { gap: 8px; padding: 10px; }
+            .site-header a { font-size: 0.75rem; padding: 4px 8px; }
         }
     </style>
 </head>
 <body>
 
+<header class="site-header">
+    <nav>
+        <a href="index.html" class="active">🏠 Home</a>
+        <a href="solutions_1_dsa.html">🌳 DSA</a>
+        <a href="solutions_2_system_design.html">🏗️ System Design</a>
+        <a href="solutions_3_java.html">☕ Java</a>
+        <a href="solutions_4_python.html">🐍 Python</a>
+        <a href="solutions_5_sql_db.html">🗄️ SQL</a>
+        <a href="solutions_6_spring_boot.html">🍃 Spring</a>
+        <a href="solutions_7_ai_ml_llm.html">🤖 AI/ML</a>
+        <a href="solutions_8_cloud_devops.html">☁️ Cloud</a>
+        <a href="question_bank.html">📜 Q-Bank</a>
+        <a href="master_answer_compendium.html">🎯 Master</a>
+        <a href="resume.html">📄 Resume</a>
+    </nav>
+</header>
+
 <div class="container">
-    <header>
-        <h1>Interview Prep Dashboard</h1>
-        <p class="subtitle">Comprehensive 100% Coverage System for Senior Software & AI Engineering Roles at Tier-1 Firms.</p>
-        <div class="social-links">
-            <a href="https://github.com/RachitJava" class="social-link"><span>GitHub</span></a>
-            <a href="http://linkedin.com/in/rachit-bishnoi-b592a4117/" class="social-link"><span>LinkedIn</span></a>
-            <a href="resume.html" class="social-link"><span>Interactive Resume</span></a>
-        </div>
-    </header>
+    <section class="hero">
+        <h1>Interview Preparedness Hub</h1>
+        <p>100% Comprehensive study system for Senior Software & AI Engineering roles. Focused patterns on DSA, System Design, and Modern AI Orchestration.</p>
+    </section>
 
-    <div class="featured-grid">
-        <a href="master_answer_compendium.html" class="main-card">
-            <span class="badge">Must Read</span>
-            <h2>🎯 Master Compendium</h2>
-            <p>Direct mapping of 350+ questions to high-impact architecturally-sound answers. The ultimate study guide.</p>
+    <div class="grid">
+        <a href="master_answer_compendium.html" class="card" style="grid-column: span 2;">
+            <span class="icon">🎯</span>
+            <h3>Master Answer Compendium</h3>
+            <p>The ultimate 350+ question mapping. Direct, high-impact answers optimized for senior-level evaluations.</p>
         </a>
-        <a href="question_bank.html" class="main-card">
-            <h2>📜 Full Question Bank</h2>
-            <p>Curated list of common & advanced questions across all tech stacks with difficulty and priority tags.</p>
+        <a href="question_bank.html" class="card">
+            <span class="icon">📜</span>
+            <h3>Full Question Bank</h3>
+            <p>Curated list of common and edge-case questions with difficulty and popularity tags.</p>
         </a>
-    </div>
-
-    <h2 class="section-title">Deep-Dive Solutions</h2>
-    <div class="solutions-grid">
-        <a href="solutions_1_dsa.html" class="sol-card">
+        <a href="solutions_1_dsa.html" class="card">
             <span class="icon">🌳</span>
             <h3>Data Structures</h3>
-            <p>LeetCode patterns, optimization techniques, and classic algorithmic deep-dives.</p>
+            <p>Patterns, complexity analysis, and coding deep-dives.</p>
         </a>
-        <a href="solutions_2_system_design.html" class="sol-card">
+        <a href="solutions_2_system_design.html" class="card">
             <span class="icon">🏗️</span>
             <h3>System Design</h3>
-            <p>Scaling from 0 to 1M users. Microservices, Kafka, Databases, and CAP theorem.</p>
+            <p>Architectural case studies, scalability patterns, and distributed systems.</p>
         </a>
-        <a href="solutions_3_java.html" class="sol-card">
+        <a href="solutions_3_java.html" class="card">
             <span class="icon">☕</span>
-            <h3>Java Mastery</h3>
-            <p>JVM internals, Multithreading, Memory management, and Spring Boot ecosystem.</p>
+            <h3>Java & JVM</h3>
+            <p>Multithreading, JVM internals, and advanced Spring Boot paradigms.</p>
         </a>
-        <a href="solutions_4_python.html" class="sol-card">
+        <a href="solutions_4_python.html" class="card">
             <span class="icon">🐍</span>
-            <h3>Python & Scripting</h3>
-            <p>GIL, Decorators, Generators, and Python's role in modern AI architectures.</p>
+            <h3>Python Mastery</h3>
+            <p>Deep-dive into Python internals, decorators, and AI scripting.</p>
         </a>
-        <a href="solutions_5_sql_db.html" class="sol-card">
+        <a href="solutions_5_sql_db.html" class="card">
             <span class="icon">🗄️</span>
-            <h3>SQL & Database</h3>
-            <p>Indexing strategies, ACID vs BASE, Sharding, and Replication patterns.</p>
+            <h3>SQL & Databases</h3>
+            <p>Indexing, Sharding, ACID properties, and query optimization.</p>
         </a>
-        <a href="solutions_6_spring_boot.html" class="sol-card">
+        <a href="solutions_6_spring_boot.html" class="card">
             <span class="icon">🍃</span>
             <h3>Spring Boot</h3>
-            <p>Cloud-native development with Spring Cloud, Actuator, and Security.</p>
+            <p>Microservices, Security, and Cloud-native orchestration.</p>
         </a>
-        <a href="solutions_7_ai_ml_llm.html" class="sol-card">
+        <a href="solutions_7_ai_ml_llm.html" class="card">
             <span class="icon">🤖</span>
-            <h3>AI, ML & LLM</h3>
-            <p>Generative AI, LoRA fine-tuning, RAG pipelines, and model orchestration.</p>
+            <h3>AI, ML & LLMs</h3>
+            <p>GenAI, fine-tuning, RAG pipelines, and model deployment.</p>
         </a>
-        <a href="solutions_8_cloud_devops.html" class="sol-card">
+        <a href="solutions_8_cloud_devops.html" class="card">
             <span class="icon">☁️</span>
             <h3>Cloud & DevOps</h3>
-            <p>AWS, Kubernetes, CI/CD pipelines, and Infrastructure as Code (Terraform).</p>
+            <p>AWS, K8s, Docker, and CI/CD pipelines.</p>
         </a>
     </div>
 
-    <footer>
-        <p>&copy; 2026 Rachit Bishnoi | Built for Scalability & Impact</p>
+    <footer class="footer">
+        <p>&copy; 2026 Rachit Bishnoi | Built for impactful interview preparation.</p>
     </footer>
 </div>
 
