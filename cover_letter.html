@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cover Letter — Rachit Bishnoi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #fff; color: #1e293b; line-height: 1.6; }
+        
+        .page-container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
+
+        .letter-header { margin-bottom: 40px; border-bottom: 2px solid #1a56db; padding-bottom: 20px; }
+        .letter-header h1 { font-size: 28px; font-weight: 800; color: #0f172a; margin-bottom: 5px; }
+        .letter-header p { font-size: 14px; color: #64748b; }
+
+        .letter-body { font-size: 15px; color: #334155; }
+        .letter-body p { margin-bottom: 20px; }
+        .letter-body ul { margin: 15px 0 25px 25px; list-style-type: square; }
+        .letter-body li { margin-bottom: 10px; }
+
+        .download-container { text-align: center; margin-bottom: 30px; }
+        .download-btn {
+            background: #2563eb; color: #fff; border: none; padding: 12px 28px;
+            border-radius: 8px; font-weight: 700; cursor: pointer; font-size: 15px;
+            transition: all 0.2s; box-shadow: 0 4px 14px -3px rgba(37, 99, 235, 0.4);
+        }
+        .download-btn:hover { background: #1d4ed8; transform: translateY(-2px); }
+
+        @media print {
+            .download-container, .site-header { display: none !important; }
+            .page-container { padding: 0; margin: 0; }
+            body { padding: 20mm; }
+        }
+
+        /* --- Minimal Header --- */
+        .site-header { background: #fff; border-bottom: 1px solid #e2e8f0; text-align: center; margin-bottom: 20px; }
+        .site-header nav { max-width: 1000px; margin: 0 auto; padding: 10px; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+        .site-header a { text-decoration: none; color: #475569; font-size: 10px; font-weight: 500; padding: 4px 8px; border-radius: 4px; }
+    </style>
+</head>
+<body>
+
+<header class="site-header">
+  <nav>
+    <a href="index.html">🏠 Home</a>
+    <a href="resume.html">📄 Resume</a>
+    <a href="cover_letter.html" style="background:#2563eb; color:#fff;">✉️ Cover Letter</a>
+  </nav>
+</header>
+
+<div class="page-container">
+    <div class="download-container">
+        <button onclick="window.print()" class="download-btn">📥 Download as PDF</button>
+    </div>
+
+    <div class="letter-header">
+        <h1>RACHIT BISHNOI</h1>
+        <p>Gr. Noida, India | +91-7042082836 | rachitbishnoi16@gmail.com</p>
+        <p>linkedin.com/in/rachit-bishnoi-b592a4117/</p>
+    </div>
+
+    <div class="letter-body">
+        <p>April 22, 2026</p>
+        
+        <p>Hiring Manager,<br>
+        JPMorgan Chase & Co.</p>
+
+        <p><b>RE: Software Engineer Application</b></p>
+
+        <p>Dear Hiring Manager,</p>
+
+        <p>I am writing to express my enthusiastic interest in the Software Engineer position at JPMorgan Chase. With a Bachelor’s degree in Electronics & Communication Engineering and over 7.5 years of experience architecting high-performance backend systems for American Express, Verizon, and Sabre, I possess the technical depth and professional maturity required to excel within JPMC’s Global Technology infrastructure.</p>
+
+        <p>My background aligns directly with the core requirements of this role:</p>
+
+        <ul>
+            <li><b>Java & AWS Ecosystem:</b> Expert in building high-performance REST APIs and Microservices using Java (8/11/17), Spring Boot 3, and AWS (Lambda, EC2, S3, RDS). Experienced in resolving complex dependencies using Maven and Gradle.</li>
+            <li><b>Data Visualization & ETL:</b> Proficient in developing interactive dashboards using Tableau and Qlik Sense. I have a proven track record of automating recurring reports through advanced ETL techniques, ODBC connectors, and SQL query optimization.</li>
+            <li><b>Distributed Systems & Messaging:</b> Skilled in utilizing Kafka for real-time data processing and implementing API orchestration within SOA frameworks to build modular, scalable distributed systems.</li>
+            <li><b>DevOps & Orchestration:</b> Extensive experience deploying services using Docker, Containers, and Kubernetes (K8s). I am adept at integrating code into existing CI/CD pipelines and monitoring API performance with Apache JMeter.</li>
+            <li><b>Quality & Security:</b> Disciplined in all SDLC aspects, including J2EE, JUnit testing, and implementing robust API security and authentication mechanisms to secure the development lifecycle against threats.</li>
+        </ul>
+
+        <p>In my current role at American Express, I led the development of the FBPM Workflow engine, utilizing Java/Spring Boot to reduce feature delivery time by 70%. This experience in bridging complex financial logic with modern engineering practices has prepared me to contribute immediately to JPMorgan Chase’s mission of engineering excellence and innovation.</p>
+
+        <p>I am eager to apply my technical leadership and passion for high-performance engineering to your team. Thank you for your time and consideration of my application.</p>
+
+        <p>Sincerely,</p>
+        
+        <p><b>Rachit Bishnoi</b></p>
+    </div>
+</div>
+
+</body>
+</html>
